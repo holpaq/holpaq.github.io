@@ -41,6 +41,10 @@ include(scriptPath + "jquery-3.4.1.slim.min.js", function() {
 
     // https://cdn.rawgit.com/showdownjs/showdown/1.9.0/dist/showdown.min.js
     include(scriptPath + "showdown.min.js", () => {
+        $('html').attr('lang', 'en');
+        if (location.hash.match(/\bdebug\b/i)) { // set 'class=DEBUG'
+            $("html").addClass("DEBUG");
+        }
         let $btn = $('button');
         $btn.click(() => {
             $btn.html('<div class="loading"><div></div><div></div><div></div><div></div></div>');
@@ -212,11 +216,6 @@ function main($) {
         $elem.replaceWith(                      // replace with markdown
             markdown.makeHtml(text)
         );
-        $('html').attr('lang', 'en');
-        if (location.hash.match(/\bdebug\b/i)) { // set 'class=DEBUG'
-            $("html").addClass("DEBUG");
-        }
-
 
     // Add ID attribute to <h#> tags.
     $("h1,h2,h3,h4,h5,h6,h7").each((_, h) => {

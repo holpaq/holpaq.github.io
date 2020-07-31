@@ -14,12 +14,14 @@
     --cellpad: calc(var(--hgrid) * .25); /* table cell padding */
 
     --hilite: rgba(0, 0, 255, .25);
+}
 
+:root.DEBUG {
     /* Background grid. */
-    /* background-image: linear-gradient(       var(--hilite) 1px, transparent 1px), */
-    /*                   linear-gradient(90deg, var(--hilite) 1px, transparent 1px); */
-    /* background-size:  var(--hgrid) var(--vgrid); */
-    /* background-position: 0 -9px; */
+    background-image: linear-gradient(       var(--hilite) 1px, transparent 1px),
+                      linear-gradient(90deg, var(--hilite) 1px, transparent 1px);
+    background-size:  var(--hgrid) var(--vgrid);
+    background-position: 0 -9px;
 
     /* Background lines. */
     /* background-image: linear-gradient(       var(--hilite) 1px, transparent 1px); */
@@ -29,8 +31,6 @@
 
 body {
     margin: 0 var(--hgrid) var(--vgrid);
-    XXwidth: 100%;    /* FIXME set min value for when there is no content? */
-    XXheight: 100vh;  /* FIXME set min value for when there is no content? */
 }
 
 .toc, h1, h2, h3 {
