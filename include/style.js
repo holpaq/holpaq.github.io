@@ -109,113 +109,109 @@ function asciify(txt) {
 /******************************************************************************/
 
 function main($) {
+    const $elem = $('pre');
+    const singleRefReStr = '\\[([^\\[\\]]+)\\]:\\s*(\\S+)(?:\\s+"([^"]*)")?\\n';
+    const onlyReferences = new RegExp("^(" + singleRefReStr + ")+$");
+    const oneReference = new RegExp(singleRefReStr);
 
-        const $elem = $('pre');
-        const singleRefReStr = '\\[([^\\[\\]]+)\\]:\\s*(\\S+)(?:\\s+"([^"]*)")?\\n';
-        const onlyReferences = new RegExp("^(" + singleRefReStr + ")+$");
-        const oneReference = new RegExp(singleRefReStr);
-
-        // Get & preprocess markdown.
-        let refs = {};
-        const text = ($elem.html() || "")
-              .rot13()                                    // rot13 decode
-              .replace(/&[a-z]+;/g, (str) => str.rot13()) // revert rot13 of html &entities;
-              .replace(/\n(<\/[^>]*>)*$/, "")             // remove autoinserted end tags (</...>)
-              .split(/\n{2,}/).map((paragraph) => {
-                  if ((paragraph + "\n").match(onlyReferences)) {
-                      // Paragraph containing only link references.
-                      let refName = "";
-                      (paragraph + "\n").split(oneReference).forEach((str, i) => {
-                          //str = (str || "").replace(/\s+/g, " ");
-                          switch (i % 4) {
-                          case 0:
-                              if (str !== "") { throw "Bad string"; }
-                              break;
-                          case 1:
-                              refName = str.replace(/&(amp|gt|lt);/, (_, a) => {
-                                  return { amp: "&", gt: ">", lt: "<" }[a];
-                              });
-                              if (refs[refName] !== undefined) {
-                                  throw "Source reference '" + refName + "' already exists!";
-                              }
-                              refs[refName] = [];
-                              break;
-                          default:
-                              refs[refName].push(str);
+    // Get & preprocess markdown.
+    let refs = {};
+    const text = ($elem.html() || "")
+          .rot13()                                    // rot13 decode
+          .replace(/&[a-z]+;/g, (str) => str.rot13()) // revert rot13 of html &entities;
+          .replace(/\n(<\/[^>]*>)*$/, "")             // remove autoinserted end tags (</...>)
+          .split(/\n{2,}/).map((paragraph) => {
+              if ((paragraph + "\n").match(onlyReferences)) {
+                  // Paragraph containing only link references.
+                  let refName = "";
+                  (paragraph + "\n").split(oneReference).forEach((str, i) => {
+                      //str = (str || "").replace(/\s+/g, " ");
+                      switch (i % 4) {
+                      case 0:
+                          if (str !== "") { throw "Bad string"; }
+                          break;
+                      case 1:
+                          refName = str.replace(/&(amp|gt|lt);/, (_, a) => {
+                              return { amp: "&", gt: ">", lt: "<" }[a];
+                          });
+                          if (refs[refName] !== undefined) {
+                              throw "Source reference '" + refName + "' already exists!";
                           }
-                      });
-                      return "";
-                  } else {
-                      // Put <blockquote> around paragraphs where all lines start with '>'.
-                      let lines = paragraph.split(/\n/g);
-                      if (lines.every((a) => (/^\s*&gt;/.test(a)))) {
-                          paragraph = "<blockquote>" +
-                              paragraph.replace(/^\s*&gt;\s*/mg, '') +
-                              "</blockquote>";
+                          refs[refName] = [];
+                          break;
+                      default:
+                          refs[refName].push(str);
                       }
-
-                      // If all lines start with '|'.
-                      if (lines.every((a) => (/^\s*\|/).test(a))) {
-                          // Number of columns in each line.
-                          let cols = lines.map(
-                              (str) => ((str || "").match(/\|/g) || []).length
-                          );
-                          let maxcols = Math.max(...cols);
-
-                          paragraph = "<table class=example>" + lines.map(
-                              (str, i) => "<tr>" + (
-                                  cols[i] == 1
-                                      ? "<td colspan='" + maxcols + "'>" +         // single '|' in line
-                                      str.replace(/^\s*\|\s*/, "")             //   remove leading '|'
-                                      : str.replace(                               // multiple '|'
-                                          /\s*\|\s*(&nbsp;)*\s*/g,
-                                          (_, nbsp) => nbsp ? "<td indent>" : "<td>"
-                                      )
-                              )
-                          ).join("") + "</table>";
-                      }
-
-                      // Text paragraphs.
-                      return paragraph
-                      //.replace( /"(.*?)"/g,  (a, b) =>  '“' + b + '”')
-                      //.replace(/<(\/?)f>/g, (_, a) => "<" + a + "figure>")
-
-                      // {...} = Klingon.
-                          .replace(/\{(.*?)\}/gs, (_, tlh) => {
-                              return "<b lang=tlh>" +
-                              // Insert <nobr> around leading '-' & following word.
-                              tlh.replace(/(-[^ ]+)/, "<nobr>$1</nobr>") +
-                              // FIXME: Hyphenate klingon here?
-                              "</b>"
-                          })
-                      // «...» = translation.
-                          .replace( /«(.*?)»/gs,  (_, a) =>  "<i class=transl>" + a + "</i>")
-                          .replace(/\[[^\[\]]*\]/g, (str) => str.replace(/\s+/g, " "))
-                          .replace(/\n\s*\[/g, " [");
+                  });
+                  return "";
+              } else {
+                  // Put <blockquote> around paragraphs where all lines start with '>'.
+                  let lines = paragraph.split(/\n/g);
+                  if (lines.every((a) => (/^\s*&gt;/.test(a)))) {
+                      paragraph = "<blockquote>" +
+                          paragraph.replace(/^\s*&gt;\s*/mg, '') +
+                          "</blockquote>";
                   }
-              }).filter((a) => a).concat(
-                  // Add (previously removed) link references at end of markdown.
-                  Object.keys(refs).sort().map((name) => {
-                      const [fullLink, title] = refs[name];
-                      const [link, pageOffset] = fullLink
-                            .match(/^(.*?)([+-][0-9]+)?$/).slice(1);
-                      refs[name].push(parseInt(pageOffset, 10) || 0);
-                      refs[name][0] = link;
-                      return (
-                          title === "" ? '[{0}]: {1}' : '[{0}]: {1} "{2}"'
-                      ).supplant([ name, link, title ]);
-                  }).join("\n")
-              ).join("\n\n");
 
-        // https://github.com/showdownjs/showdown/wiki/Showdown-Options
-        const markdown = new showdown.Converter({
-            tables            : true,
-            strikethrough     : true,
-            simplifiedAutoLink: true,
-        });
-        $elem.replaceWith(                      // replace with markdown
-            markdown.makeHtml(text)
-        );
+                  // If all lines start with '|'.
+                  if (lines.every((a) => (/^\s*\|/).test(a))) {
+                      // Number of columns in each line.
+                      let cols = lines.map(
+                          (str) => ((str || "").match(/\|/g) || []).length
+                      );
+                      let maxcols = Math.max(...cols);
+
+                      paragraph = "<table class=example>" + lines.map(
+                          (str, i) => "<tr>" + (
+                              cols[i] == 1
+                                  ? "<td colspan='" + maxcols + "'>" +         // single '|' in line
+                                  str.replace(/^\s*\|\s*/, "")             //   remove leading '|'
+                                  : str.replace(                               // multiple '|'
+                                      /\s*\|\s*(&nbsp;)*\s*/g,
+                                      (_, nbsp) => nbsp ? "<td indent>" : "<td>"
+                                  )
+                          )
+                      ).join("") + "</table>";
+                  }
+
+                  // Text paragraphs.
+                  return paragraph
+                      // {...} = Klingon.
+                      .replace(/\{(.*?)\}/gs, (_, tlh) => {
+                          return "<b lang=tlh>" +
+                          // Insert <nobr> around leading '-' & following word.
+                          tlh.replace(/(-[^ ]+)/, "<nobr>$1</nobr>") +
+                          // FIXME: Hyphenate klingon here?
+                          "</b>"
+                      })
+                      // «...» = translation.
+                      .replace( /«(.*?)»/gs,  (_, a) =>  "<i class=transl>" + a + "</i>")
+                      .replace(/\[[^\[\]]*\]/g, (str) => str.replace(/\s+/g, " "))
+                      .replace(/\n\s*\[/g, " [");
+              }
+          }).filter((a) => a).concat(
+              // Add (previously removed) link references at end of markdown.
+              Object.keys(refs).sort().map((name) => {
+                  const [fullLink, title] = refs[name];
+                  const [link, pageOffset] = fullLink
+                        .match(/^(.*?)([+-][0-9]+)?$/).slice(1);
+                  refs[name].push(parseInt(pageOffset, 10) || 0);
+                  refs[name][0] = link;
+                  return (
+                      title === "" ? '[{0}]: {1}' : '[{0}]: {1} "{2}"'
+                  ).supplant([ name, link, title ]);
+              }).join("\n")
+          ).join("\n\n");
+
+    // https://github.com/showdownjs/showdown/wiki/Showdown-Options
+    const markdown = new showdown.Converter({
+        tables            : true,
+        strikethrough     : true,
+        simplifiedAutoLink: true,
+    });
+    $elem.replaceWith(                      // replace with markdown
+        markdown.makeHtml(text)
+    );
 
     // Add ID attribute to <h#> tags.
     $("h1,h2,h3,h4,h5,h6,h7").each((_, h) => {
