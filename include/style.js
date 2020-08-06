@@ -169,14 +169,6 @@ function main($) {
 
                   // Text paragraphs.
                   return paragraph
-                      // {...} = Klingon.
-                      .replace(/\{(.*?)\}/gs, (_, tlh) => {
-                          return "<b lang=tlh>" +
-                          // Insert <nobr> around leading '-' & following word.
-                          tlh.replace(/(-[^ ]+)/, "<nobr>$1</nobr>") +
-                          // FIXME: Hyphenate klingon here?
-                          "</b>"
-                      })
                       .replace(/\[[^\[\]]*\]/g, (str) => str.replace(/\s+/g, " "))
                       .replace(/\n\s*\[/g, " [");
               }
@@ -194,13 +186,24 @@ function main($) {
               }).join("\n")
           ).join("\n\n");
 
-    // https://github.com/showdownjs/showdown/wiki/Showdown-Options
-    showdown.extension('en', {
+    // Define Showdown extensions.
+    showdown.extension('tlh', {                // {...} = Klingon
+        type: 'lang',
+        filter: (md) => md.replace(/\{([^}]+)\}/g, (_, tlh) => {
+            // FIXME: Hyphenation of Klingon.
+            return '<b lang=tlh>' +
+                // Insert <nobr> around leading '-' & following word.
+                tlh.replace(/(-[^ ]+)/, "<nobr>$1</nobr>") +
+                '</b>';
+        }),
+    });
+    showdown.extension('en', {                 // «...» = English
         type: 'lang',
         filter: (md) => md.replace(/«([^»]+)»/g, '<i class=transl>$1</i>'),
     });
+    // https://github.com/showdownjs/showdown/wiki/Showdown-Options
     const markdown = new showdown.Converter({
-        extensions        : ['en'],
+        extensions        : ['tlh', 'en'],
         tables            : true,
         strikethrough     : true,
         simplifiedAutoLink: true,
