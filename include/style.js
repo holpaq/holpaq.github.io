@@ -39,12 +39,13 @@ include(scriptPath + "jquery-3.5.1.slim.min.js", function() {
         return jQuery.map(this, (elem) => elem.outerHTML.match(/^.*$/m)[0]);
     };
 
+    $('html').attr('lang', 'en');                     // set document language
+    if (window.location.search.match(/\bDEBUG\b/i)) { // set 'class=DEBUG'
+        $('html').addClass('DEBUG');
+    }
+
     // https://cdn.rawgit.com/showdownjs/showdown/1.9.0/dist/showdown.min.js
     include(scriptPath + "showdown.min.js", () => {
-        $('html').attr('lang', 'en');
-        if (location.hash.match(/\bdebug\b/i)) { // set 'class=DEBUG'
-            $("html").addClass("DEBUG");
-        }
         let $btn = $('button');
         $btn.click(() => {
             $btn.html('<div class="loading"><div></div><div></div><div></div><div></div></div>');
