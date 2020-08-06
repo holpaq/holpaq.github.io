@@ -21,7 +21,9 @@ if (!String.prototype.supplant) {
 
 const scriptPath = getRelativeScriptPath();
 
-include(scriptPath + "jquery-3.5.1.slim.min.js", function() {
+include(scriptPath + "jquery-3.5.1.slim.min.js", afterjQueryLoad);
+
+function afterjQueryLoad() {
     // jQuery .reduce() plugin (from https://bugs.jquery.com/ticket/1886)
     jQuery.fn.reduce = [].reduce;
 
@@ -30,17 +32,20 @@ include(scriptPath + "jquery-3.5.1.slim.min.js", function() {
         $('html').addClass('DEBUG');
     }
 
-    include(scriptPath + "showdown.min.js", () => {
-        let $btn = $('button');
-        $btn.click(() => {
-            $btn.html('<div class="loading"><div></div><div></div><div></div><div></div></div>');
-            setTimeout(() => {
-                main(window.jQuery);                   // run main()
-                $btn.remove();
-            }, 100);
-        }).removeAttr('disabled').focus();
-    });
-});
+    include(scriptPath + "showdown.min.js", afterShowdownLoad);
+}
+
+// Enable 'Show page' button when showdown has loaded.
+function afterShowdownLoad() {
+    let $btn = $('button');
+    $btn.click(() => {
+        $btn.html('<div class="loading"><div></div><div></div><div></div><div></div></div>');
+        setTimeout(() => {
+            main(window.jQuery);                   // run main()
+            $btn.remove();
+        }, 100);
+    }).removeAttr('disabled').focus();
+}
 
 /******************************************************************************/
 
