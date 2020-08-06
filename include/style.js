@@ -146,27 +146,6 @@ function main($) {
                           "</blockquote>";
                   }
 
-                  // If all lines start with '|'.
-                  if (lines.every((a) => (/^\s*\|/).test(a))) {
-                      // Number of columns in each line.
-                      let cols = lines.map(
-                          (str) => ((str || "").match(/\|/g) || []).length
-                      );
-                      let maxcols = Math.max(...cols);
-
-                      paragraph = "<table class=example>" + lines.map(
-                          (str, i) => "<tr>" + (
-                              cols[i] == 1
-                                  ? "<td colspan='" + maxcols + "'>" +         // single '|' in line
-                                  str.replace(/^\s*\|\s*/, "")             //   remove leading '|'
-                                  : str.replace(                               // multiple '|'
-                                      /\s*\|\s*(&nbsp;)*\s*/g,
-                                      (_, nbsp) => nbsp ? "<td indent>" : "<td>"
-                                  )
-                          )
-                      ).join("") + "</table>";
-                  }
-
                   // Text paragraphs.
                   return paragraph
                       .replace(/\[[^\[\]]*\]/g, (str) => str.replace(/\s+/g, " "))
@@ -201,10 +180,47 @@ function main($) {
         type: 'lang',
         filter: (md) => md.replace(/«([^»]+)»/g, '<i class=transl>$1</i>'),
     });
+    // Table in '| xxx | yyy' format. Cell separator ('|') may be surrounded by
+    // space. Rows start with '|', but do not end in '|' (unless you want extra
+    // empty table cells at the end of the row). Last cell have 'colspan'
+    // attribute added if needed to make all rows equally long. Use '>' first
+    // in a cell to add attribute 'indent' to that cell.
+    showdown.extension('table', {
+        type: 'lang',
+        filter: (md) => md.replace(/(\n{2,})((?:[ ]*\|.*\n??)+)(?=\n{2,})/g, (_, pre, md) => {
+            // Split markdown into array-of-arrays (one element = one cell).
+            let tbl = md.split(/\n/).map(
+                (row) => row
+                    .replace(/^\s*\|\s*/, '')  // strip leading cell separator
+                    .replace(/\s*$/, '')       // strip trailing space
+                    .split(/\s*\|\s*/)         // split into cells
+            );
+            // Number of cells in longest row.
+            let maxcols = Math.max(...tbl.map((x) => x.length));
+            return pre + '<table class=example>\n' +
+                tbl.map((row, i) => {
+                    let len = row.length;             // cells in this row
+                    return '<tr>' + (
+                        row.map((text, i) => {
+                            i++;
+                            // Remove leading '>'.
+                            let newText = text.replace(/^>\s*/, '');
+                            return '<td' + (
+                                // On last cell in row, if row shorter than maxcols, add colspan.
+                                i === len && i < maxcols
+                                    ? ' colspan="' + (maxcols - len + 1) + '"' : ''
+                            ) + (
+                                // If there was leading '>' add attribute 'indent'.
+                                newText != text ? ' indent' : ''
+                            ) + '>' + newText;
+                        }).join('')
+                    ) + '</tr>\n';
+                }).join("") + '</table>';
+        }),
+    });
     // https://github.com/showdownjs/showdown/wiki/Showdown-Options
     const markdown = new showdown.Converter({
-        extensions        : ['tlh', 'en'],
-        tables            : true,
+        extensions        : ['table', 'tlh', 'en'],
         strikethrough     : true,
         simplifiedAutoLink: true,
     });
