@@ -183,8 +183,6 @@ function main($) {
                           // FIXME: Hyphenate klingon here?
                           "</b>"
                       })
-                      // «...» = translation.
-                      .replace( /«(.*?)»/gs,  (_, a) =>  "<i class=transl>" + a + "</i>")
                       .replace(/\[[^\[\]]*\]/g, (str) => str.replace(/\s+/g, " "))
                       .replace(/\n\s*\[/g, " [");
               }
@@ -203,7 +201,12 @@ function main($) {
           ).join("\n\n");
 
     // https://github.com/showdownjs/showdown/wiki/Showdown-Options
+    showdown.extension('en', {
+        type: 'lang',
+        filter: (md) => md.replace(/«([^»]+)»/g, '<i class=transl>$1</i>'),
+    });
     const markdown = new showdown.Converter({
+        extensions        : ['en'],
         tables            : true,
         strikethrough     : true,
         simplifiedAutoLink: true,
