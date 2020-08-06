@@ -109,17 +109,15 @@ function asciify(txt) {
 /******************************************************************************/
 
 function main($) {
-    const $elem = $('pre');
+    const $elem = $('[markdown]:first');   // 1st element with attr 'markdown'
     const singleRefReStr = '\\[([^\\[\\]]+)\\]:\\s*(\\S+)(?:\\s+"([^"]*)")?\\n';
     const onlyReferences = new RegExp("^(" + singleRefReStr + ")+$");
     const oneReference = new RegExp(singleRefReStr);
 
     // Get & preprocess markdown.
     let refs = {};
-    const text = ($elem.html() || "")
-          .rot13()                                    // rot13 decode
-          .replace(/&[a-z]+;/g, (str) => str.rot13()) // revert rot13 of html &entities;
-          .replace(/\n(<\/[^>]*>)*$/, "")             // remove autoinserted end tags (</...>)
+    const text = ($elem.text() || "")
+          [$elem.is('[rot13]') ? 'rot13' : 'toString']() // rot13 decode
           .split(/\n{2,}/).map((paragraph) => {
               if ((paragraph + "\n").match(onlyReferences)) {
                   // Paragraph containing only link references.

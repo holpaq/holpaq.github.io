@@ -1,10 +1,23 @@
 #!/usr/bin/perl -0777p
 
+use strict;
+use warnings;
+
+# Grabs the first HTML-like tag which contains the attribute 'markdown', does a
+# rot13 of its content and adds the attribute 'rot13' to the found tag. OR vice
+# versa, decodes its content and removes the 'rot13' attribute.
 s{
-    (<pre[^>]*>)(.*)(</pre>)
+    (<(\w+)[^>]*\bmarkdown\b[^>]*>)(.*)(</\2>)
 }{
-    ($x = $2) =~ tr/A-Za-z/N-ZA-Mn-za-m/;
-    "$1$x$3";
-}sex;
+    my ($pre, $txt, $suf) = ($1, $3, $4);
+    $txt =~ tr/A-Za-z/N-ZA-Mn-za-m/;  # rot13 the content
+    if ($pre =~ s/\s*\brot13\b//i) {  # remove 'rot13' attribute
+        warn "Decoding...\n";
+    } else {                          # or add it
+        $pre =~ s/(?<=\w)\b/ rot13/;
+        warn "Encoding...\n";
+    }
+    $pre . $txt . $suf;
+}sexi;
 
 #[eof]
