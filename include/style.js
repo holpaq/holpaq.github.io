@@ -38,13 +38,17 @@ function afterjQueryLoad() {
 // Enable 'Show page' button when showdown has loaded.
 function afterShowdownLoad() {
     let $btn = $('button');
-    $btn.click(() => {
-        $btn.html('<div class="loading"><div></div><div></div><div></div><div></div></div>');
-        setTimeout(() => {
-            main(window.jQuery);                   // run main()
-            $btn.remove();
-        }, 100);
-    }).removeAttr('disabled').focus();
+    $btn.removeAttr('disabled')
+        .focus()
+        .on('click', () => {
+            // Display (CSS only) wait animation.
+            $btn.html('<div class="loading"><div></div><div></div><div></div><div></div></div>');
+            // Run main() then remove button.
+            setTimeout(() => {
+                main(window.jQuery);
+                $btn.remove();
+            }, 100);
+        });
 }
 
 /******************************************************************************/
