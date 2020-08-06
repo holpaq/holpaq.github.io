@@ -21,30 +21,15 @@ if (!String.prototype.supplant) {
 
 const scriptPath = getRelativeScriptPath();
 
-//include(scriptPath + "modest.css");
-//include(scriptPath + "style.css");
 include(scriptPath + "jquery-3.5.1.slim.min.js", function() {
     // jQuery .reduce() plugin (from https://bugs.jquery.com/ticket/1886)
     jQuery.fn.reduce = [].reduce;
-
-    // Return array of opening tags from jQuery set.
-    jQuery.fn.tag = function () {
-        return jQuery.map(this, (elem) => {
-            return elem.outerHTML.match(/^<[^>]*>?/)[0].replace(/=""/g, "");
-        });
-    };
-
-    // Return array of first lines of HTML from jQuery set.
-    jQuery.fn.firstLine = function () {
-        return jQuery.map(this, (elem) => elem.outerHTML.match(/^.*$/m)[0]);
-    };
 
     $('html').attr('lang', 'en');                     // set document language
     if (window.location.search.match(/\bDEBUG\b/i)) { // set 'class=DEBUG'
         $('html').addClass('DEBUG');
     }
 
-    // https://cdn.rawgit.com/showdownjs/showdown/1.9.0/dist/showdown.min.js
     include(scriptPath + "showdown.min.js", () => {
         let $btn = $('button');
         $btn.click(() => {
