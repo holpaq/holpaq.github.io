@@ -180,6 +180,10 @@ function main($) {
         type: 'lang',
         filter: (md) => md.replace(/«([^»]+)»/g, '<i class=transl>$1</i>'),
     });
+    showdown.extension('ref', {
+        type: 'lang',
+        filter: (md) => md.replace(/‹([^›]+)›/g, '<mark>$1</mark>'),
+    });
     showdown.extension('underline', {
         type: 'lang',
         filter: (md) => md.replace(/_([^_]+)_/g, '<u>$1</u>'),
@@ -224,7 +228,7 @@ function main($) {
     });
     // https://github.com/showdownjs/showdown/wiki/Showdown-Options
     const markdown = new showdown.Converter({
-        extensions        : ['table', 'tlh', 'en', 'underline'],
+        extensions        : ['table', 'tlh', 'en', 'ref', 'underline'],
         strikethrough     : true,
         simplifiedAutoLink: true,
     });
