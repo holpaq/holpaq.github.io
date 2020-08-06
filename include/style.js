@@ -23,7 +23,7 @@ const scriptPath = getRelativeScriptPath();
 
 //include(scriptPath + "modest.css");
 //include(scriptPath + "style.css");
-include(scriptPath + "jquery-3.4.1.slim.min.js", function() {
+include(scriptPath + "jquery-3.5.1.slim.min.js", function() {
     // jQuery .reduce() plugin (from https://bugs.jquery.com/ticket/1886)
     jQuery.fn.reduce = [].reduce;
 
