@@ -180,6 +180,10 @@ function main($) {
         type: 'lang',
         filter: (md) => md.replace(/«([^»]+)»/g, '<i class=transl>$1</i>'),
     });
+    showdown.extension('underline', {
+        type: 'lang',
+        filter: (md) => md.replace(/_([^_]+)_/g, '<u>$1</u>'),
+    });
     // Table in '| xxx | yyy' format. Cell separator ('|') may be surrounded by
     // space. Rows start with '|', but do not end in '|' (unless you want extra
     // empty table cells at the end of the row). Last cell have 'colspan'
@@ -220,7 +224,7 @@ function main($) {
     });
     // https://github.com/showdownjs/showdown/wiki/Showdown-Options
     const markdown = new showdown.Converter({
-        extensions        : ['table', 'tlh', 'en'],
+        extensions        : ['table', 'tlh', 'en', 'underline'],
         strikethrough     : true,
         simplifiedAutoLink: true,
     });
