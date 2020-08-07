@@ -101,57 +101,64 @@ function asciify(txt) {
         .toLowerCase();
 }
 
+// Processes a inputted markdown by moving source references to the end of it.
+// Returns an array with two elements, where the first element is the
+// reconfigured markdown, and the second is an object with references to for
+// all the links found.
+function getMarkdownLinks(md) {
+    let refs = {};
+    const singleRefReStr = '\\[([^\\[\\]]+)\\]:\\s*(\\S+)(?:\\s+"([^"]*)")?\\n';
+    const onlyReferences = new RegExp("^(" + singleRefReStr + ")+$");
+    const oneReference   = new RegExp(singleRefReStr);
+    const newMd = md.split(/\n{2,}/).map((paragraph) => {
+        // Remove paragraphs containing only link references, and store
+        // these in 'refs' to be appended to the end of the document.
+        if ((paragraph + "\n").match(onlyReferences)) {
+            let refName = "";
+            (paragraph + "\n").split(oneReference).forEach((str, i) => {
+                switch (i % 4) {
+                case 0:
+                    if (str !== "") { throw "Bad string"; }
+                    break;
+                case 1:
+                    refName = str.replace(/&(amp|gt|lt);/, (_, a) => {
+                        return { amp: "&", gt: ">", lt: "<" }[a];
+                    });
+                    if (refs[refName] !== undefined) {
+                        throw "Source reference '" + refName + "' already exists!";
+                    }
+                    refs[refName] = [];
+                    break;
+                default:
+                    refs[refName].push(str);
+                }
+            });
+            return "";
+        }
+        return paragraph;
+    }).filter((a) => a).concat(
+        // Add back removed link references at end of markdown.
+        Object.keys(refs).sort().map((name) => {
+            const [fullLink, title] = refs[name];
+            const [link, pageOffset] = fullLink
+                .match(/^(.*?)([+-][0-9]+)?$/).slice(1);
+            refs[name].push(parseInt(pageOffset, 10) || 0);
+            refs[name][0] = link;
+            return (
+                title === "" ? '[{0}]: {1}' : '[{0}]: {1} "{2}"'
+            ).supplant([name, link, title]);
+        }).join("\n")
+    ).join("\n\n");
+    return [newMd, refs];
+}
+
 /******************************************************************************/
 
 function main($) {
     const $elem = $('[markdown]:first');   // 1st element with attr 'markdown'
-
-    // Get & preprocess markdown.
-    const singleRefReStr = '\\[([^\\[\\]]+)\\]:\\s*(\\S+)(?:\\s+"([^"]*)")?\\n';
-    const onlyReferences = new RegExp("^(" + singleRefReStr + ")+$");
-    const oneReference   = new RegExp(singleRefReStr);
-    let refs = {};
-    const text = ($elem.text() || "")
-          [$elem.is('[rot13]') ? 'rot13' : 'toString']() // rot13 decode
-          .split(/\n{2,}/).map((paragraph) => {
-              // Remove paragraphs containing only link references, and store
-              // these in 'refs' to be appended to the end of the document.
-              if ((paragraph + "\n").match(onlyReferences)) {
-                  let refName = "";
-                  (paragraph + "\n").split(oneReference).forEach((str, i) => {
-                      switch (i % 4) {
-                      case 0:
-                          if (str !== "") { throw "Bad string"; }
-                          break;
-                      case 1:
-                          refName = str.replace(/&(amp|gt|lt);/, (_, a) => {
-                              return { amp: "&", gt: ">", lt: "<" }[a];
-                          });
-                          if (refs[refName] !== undefined) {
-                              throw "Source reference '" + refName + "' already exists!";
-                          }
-                          refs[refName] = [];
-                          break;
-                      default:
-                          refs[refName].push(str);
-                      }
-                  });
-                  return "";
-              }
-              return paragraph;
-          }).filter((a) => a).concat(
-              // Add back removed link references at end of markdown.
-              Object.keys(refs).sort().map((name) => {
-                  const [fullLink, title] = refs[name];
-                  const [link, pageOffset] = fullLink
-                        .match(/^(.*?)([+-][0-9]+)?$/).slice(1);
-                  refs[name].push(parseInt(pageOffset, 10) || 0);
-                  refs[name][0] = link;
-                  return (
-                      title === "" ? '[{0}]: {1}' : '[{0}]: {1} "{2}"'
-                  ).supplant([ name, link, title ]);
-              }).join("\n")
-          ).join("\n\n");
+    const [text, refs] = getMarkdownLinks(($elem.text() || "")[
+        $elem.is('[rot13]') ? 'rot13' : 'toString' // rot13 decode
+    ]());
 
     // Define Showdown extensions.
     showdown.extension('tlh', {                // {...} = Klingon
