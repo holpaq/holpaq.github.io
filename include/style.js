@@ -30,6 +30,12 @@ function afterjQueryLoad() {
     $('html').attr('lang', 'en');                     // set document language
     if (window.location.search.match(/\bDEBUG\b/i)) { // set 'class=DEBUG'
         $('html').addClass('DEBUG');
+        // If there are <iframe>s, add '?DEBUG' parameter in those too.
+        $('iframe').each((_, elem) => {
+            const $elem = $(elem);
+            const src = $elem.attr('src');
+            $elem.attr('src', src + '?DEBUG');
+        });
     }
 
     include(scriptPath + "showdown.min.js", afterShowdownLoad);
