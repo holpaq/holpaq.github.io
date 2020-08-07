@@ -168,25 +168,29 @@ function main($) {
     // Define Showdown extensions.
     showdown.extension('tlh', {                // {...} = Klingon
         type: 'lang',
-        filter: (md) => md.replace(/\{([^}]+)\}/g, (_, tlh) => {
+        regex: /\{([^}]+)\}/g,
+        replace: (_, tlh) => {
             // FIXME: Hyphenation of Klingon.
             return '<b lang=tlh>' +
                 // Insert <nobr> around leading '-' & following word.
                 tlh.replace(/(-[^ ]+)/, "<nobr>$1</nobr>") +
                 '</b>';
-        }),
+        },
     });
     showdown.extension('en', {                 // «...» = English
         type: 'lang',
-        filter: (md) => md.replace(/«([^»]+)»/g, '<i class=transl>$1</i>'),
+        regex: /«([^»]+)»/g,
+        replace: '<i class=transl>$1</i>',
     });
     showdown.extension('ref', {
         type: 'lang',
-        filter: (md) => md.replace(/‹([^›]+)›/g, '<mark>$1</mark>'),
+        regex: /‹([^›]+)›/g,
+        replace: '<mark>$1</mark>',
     });
     showdown.extension('underline', {
         type: 'lang',
-        filter: (md) => md.replace(/_([^_]+)_/g, '<u>$1</u>'),
+        regex: /_([^_]+)_/g,
+        replace: '<u>$1</u>',
     });
     // Table in '| xxx | yyy' format. Cell separator ('|') may be surrounded by
     // space. Rows start with '|', but do not end in '|' (unless you want extra
@@ -195,7 +199,8 @@ function main($) {
     // in a cell to add attribute 'indent' to that cell.
     showdown.extension('table', {
         type: 'lang',
-        filter: (md) => md.replace(/(\n{2,})((?:[ ]*\|.*\n??)+)(?=\n{2,})/g, (_, pre, md) => {
+        regex: /(\n{2,})((?:[ ]*\|.*\n??)+)(?=\n{2,})/g,
+        replace: (_, pre, md) => {
             // Split markdown into array-of-arrays (one element = one cell).
             let tbl = md.split(/\n/).map(
                 (row) => row
@@ -224,7 +229,7 @@ function main($) {
                         }).join('')
                     ) + '</tr>\n';
                 }).join("") + '</table>';
-        }),
+        },
     });
     // https://github.com/showdownjs/showdown/wiki/Showdown-Options
     const markdown = new showdown.Converter({
