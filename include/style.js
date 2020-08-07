@@ -210,7 +210,7 @@ function main($) {
             );
             // Number of cells in longest row.
             let maxcols = Math.max(...tbl.map((x) => x.length));
-            return pre + '<table class=example>\n' +
+            return pre + '<table markdown class=example>\n' +
                 tbl.map((row, i) => {
                     let len = row.length;             // cells in this row
                     return '<tr>' + (
