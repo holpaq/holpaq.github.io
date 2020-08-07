@@ -105,20 +105,20 @@ function asciify(txt) {
 
 function main($) {
     const $elem = $('[markdown]:first');   // 1st element with attr 'markdown'
-    const singleRefReStr = '\\[([^\\[\\]]+)\\]:\\s*(\\S+)(?:\\s+"([^"]*)")?\\n';
-    const onlyReferences = new RegExp("^(" + singleRefReStr + ")+$");
-    const oneReference = new RegExp(singleRefReStr);
 
     // Get & preprocess markdown.
+    const singleRefReStr = '\\[([^\\[\\]]+)\\]:\\s*(\\S+)(?:\\s+"([^"]*)")?\\n';
+    const onlyReferences = new RegExp("^(" + singleRefReStr + ")+$");
+    const oneReference   = new RegExp(singleRefReStr);
     let refs = {};
     const text = ($elem.text() || "")
           [$elem.is('[rot13]') ? 'rot13' : 'toString']() // rot13 decode
           .split(/\n{2,}/).map((paragraph) => {
+              // Remove paragraphs containing only link references, and store
+              // these in 'refs' to be appended to the end of the document.
               if ((paragraph + "\n").match(onlyReferences)) {
-                  // Paragraph containing only link references.
                   let refName = "";
                   (paragraph + "\n").split(oneReference).forEach((str, i) => {
-                      //str = (str || "").replace(/\s+/g, " ");
                       switch (i % 4) {
                       case 0:
                           if (str !== "") { throw "Bad string"; }
@@ -137,22 +137,10 @@ function main($) {
                       }
                   });
                   return "";
-              } else {
-                  // Put <blockquote> around paragraphs where all lines start with '>'.
-                  let lines = paragraph.split(/\n/g);
-                  if (lines.every((a) => (/^\s*&gt;/.test(a)))) {
-                      paragraph = "<blockquote>" +
-                          paragraph.replace(/^\s*&gt;\s*/mg, '') +
-                          "</blockquote>";
-                  }
-
-                  // Text paragraphs.
-                  return paragraph
-                      .replace(/\[[^\[\]]*\]/g, (str) => str.replace(/\s+/g, " "))
-                      .replace(/\n\s*\[/g, " [");
               }
+              return paragraph;
           }).filter((a) => a).concat(
-              // Add (previously removed) link references at end of markdown.
+              // Add back removed link references at end of markdown.
               Object.keys(refs).sort().map((name) => {
                   const [fullLink, title] = refs[name];
                   const [link, pageOffset] = fullLink
@@ -201,6 +189,19 @@ function main($) {
         type: 'lang',
         regex: /(\n{2,})((?:[ ]*\|.*\n??)+)(?=\n{2,})/g,
         replace: (_, pre, md) => {
+            function processCell(md, colNum, rowCols, maxCols) {
+                let attr = '';
+                // If there is leading '>', add attribute 'indent'.
+                const newMd = md.replace(/^>\s*/, '');
+                if (newMd !== md) {
+                    attr += ' indent';
+                }
+                // If last cell in row add attribute 'colspan' if needed.
+                if (colNum === rowCols && colNum < maxCols) {
+                    attr += ' colspan=' + (maxCols - rowCols + 1);
+                }
+                return '<td' + attr + '>' + newMd;
+            }
             // Split markdown into array-of-arrays (one element = one cell).
             let tbl = md.split(/\n/).map(
                 (row) => row
@@ -212,33 +213,20 @@ function main($) {
             let maxcols = Math.max(...tbl.map((x) => x.length));
             return pre + '<table markdown class=example>\n' +
                 tbl.map((row, i) => {
-                    let len = row.length;             // cells in this row
-                    return '<tr>' + (
-                        row.map((text, i) => {
-                            i++;
-                            // Remove leading '>'.
-                            let newText = text.replace(/^>\s*/, '');
-                            return '<td' + (
-                                // On last cell in row, if row shorter than maxcols, add colspan.
-                                i === len && i < maxcols
-                                    ? ' colspan="' + (maxcols - len + 1) + '"' : ''
-                            ) + (
-                                // If there was leading '>' add attribute 'indent'.
-                                newText != text ? ' indent' : ''
-                            ) + '>' + newText;
-                        }).join('')
-                    ) + '</tr>\n';
-                }).join("") + '</table>';
+                    return '<tr>' + row.map((text, i) => {
+                        return processCell(text, i + 1, row.length, maxcols);
+                    }).join('') + '</tr>\n';
+                }).join('') + '</table>';
         },
     });
     // https://github.com/showdownjs/showdown/wiki/Showdown-Options
-    const markdown = new showdown.Converter({
+    const converter = new showdown.Converter({
         extensions        : ['table', 'tlh', 'en', 'ref', 'underline'],
         strikethrough     : true,
         simplifiedAutoLink: true,
     });
     $elem.replaceWith(                      // replace with markdown
-        markdown.makeHtml(text)
+        converter.makeHtml(text)
     );
 
     // Add ID attribute to <h#> tags.
