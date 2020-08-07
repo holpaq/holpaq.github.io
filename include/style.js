@@ -43,18 +43,22 @@ function afterjQueryLoad() {
 
 // Enable 'Show page' button when showdown has loaded.
 function afterShowdownLoad() {
-    let $btn = $('button');
-    $btn.removeAttr('disabled')
-        .focus()
-        .on('click', () => {
-            // Display (CSS only) wait animation.
-            $btn.html('<div class="loading"><div></div><div></div><div></div><div></div></div>');
-            // Run main() then remove button.
-            setTimeout(() => {
-                main(window.jQuery);
-                $btn.remove();
-            }, 100);
-        });
+    const $elem = $('[markdown]:first');   // 1st element with attr 'markdown'
+    if ($elem.is('[rot13]')) {
+        const $btn = $('<button>Show page</button>').prependTo('body');
+        $btn.focus()
+            .on('click', () => {
+                // Display (CSS only) wait animation.
+                $btn.html('<div class="loading"><div></div><div></div><div></div><div></div></div>');
+                // Run main() then remove button.
+                setTimeout(() => {
+                    main(window.jQuery);
+                    $btn.remove();
+                }, 100);
+            });
+    } else {
+        main(window.jQuery);
+    }
 }
 
 /******************************************************************************/
