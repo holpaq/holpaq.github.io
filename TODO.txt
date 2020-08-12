@@ -6,10 +6,13 @@
    Each document should allow for some unique CSS (like the yellow background
    of the Klingon Grammar Addenda – kept to imitate the original) but there
    should also be a common, nice CSS that all documents use.
+*** TODO Tables
+    There are two different kind of tables. Tables for layouting sentence
+    examples, and 'proper tables', containing tabular data.
 
-   Reuse CSS of the prefix table in `index.html` to style tables. (Tables
-   should be set in sans serif font, not use bold for Klingon, and respect the
-   vertical rhythm.)
+    Reuse CSS of the prefix table in `index.html` to style tables. (Tables
+    should be set in sans serif font, not use bold for Klingon, and respect the
+    vertical rhythm.)
 ** TODO Allow for videos with transcripts
    Youtube videos with Marc is a good source for some stuff. We need to be able
    to link to it, somehow.
@@ -37,7 +40,7 @@
    [Klingon 101, 3:24–4:07]: https://www.youtube.com/embed/F5rxEPGN69c?start=204&end=247&autoplay=1 "Klingon 101 - The Sounds of Klingon - Marc Okrand"
    [Klingon 101]: https://youtu.be/F5rxEPGN69c "Klingon 101 - The Sounds of Klingon - Marc Okrand"
 * Guide
-** TODO Go through 'briefklingram' make sure everything is included 
+** TODO Go through 'briefklingram' make sure everything is included
 ** TODO Titles & general designations come after proper names
    Titles (eg. HoD "Captain") and general designations (eg. Duj "ship") come
    after the proper name: ter'eS HoD "Captain Teresh", 'enterpray' ejDo'
@@ -48,7 +51,6 @@
 ** TODO Add newer exclamations (section 5.5.1) [TKDa]
 ** TODO Stuff about how to use {jatlh} (in section 6.2.5, about {’e’}?)
 ** TODO Add errata list http://klingonska.org/errors.html
-** TODO Add newer suffix tables
 ** TODO Text on pronunciation
 ** TODO Include comments from Michael Lubetsky ({may’Iq})
 ** TODO Include Terrence "Klingon Grammar Addenda" info
@@ -204,3 +206,5 @@
    CLOSED: [2020-08-12 Wed 14:04]
 ** DONE Add newer prefix tables
    CLOSED: [2020-08-12 Wed 18:41]
+** DONE Add newer suffix tables
+   CLOSED: [2020-08-12 Wed 21:53]

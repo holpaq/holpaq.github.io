@@ -15,6 +15,7 @@ html { /* or :root */
 
     --hilite: rgba(0, 0, 255, .25);
     --serif: Georgia, serif;
+    --sans: sans-serif;
     font-family: var(--serif);
 
     height: 100%;
@@ -51,8 +52,8 @@ blockquote, ol, ul {
     margin-left: var(--hgrid);
 }
 blockquote {
-    margin-left: calc(var(--hgrid) * 2);
-    margin-right: calc(var(--hgrid) * 2);
+    margin-left: var(--hgrid);
+    margin-right: var(--hgrid);
 }
 
 li > ol, li > ul {

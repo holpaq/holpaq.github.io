@@ -53,6 +53,26 @@
       }
     </style>
     <style>
+      /* General styling for tables. */
+      table.sans {
+        font-family: var(--sans);
+        width: 1%;
+      }
+      table.sans b {
+        font-weight: normal;
+      }
+      table.sans caption b {
+        font-weight: bold;
+      }
+      table.sans th {
+        text-align: left;
+      }
+      table.sans caption {
+        caption-side: bottom;
+      }
+    </style>
+    <style>
+      /* Styling for prefix table. */
       table.prefix b { font-weight: normal; }
       table.prefix caption {
         margin: calc(var(--vgrid) * .5) 0;
@@ -60,14 +80,11 @@
         font-family: var(--serif);
       }
       table.prefix {
-        font-family: sans-serif;
-        width: 1%;
         border-top: 2px solid #000;
         margin-bottom: -2px; /* compensate for 2px extra from vertical borders */
       }
       table.prefix td,
       table.prefix th {
-        text-align: left;
         vertical-align: middle;
         padding-left: calc(var(--hgrid) *.5);
         white-space: nowrap;
@@ -86,6 +103,27 @@
         border-top: 2px solid #000;
       }
       table.prefix td:not(:empty):hover { background: var(--hilite) }
+    </style>
+    <style>
+      /* Styling for suffix tables. */
+      table.suffix {
+          border-bottom: 2px solid black;
+          border-top: 2px solid black;
+      }
+      table.suffix td {
+        padding: 0;
+      }
+      table.suffix th {
+        padding-left: .7em;
+      }
+      table.suffix td {
+        border-top: 1px solid black;
+        padding: 0 calc(var(--hgrid) *.25);
+      }
+      table.suffix span {
+        display: inline-block;
+        width: 2.25em;
+      }
     </style>
   </head>
 
@@ -124,7 +162,8 @@ also represent two different sounds and are sorted separately.
 
 The Klingon alphabetical order is as follows:
 
-  | {a}, {b}, {ch}, {D}, {e}, {gh}, {H}, {I}, {j}, {l}, {m}, {n}, {ng}, {o}, {p}, {q}, {Q}, {r}, {S}, {t}, {tlh}, {u}, {v}, {w}, {y}, {’}
+> {a}, {b}, {ch}, {D}, {e}, {gh}, {H}, {I}, {j}, {l}, {m}, {n}, {ng}, {o}, {p},
+> {q}, {Q}, {r}, {S}, {t}, {tlh}, {u}, {v}, {w}, {y}, {’}
 
 Note that {ch}, {gh}, {ng}, {tlh} and {’} are considered letters in their own
 right, and as a result of this, when words are listed alphabetically the {nob}
@@ -146,7 +185,6 @@ pronunciation of that letter differs from what one would expect in English.
 ## Consonants
 
 <ul TODO>
-  <li>Add Klingon names of sounds
   <li>Add phonetical description of sounds
 </ul>
 
@@ -282,7 +320,7 @@ two punctuation marks.
 </table>-->
 
 
-<table markdown class="prefix">
+<table markdown class="prefix sans">
   <thead>
     <tr><th colspan=7 class=obj>Object<th></tr>
     <tr><th>I<th>we<th>you<th>you(pl.)<th>he/she/it<th>them<th>(none)<th>Subject</tr>
@@ -309,6 +347,23 @@ two punctuation marks.
 
 
 ## Verb suffixes
+
+<table class="suffix sans">
+  <tr>
+    <th>1<th>2<th>3<th>4<th>5<th>6<th>7<th>8<th>9<th>Rover</tr>
+  <tr>
+    <td>{-’egh}<br>{-chuq}</td>
+    <td>{-nIS}<br>{-qang}<br>{-rup}<br>{-beH}<br>{-vIp}</td>
+    <td>{-choH}<br>{-qa’}</td>
+    <td>{-moH}</td>
+    <td>{-lu’}<br>{-laH}</td>
+    <td>{-chu’}<br>{-bej}<br>{-law’}<br>{-ba’}</td>
+    <td>{-pu’}<br>{-ta’}<br>{-taH}<br>{-lI’}</td>
+    <td>{-neS}</td>
+    <td>{-DI’}<br>{-chugh}<br>{-pa’}<br>{-vIS}<br>{-bogh}<br>
+          {-meH}<br>{-mo’}<br>{-’a’}<br>{-jaj}<br>{-wI’}<br>{-ghach}</td>
+    <td>{-be’}<br>{-Qo’}<br>{-Ha’}<br>{-qu’}</td>
+</table>
 
 
 ### Type 1: Oneself/one another
@@ -472,6 +527,21 @@ two punctuation marks.
 
 ## Noun suffixes
 
+<table class="suffix sans">
+  <tr><th>1<th>2<th>3<th>4<th>5</tr>
+  <tr>
+    <td>{-’a’}<br>{-Hom}<br>{-oy}</td>
+    <td>{-pu’}<br>{-Du’}<br>{-mey}</td>
+    <td>{-qoq}<br>{-Hey}<br>{-na’}</td>
+    <td style="white-space:nowrap">
+      <span>{-wIj}</span>/ {-wI’}<br>
+      <span>{-maj}</span>/ {-ma’}<br>
+      <span>{-lIj}</span>/ {-lI’}<br>
+      <span>{-raj}</span>/ {-ra’}<br>
+      {-Daj}<br>{-chaj}<br>{-vam}<br>{-vetlh}</td>
+    <td>{-Daq}<br>{-vo’}<br>{-mo’}<br>{-vaD}<br>{-’e’}</td>
+</table>
+
 
 ### Type 1: Augmentative/diminutive
 
@@ -582,6 +652,16 @@ two punctuation marks.
 
 
 ## Numbers
+
+<table class="suffix sans">
+  <tr>
+    <td>{wa’}<br>{cha’}<br>{wej}<br>{loS}<br>
+      {vagh}<br>{jav}<br>{Soch}<br>{chorgh}<br>{Hut}</td>
+    <td>{-maH}<br>{-vatlh}<br>{-SaD}<br>
+      {-SanID}<br>{-netlh}<br>{-bIp}<br>{-’uy’}</td>
+    <td>{-DIch}<br>{-logh}</td>
+    <caption>(<b lang=tlh>pagh</b> is not a number.)</caption>
+</table>
 
 
 ## Conjunctions
