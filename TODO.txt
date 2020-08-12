@@ -1,7 +1,6 @@
 #+STARTUP: overview hidestars -*- org -*-
 
 * Programming
-** TODO Implement __xxx__ for underlining in markdown
 ** TODO Sort out CSS problem
    Each document should allow for some unique CSS (like the yellow background
    of the Klingon Grammar Addenda – kept to imitate the original) but there
@@ -169,3 +168,6 @@
 
    You can not use a ’question’ as an object; [...] it is not know yet if
    Klingon question words can act one of those. (1998.05.25)
+* DONE
+** DONE Implement __xxx__ for underlining in markdown
+   CLOSED: [2020-08-12 Wed 14:04]
