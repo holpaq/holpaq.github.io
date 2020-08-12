@@ -234,8 +234,8 @@ function main($) {
     // https://github.com/showdownjs/showdown/wiki/Showdown-Options
     const converter = new showdown.Converter({
         extensions        : ['table', 'tlh', 'en', 'ref'],
-        strikethrough     : true,
         simplifiedAutoLink: true,
+        strikethrough     : true,
         underline         : true,
     });
     $elem.replaceWith(                      // replace with markdown
