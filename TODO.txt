@@ -5,6 +5,13 @@
    Each document should allow for some unique CSS (like the yellow background
    of the Klingon Grammar Addenda – kept to imitate the original) but there
    should also be a common, nice CSS that all documents use.
+** TODO Allow for videos with transcripts
+   Youtube videos with Marc is a good source for some stuff. We need to be able
+   to link to it, somehow.
+** TODO Markup for page numbers
+   This would be used for TKD, TKW and KGT (at least)
+** TODO Markup for adding <a id="SOMETHING"></a>
+   This would be used by teresh.html
 * Guide
 ** TODO Go through 'briefklingram' make sure everything is included 
 ** TODO Titles & general designations come after proper names
