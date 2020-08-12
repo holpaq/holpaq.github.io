@@ -1,10 +1,15 @@
 #+STARTUP: overview hidestars -*- org -*-
 
 * Programming
+** TODO 'use strict' everywhere
 ** TODO Sort out CSS problem
    Each document should allow for some unique CSS (like the yellow background
    of the Klingon Grammar Addenda – kept to imitate the original) but there
    should also be a common, nice CSS that all documents use.
+
+   Reuse CSS of the prefix table in `index.html` to style tables. (Tables
+   should be set in sans serif font, not use bold for Klingon, and respect the
+   vertical rhythm.)
 ** TODO Allow for videos with transcripts
    Youtube videos with Marc is a good source for some stuff. We need to be able
    to link to it, somehow.
@@ -12,6 +17,25 @@
    This would be used for TKD, TKW and KGT (at least)
 ** TODO Markup for adding <a id="SOMETHING"></a>
    This would be used by teresh.html
+** TODO Resizing of source & main div
+* Sources to add
+** TODO [Klingon 101: The Sounds of Klingon][Klingon 101] (video, November 2016)
+   A lecture on Klingon given by Marc Okrand at Starbase Indy 2016 in
+   Indianapolis, Indiana, USA covering Klingon pronunciation.
+** TODO [Marc Okrand on Klingon] (video, 3 May 2012) 
+   A brief overview of Klingon, including some history and anecdotes of Marc
+   Okrand’s experiences in working on the movies.
+** TODO [What is Klingon?] (video, 21 November 2014)
+** TODO [Star Trek: Discovery] (video, 25 September 2017)
+   Discussion between Lieven L. Litaer and Marc Okrand about the new words from
+   *Star Trek: Discovery*.
+
+   [Star Trek: Discovery]: https://youtu.be/nBgW0YNHSfw "Star Trek: Discovery – Special with Marc Okrand"
+   [What is Klingon?]: https://youtu.be/HOPG7dZcd0o "Marc Okrand: “What is Klingon?” (21 November 2014)"
+   [Marc Okrand on Klingon]: https://youtu.be/e5Did-eVQDc "Marc Okrand on Klingon (3 May 2012)"
+   [Klingon 101, 3:40–3:50]: https://www.youtube.com/embed/F5rxEPGN69c?start=220&end=228&autoplay=1 "Klingon 101 - The Sounds of Klingon - Marc Okrand"
+   [Klingon 101, 3:24–4:07]: https://www.youtube.com/embed/F5rxEPGN69c?start=204&end=247&autoplay=1 "Klingon 101 - The Sounds of Klingon - Marc Okrand"
+   [Klingon 101]: https://youtu.be/F5rxEPGN69c "Klingon 101 - The Sounds of Klingon - Marc Okrand"
 * Guide
 ** TODO Go through 'briefklingram' make sure everything is included 
 ** TODO Titles & general designations come after proper names
@@ -24,7 +48,7 @@
 ** TODO Add newer exclamations (section 5.5.1) [TKDa]
 ** TODO Stuff about how to use {jatlh} (in section 6.2.5, about {’e’}?)
 ** TODO Add errata list http://klingonska.org/errors.html
-** TODO Add newer prefix and suffix tables
+** TODO Add newer suffix tables
 ** TODO Text on pronunciation
 ** TODO Include comments from Michael Lubetsky ({may’Iq})
 ** TODO Include Terrence "Klingon Grammar Addenda" info
@@ -178,3 +202,5 @@
 * DONE
 ** DONE Implement __xxx__ for underlining in markdown
    CLOSED: [2020-08-12 Wed 14:04]
+** DONE Add newer prefix tables
+   CLOSED: [2020-08-12 Wed 18:41]

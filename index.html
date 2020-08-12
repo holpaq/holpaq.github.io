@@ -1,0 +1,708 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Klingon Grammar | tlhIngan Hol pab</title>
+    <meta name="description" content="Klingon Grammar | tlhIngan Hol pab">
+    <!--meta name="author" content=""-->
+    <link rel="stylesheet" href="include/index.css">
+    <style>
+      main { position: relative; }
+      body, html { margin: 0; }
+      article { padding: var(--vgrid) var(--hgrid); }
+      aside {
+        padding: 1em;
+        margin: 0;
+        display: block;
+        XXborder: 1px solid black;
+        position: fixed;
+      }
+      article {
+        XXbackground: #fff;
+        XXbox-shadow: 0 0 15px 15px rgba(0,0,0,.5);
+      }
+      iframe {
+        background: #fff;
+        box-shadow: 0 0 10px 10px rgba(0,0,0,.33);
+        border: 0;
+        width: 100%;
+        height: 100%;
+      }
+      /* Portrait mode. */
+      @media (max-aspect-ratio: 1/1) {
+        aside {
+          bottom: 0;
+          height: 33vh;
+          width: 100%;
+        }
+        article {
+          margin-bottom: 33vh;
+        }
+      }
+      /* Landscape mode. */
+      @media (min-aspect-ratio: 1/1) {
+        aside {
+          width: 50%;
+          height: 100vh;
+          top: 0;
+          left: 0;
+        }
+        article {
+          margin-left: 50%;
+        }
+      }
+    </style>
+    <style>
+      table.prefix b { font-weight: normal; }
+      table.prefix caption {
+        margin: calc(var(--vgrid) * .5) 0;
+        caption-side: bottom;
+        font-family: var(--serif);
+      }
+      table.prefix {
+        font-family: sans-serif;
+        width: 1%;
+        border-top: 2px solid #000;
+        margin-bottom: -2px; /* compensate for 2px extra from vertical borders */
+      }
+      table.prefix td,
+      table.prefix th {
+        text-align: left;
+        vertical-align: middle;
+        padding-left: calc(var(--hgrid) *.5);
+        white-space: nowrap;
+        height: calc(var(--vgrid) * 1.5);
+        width: 1%;
+      }
+      table.prefix .obj,
+      table.prefix tbody tr:nth-child(even) {
+        border-bottom: 1px solid #000;
+      }
+      table.prefix,
+      table.prefix thead {
+        border-bottom: 2px solid #000;
+      }
+      table.prefix .obj {
+        border-top: 2px solid #000;
+      }
+      table.prefix td:not(:empty):hover { background: var(--hilite) }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <article>
+        <textarea markdown hidden>
+
+<h1 title>Big Bad Book of Klingon Grammar</h1>
+
+<div markdown todo>This intended to be a full explanation of the grammar of the
+Klingon language, complete with easily verifiable source references.</div>
+
+
+# Contents
+
+<toc>
+
+<!--
+# Introduction
+
+Note that {ch}, {gh}, {ng}, {tlh} and {’} are considered letters in their own
+right, and as a result of this, when words are listed alphabetically the {nob}
+comes before {ngab}, {tup} comes before {tlhutlh} etc. The letters {q} and {Q}
+also represent two different sounds and are sorted separately.
+  -->
+
+
+# Writing and Pronunciation
+
+<ul TODO markdown>
+  <li>{pIqaD} include canon fonts (from Haynes manual and Discovery + moar?)
+  <li>Add IPA chart here
+  <li>A note on why the mix of upper/lower case (official source for this?)
+</ul>
+
+The Klingon alphabetical order is as follows:
+
+  | {a}, {b}, {ch}, {D}, {e}, {gh}, {H}, {I}, {j}, {l}, {m}, {n}, {ng}, {o}, {p}, {q}, {Q}, {r}, {S}, {t}, {tlh}, {u}, {v}, {w}, {y}, {’}
+
+Note that {ch}, {gh}, {ng}, {tlh} and {’} are considered letters in their own
+right, and as a result of this, when words are listed alphabetically the {nob}
+comes before {ngab}, {tup} comes before {tlhutlh} etc. The letters {q} and {Q}
+also represent two different sounds and are sorted separately.
+
+The names for the sounds in Klingon are {’at}, {’et}, {’ot} etc. for the
+vowels, and {bay}, {chay}, {Day} etc. for the consonants – except for {’}
+(glottal stop) which is called {qaghwI’} «interrupter».
+
+‹The way Klingon is written with the Latin alphabet was created to make it easy
+to teach (American) actors the pronunciation of their individual lines Klingon.
+(It was not created with linguists or language learners in
+mind.)›<sup>[[Klingon 101, 3:40–3:50]]</sup> Capital letters (e.g. {I}, {H} or
+{S}) and unusual letter combinations (like {tlh}) is used to indicate that the
+pronunciation of that letter differs from what one would expect in English.
+
+
+## Consonants
+
+<ul TODO>
+  <li>Add Klingon names of sounds
+  <li>Add phonetical description of sounds
+</ul>
+
+{b} [b] As in *__b__ronchitis*, *gaze__b__o* or *__b__ribe*.
+
+{ch} [t&#865;&#643;] As in *__ch__ew* or *arti__ch__oke*.
+
+{D} [&#598;] As in Swedish *vä__rd__* (host), further back than English *d* as
+in *__d__ream* or *an__d__roid*. Let the tongue touch halfway between the teeth
+and the soft palate.
+
+{gh} [&#611;] Put tongue as if to say *gobble*, but relax and hum. Almost the
+same as {H} but voiced.
+
+{H} [x] As in the name of the German composer *Ba__ch__*. Very strong and
+coarse. Similar to {gh} but without humming.
+
+{j} [d&#865;&#658;] As in *__j__unk* (with an initial *d*-sound), never as in
+French *jour*.
+
+{l} [l] As in *__l__unge* or *a__l__chemy*.
+
+{m} [m] As in *__m__ud* or *pneu__m__atic*.
+
+{n} [n] As in *__n__ectarine* or *su__n__spot*.
+
+{ng} [&#331;] As in *furlo__ng__* or *thi__ng__*, never as in *e__ng__ulf*.
+Also occurs at the beginning of syllables.
+
+{p} [p&#688;] As in *__p__arallax* or *o__pp__obrium*, always with a strong
+puff or pop, never laxly.
+
+{q} [q&#688;] Similar to *k* in *kumquat*, but further back. The tongue should
+touch the uvula while saying this. A puff of air should accompany the sound.
+
+{Q} [q&#865;&#967;] A harder variant of {q}, very strong and raspy.
+
+{r} [r] A trilled *r* using the tip of the tongue, as in Swedish *__r__ö__r__*
+(pipe, tube) if properly articulated.
+
+{S} [&#642;] As in Swedish *mothå__rs__* (against the predominant direction of
+hair growth e.g. on a pet) or as an English *s* articulated with the tongue in
+the Klingon {D} position.
+
+{t} [t&#688;] As in *__t__arpaulin* or *cri__t__ique*. It is accompanied by a
+puff of air.
+
+{tlh} [t&#865;&#620;] To learn how to say this Klingon sound, first say *l*,
+then keep your tongue in the same position and exhale. Now repeat this, but let
+the air build up pressure behind your tongue before releasing it. The resulting
+sound should be voiceless, and you should be able to feel the air escape quite
+forcefully on both sides of your tongue.
+
+{v} [v] As in *__v__ulgar* or *demonstrati__v__e*.
+
+{w} [w] As in *__w__orry__w__art* or *co__w__*.
+
+{y} [j] As in *__y__odel* or *jo__y__*.
+
+{’} [&#660;] As in the abrupt cutoff of sound in *uh-oh* or *unh-unh* meaning
+“no”. At the end of a word this sound is usually followed by a soft echo of the
+preceding sound.
+
+
+## Vowels
+
+{a} [&#593;] As in *ps__a__lm* or *p__a__*, never as in *cr__a__b__a__pple*.
+
+{e} [&#603;] As in *s__e__nsor* or *p__e__t*.
+
+{I} [&#618;] As in *m__i__sf__i__t* or *p__i__t*. This is written with a
+capital letter as a reminder that, even though this letter has several possible
+pronunciations in English, Klingon {I} only use one of those pronunciations.
+<sup>[[Klingon 101, 3:24–4:07]]</sup>
+
+{o} [o] As in *g__o__* or *m__o__saic*.
+
+{u} [u] As in *gn__u__*, *pr__u__ne* or *s__oo__n*, never as in
+*b__u__t* or *c__u__te*.
+
+
+## Stress
+
+<ul TODO>
+  <li>Source for adjectival and nominalized stress? (Hamlet appendix)
+  <li>Examples of stress (including at least one where it’s used for disambiguation)
+</ul>
+
+**Verbs** are stressed on the last syllable of the stem, and the first suffix
+is unstressed. After that, any additional suffixes ending in {’} are also
+stressed. Exception: The speaker may emphasize a suffix by shifting the stress
+to it, and leave the rest of the word unstressed (this frequently happens with
+{-’a’}, {-be’}, {-Qo’}, {-Ha’}, and {-qu’}). **Adjectival verbs** are stressed
+as verbs.
+
+**Nouns** are usually stressed on the last syllable of the stem, however if
+there are any syllables in the word that end in {’}, then those syllables are
+stressed instead (if there are more than one, they are equally stressed).
+**Nominalized verbs** (nouns made with {-wI’} or {-ghach}) are stressed as
+nouns.
+
+
+## Klingon Alphabet
+
+The Klingon writing system, {pIqaD}, is an alphabet which closely corresponds
+to the romanized spelling of Klingon. Each sound have one symbol, and there are
+two punctuation marks.
+
+
+# Grammatical Sketch—Introduction
+
+
+# Verbs
+
+
+## Verb prefixes
+
+<!--<table class="prefix">
+  <thead>
+    <tr><th colspan=7 class=obj>Object<th rowspan=2></tr>
+    <tr><td><td><td><td><td>{’oH}<td>{bIH}<td></tr>
+    <tr><td>{jIH}<td>{maH}<td>{SoH}<td>{tlhIH}<td>{ghaH}<td>{chaH}<td>({pagh})<th>Subject</tr>
+  </thead>
+  <tr><td>{HI-}<td>{gho-}<td><td><td>{yI-}<td>{tI-}<td>{yI-}<td>{SoH} ({ra’})</tr>
+  <tr><td>{HI-}<td>{gho-}<td><td><td>{yI-}<td>{tI-}<td>{pe-}<td>{tlhIH} ({ra’})</tr>
+  <tr><td><td><td>{qa-}<td>{Sa-}<td>{vI-}<td>{vI-}<td>{jI-}<td>{jIH}</tr>
+  <tr><td><td><td>{pI-}<td>{re-}<td>{wI-}<td>{DI-}<td>{ma-}<td>{maH}</tr>
+  <tr><td>{cho-}<td>{ju-}<td><td><td>{Da-}<td>{Da-}<td>{bI-}<td>{SoH}</tr>
+  <tr><td>{tu-}<td>{che-}<td><td><td>{bo-}<td>{bo-}<td>{Su-}<td>{tlhIH}</tr>
+  <tr><td>{mu-}<td>{nu-}<td>{Du-}<td>{lI-}<td>{-}<td>{-}<td>{-}<td>{ghaH}/{’oH}</tr>
+  <tr><td>{mu-}<td>{nu-}<td>{nI-}<td>{lI-}<td>{lu-}<td>{-}<td>{-}<td>{chaH}/{bIH}</tr>
+  <tr><td>{vI-lu’}<td>{wI-lu’}<td>{Da-lu’}<td>{bo-lu’}<td>{-lu’}<td>{lu-lu’}<td>{-lu’}<td>({vay’})</tr>
+</table>-->
+
+
+<table markdown class="prefix">
+  <thead>
+    <tr><th colspan=7 class=obj>Object<th></tr>
+    <tr><th>I<th>we<th>you<th>you(pl.)<th>he/she/it<th>them<th>(none)<th>Subject</tr>
+  </thead>
+  <tr><td>{HI-}<td>{gho-}<td><td><td>{yI-}<td>{tI-}<td>{yI-}<th>imp: you</tr>
+  <tr><td>{HI-}<td>{gho-}<td><td><td>{yI-}<td>{tI-}<td>{pe-}<th>imp: you (pl.)</tr>
+  <tr><td><td><td>{qa-}<td>{Sa-}<td>{vI-}<td>{vI-}<td>{jI-}<th>I</tr>
+  <tr><td><td><td>{pI-}<td>{re-}<td>{wI-}<td>{DI-}<td>{ma-}<th>we</tr>
+  <tr><td>{cho-}<td>{ju-}<td><td><td>{Da-}<td>{Da-}<td>{bI-}<th>you</tr>
+  <tr><td>{tu-}<td>{che-}<td><td><td>{bo-}<td>{bo-}<td>{Su-}<th>you (pl.)</tr>
+  <tr><td>{mu-}<td>{nu-}<td>{Du-}<td>{lI-}<td>{-}<td>{-}<td>{-}<th>he/she/it</tr>
+  <tr><td>{mu-}<td>{nu-}<td>{nI-}<td>{lI-}<td>{lu-}<td>{-}<td>{-}<th>them</tr>
+  <tr><td>{vI-lu’}<td>{wI-lu’}<td>{Da-lu’}<td>{bo-lu’}<td>{-lu’}<td>{lu-lu’}<td>{-lu’}<th>(general)</tr>
+</table>
+
+
+### Basic prefixes
+
+
+### Imperative prefixes
+
+
+### Notational conventions
+
+
+## Verb suffixes
+
+
+### Type 1: Oneself/one another
+
+
+#### {-’egh} «oneself»
+
+
+#### {-chuq} «one another»
+
+
+### Type 2: Volition/predisposition
+
+
+#### {-nIS} «need»
+
+
+#### {-qang} «willing»
+
+
+#### {-rup} «ready, prepared» (referring to beings)
+
+
+#### {-beH} «ready, set up» (referring to devices)
+
+
+#### {-vIp} «afraid»
+
+
+### Type 3: Change
+
+
+#### {-choH} «change in state, change in direction»
+
+
+#### {-qa’} «resume»
+
+
+### Type 4: Cause
+
+
+#### {-moH} «cause»
+
+
+### Type 5: Indefinite subject/ability
+
+
+#### {-lu’} «indefinite subject»
+
+
+#### {-laH} «can, able»
+
+
+### Type 6: Qualification
+
+
+#### {-chu’} «clearly, perfectly»
+
+
+#### {-bej} «certainly, undoubtedly»
+
+
+#### {-law’} «seemingly, apparently»
+
+
+#### {-ba’} «obviously»
+
+
+### Type 7: Aspect
+
+
+#### {-pu’} «perfective»
+
+
+#### {-ta’} «accomplished, done»
+
+
+#### {-taH} «continuous»
+
+
+#### {-lI’} «in progress»
+
+
+### Type 8: Honorific
+
+
+#### {-neS} «honorific»
+
+
+### Type 9: Syntactic markers
+
+
+#### {-DI’} «as soon as, when»
+
+
+#### {-chugh} «if»
+
+
+#### {-pa’} «before»
+
+
+#### {-vIS} «while»
+
+
+#### {-bogh} «which»
+
+
+#### {-meH} «for»
+
+
+#### {-’a’} «interrogative»
+
+
+#### {-wI’} «one who does, thing which does»
+
+
+#### {-mo’} «because»
+
+
+#### {-jaj} «may»
+
+
+#### {-ghach} «nominalizer»
+
+
+### Relative ordering of the suffixes
+
+
+## Rovers
+
+
+#### {-be’} «not»
+
+
+#### {-Qo’} «don’t!, won’t»
+
+
+#### {-Ha’} «undo»
+
+
+#### {-qu’} «emphatic»
+
+
+# Nouns
+
+
+## Simple nouns
+
+
+## Complex nouns
+
+
+### Compound nouns
+
+
+### Verb plus {-wI’}
+
+
+### Other complex nouns
+
+
+## Noun suffixes
+
+
+### Type 1: Augmentative/diminutive
+
+
+#### {-’a’} «augmentative»
+
+
+#### {-Hom} «diminutive»
+
+
+#### {-oy} «endearment»
+
+
+### Type 2: Number
+
+
+#### {-pu’} «plural for beings capable of using language»
+
+
+#### {-Du’} «plural for body parts»
+
+
+#### {-mey} «plural, general usage»
+
+
+### Type 3: Qualification
+
+
+#### {-qoq} «so-called»
+
+
+#### {-Hey} «apparent»
+
+
+#### {-na’} «definite»
+
+
+### Type 4: Possession/specification
+
+
+#### {-wIj} «my»
+
+
+#### {-maj} «our»
+
+
+#### {-lIj} «your»
+
+
+#### {-raj} «your (plural)»
+
+
+#### {-Daj} «his, her, its»
+
+
+#### {-chaj} «their»
+
+
+#### {-wI’} «my»
+
+
+#### {-ma’} «our»
+
+
+#### {-lI’} «your»
+
+
+#### {-ra’} «your (plural)»
+
+
+#### {-vam} «this»
+
+
+#### {-vetlh} «that»
+
+
+### Type 5: Syntactic markers
+
+
+#### {-Daq} «locative»
+
+
+#### {-vo’} «from»
+
+
+#### {-mo’} «due to, because of»
+
+
+#### {-vaD} «for, intended for»
+
+
+#### {-’e’} «topic»
+
+
+### Relative ordering of the suffixes
+
+
+## The noun–noun construction
+
+
+## Adjectives
+
+
+# Other Kinds of Words
+
+
+## Pronouns
+
+
+## Numbers
+
+
+## Conjunctions
+
+
+## Adverbials
+
+
+## Exclamations
+
+
+## Names and address
+
+
+# Syntax
+
+
+## Basic sentences
+
+
+## Complex sentences
+
+
+### Compound sentences
+
+
+### Subordinate clauses
+
+
+### Relative clauses
+
+
+### Purpose clauses
+
+
+### Sentences as objects
+
+
+## “To be”
+
+
+## Questions
+
+
+## Commands
+
+
+## Comparatives and superlatives
+
+
+## Placement of adverbial elements
+
+
+## Indirect objects
+
+
+# Clipped Klingon
+
+
+## Commands
+
+
+## Responses to commands, status reports
+
+
+## Duress, excitement
+
+
+# Dictionary
+
+
+## Introductory Remarks
+
+
+## Klingon Affixes
+
+
+### Noun suffixes
+
+
+### Verb prefixes
+
+
+### Verb suffixes
+
+
+### Special number suffixes
+
+
+## English Index to Klingon Affixes
+
+
+### Noun suffixes
+
+
+### Verb prefixes
+
+
+### Verb suffixes
+
+
+### Special number suffixes
+
+
+# Sources
+
+* [The Klingon Dictionary](javascript:openLink('tkd.html')) (1992) by Marc Okrand
+* [Klingon Grammar Addenda](javascript:openLink('teresh.html')) (1999–2007) by Terrence Donnelly
+
+
+[Star Trek: Discovery]: https://youtu.be/nBgW0YNHSfw "Star Trek: Discovery – Special with Marc Okrand"
+[What is Klingon?]: https://youtu.be/HOPG7dZcd0o "Marc Okrand: “What is Klingon?” (21 November 2014)"
+[Marc Okrand on Klingon]: https://youtu.be/e5Did-eVQDc "Marc Okrand on Klingon (3 May 2012)"
+[Klingon 101, 3:40–3:50]: https://www.youtube.com/embed/F5rxEPGN69c?start=220&end=228&autoplay=1 "Klingon 101 - The Sounds of Klingon - Marc Okrand"
+[Klingon 101, 3:24–4:07]: https://www.youtube.com/embed/F5rxEPGN69c?start=204&end=247&autoplay=1 "Klingon 101 - The Sounds of Klingon - Marc Okrand"
+[Klingon 101]: https://youtu.be/F5rxEPGN69c "Klingon 101 - The Sounds of Klingon - Marc Okrand"
+
+        </textarea>
+      </article>
+      <aside><iframe src="tkd.html"></iframe></aside>
+    </main>
+    <script src="include/style.js"></script>
+  </body>
+</html>

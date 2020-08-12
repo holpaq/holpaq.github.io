@@ -178,7 +178,7 @@ function main($) {
             // FIXME: Hyphenation of Klingon.
             return '<b lang=tlh>' +
                 // Insert <nobr> around leading '-' & following word.
-                tlh.replace(/(-[^ ]+)/, "<nobr>$1</nobr>") +
+                tlh.replace(/(-[^< ]+)/, "<nobr>$1</nobr>") +
                 '</b>';
         },
     });
@@ -355,7 +355,11 @@ function main($) {
     })();
 
     // Add 'target="_blank"' to all external links.
-    $("a[href]:not([href^='#'])").attr("target", "_blank");
+    $("a[href]:not([href^='#'],[href^='javascript:'])").attr("target", "_blank");
+}
+
+function openLink(src) {
+    $('iframe').attr('src', src);
 }
 
 /*[eof]*/
