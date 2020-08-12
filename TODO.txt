@@ -1,0 +1,171 @@
+#+STARTUP: overview hidestars -*- org -*-
+
+* Programming
+** TODO Implement __xxx__ for underlining in markdown
+** TODO Sort out CSS problem
+   Each document should allow for some unique CSS (like the yellow background
+   of the Klingon Grammar Addenda – kept to imitate the original) but there
+   should also be a common, nice CSS that all documents use.
+* Guide
+** TODO Go through 'briefklingram' make sure everything is included 
+** TODO Titles & general designations come after proper names
+   Titles (eg. HoD "Captain") and general designations (eg. Duj "ship") come
+   after the proper name: ter'eS HoD "Captain Teresh", 'enterpray' ejDo'
+   "Starship Enterprise". (ejDo' "starship")
+** TODO Add {ghghgh}
+** TODO Add newer adverbials (section 5.4)
+** TODO Add newer names (section 5.6)
+** TODO Add newer exclamations (section 5.5.1) [TKDa]
+** TODO Stuff about how to use {jatlh} (in section 6.2.5, about {’e’}?)
+** TODO Add errata list http://klingonska.org/errors.html
+** TODO Add newer prefix and suffix tables
+** TODO Text on pronunciation
+** TODO Include comments from Michael Lubetsky ({may’Iq})
+** TODO Include Terrence "Klingon Grammar Addenda" info
+   http://klingon.wiki/En/KlingonGrammarAddenda
+   (or google to find moar)
+** TODO Prefix trick
+** TODO QAO
+** TODO http://klingonska.org/dict/suffix.html
+** TODO On {'ej} with {-bogh}, {-meH} etc.
+   From {may'Iq}?
+   (in 6.2.3. Relative clauses)
+
+   {’ej} can be used
+
+   {je} is used in {SuwvI’ bom} but this is probably an error/poetic expression
+** TODO With SAO, 2nd sentence verb cannot take aspect suffix
+   From {may'Iq}?
+
+   Any verb using {'e'} as an object may not take an aspect suffix [TKD p.66].
+
+   With verbs of saying the {'e'} is dropped, and the second verb may take an
+   aspect marker [TKD p.67].
+
+   This is often broken in canon: example Skybox s25, Skybox S26. paq’batlh
+   p.162-163.
+
+   {chalqulIjvo’ bImej ’e[j] bIyIn **’e’ vIchaw’pu’**}
+** TODO {-vo'} doesn't necessarily indicate motion
+   From {may'Iq}?
+
+   {-vo’} doesn’t necessarily indicate a *motion* away from something, as show in
+   this example:
+
+     | {pa’vo’ pagh leghlu’.} | «The room has no view.» lit. «Nothing is seen from the room.» [CK] |
+** TODO Usage of pronoun with {-'e'} (from TKD example with {jIH'e'})
+   The TKD example sentences {jIlujpu’ jIH} and {jIlujpu’ jIH’e’} are somewhat
+   misleading, and probably reflect an earlier state of the development of the
+   language.
+
+   In Klingon, as we use it today, the using pronoun for a subject or object is
+   enough to emphasize it. While relying on the prefix alone would be the
+   non-emphasized version of the same sentence. Adding an {-’e’} (as
+   illustrated above) on top of this is allowed, but would be somewhat over the
+   top for most situations.
+
+     | {jIlujpu’ jIH} | «I, and only I, have failed. It is I who has failed.» |
+     | {jIlujpu’}     | «I have failed.»                                      |
+** TODO Using {-lu'} and {-laH} together
+   From KGT p.181:
+
+   Among those suffixes that can never occur together are {-lu’} (indefinite
+   subject indicator) and {-laH} («can, able»). The former is used when the
+   subject is unknown or indefinite, often translated into Federation Standard
+   by means of the passive voice: {jagh jonlu’} («One captures the enemy,» or
+   «The enemy is captured»; {jagh,} «enemy»; {jon,} «capture»). The latter is
+   used to express ability: {jagh jonlaH} («He/she can capture the enemy»). If
+   it is desirable to express the ideas of «indefinite subject» and «ability»
+   at the same time, such as in the sentences «One can capture the enemy» or
+   «The enemy can be captured,» it is not uncommon to use the noun {vay’}
+   («somebody, anybody») as the subject of the sentence: {jagh jonlaH vay’}
+   («Somebody can capture the enemy,» or «Anybody can capture the enemy»).
+   Nevertheless, some speakers seem to want to put the two concepts into a
+   single word, and, on rare occasion, they will do so. Rather than violating
+   the rules by using the two suffixes sequentially (that is, {-lu’laH} or
+   {-laHlu’}), however, these speakers will say either {-luH} or {-la’},
+   employing totally artificial, made-up suffixes formed by fusing {-lu’} and
+   {-laH}, as in {jagh jonluH} or {jagh jonla’} («The enemy can be captured»).
+   No one accepts such constructions as grammatical; their inappropriateness,
+   the way they grate on the Klingon ear, is exactly what gives them
+   elocutionary clout. A visitor may hear one of these odd suffixes
+   occasionally, but, as with other intentionally ungrammatical forms, it is
+   best to avoid using them until one is extremely comfortable with the nuances
+   of Klingon style.
+** TODO Usage of {'e'} with {-lu'} and {net}
+     | {SIS ’e’ ’aqlu’, javmaH vatlhvI’ DIch}       | «It is predicted it will rain, 60% certainty.» [{qep’a’} 2017]                  |
+     | {Qang QanmeH yan ’ISletlh Damuv ’e’ wIvlu’.} | «You are chosen to serve on the *Yan-Isleth* and protect the chancellor.» [MKE] |
+
+   We’ve also seen the pattern {-lu’ ’e’ -lu’} used:
+
+     | {yay chavlu’ ’e’ bajnISlu’}                           | «Victory must be earned.» [TKW]                                             |
+     | {yInlu’taH ’e’ bajnISlu’}                             | «Survival must be earned.» [TKW]                                            |
+     | {DIvI’ rojmab qep ghanglu’ ’e’ nIDlu’, ’ach taH qep.} | «Despite efforts to halt them, peace talks with Federation continue.» [MKE] |
+
+   And we’ve even seen the pattern {-lu’ net}:
+
+     | {vImuHlu’ net wuqHa’!} | «My death sentence was commuted!» [ENT "Affliction"] |
+** TODO Canon examples of usage of {-pa'}
+   | {tujpa’ qul pub SuvwI’ ’Iw.}             | «A warrior’s blood boils before the fire is hot.» [TKW p.32]                                                                                                                                                                                                                                                                                                         |
+   | {Dajonlu’pa’ bIHeghjaj.}                 | «May you die before you are captured.»            [TKW p.93]                                                                                                                                                                                                                                                                                                         |
+   | {qanchoHpa’ qoH, Hegh qoH.}              | «Fools die young.»                                [TKW p.117]                                                                                                                                                                                                                                                                                                        |
+   | {jIjatlhpa’ jatlh Hovmey}                | «The stars will talk before I will.»              [PK]                                                                                                                                                                                                                                                                                                               |
+   | {bItuHpa’ bIHeghjaj}                     | «Death before shame.»                             [PK]                                                                                                                                                                                                                                                                                                               |
+   | {jItlhutlhpa’ jISop}                     | «before I drink, I eat»                           [News 1998-03-20]                                                                                                                                                                                                                                                                                                  |
+   | {pel’aQDaj ghorpa’}                      | «before it breaks its shell»                      [KGT p.124]                                                                                                                                                                                                                                                                                                        |
+   | {pel’aQDaj ghorpa’ qama’ yIHoH}          | «Kill the prisoner now, while you’ve got a chance», lit. «Before it breaks its shell, kill the prisoner» ({qama’} «prisoner», {yIHoH} «Kill him/her!») [KGT p.124]                                                                                                                                                                                                   |
+   | {jagh HIvrup SuvwI’ Haqpa’ DIvI’ qeSwI’} | «The warrior was prepared to attack the enemy until the Federation advisor intervened», lit. «The warrior was prepared to attack the enemy before the Federation advisor performed surgery» ({jagh} «enemy», {HIvrup} «be prepared to attack», {SuvwI’} «warrior», {Haqpa’} «before he/she performed surgery», {DIvI’} «Federation», {qeSwI’} «advisor») [KGT p.151] |
+** TODO More info on usage of {-jaj}
+   KGT p.15–26
+   paq’batlh p.102–103
+** TODO Complications in understanding roving {-be'}
+   From {may'Iq}?
+
+   This sometimes get hard to understand, as the last example (with
+   {-ISbe’moH}) here:
+
+     | {qaghojbe’nISmoH} | «I must cause you to not learn»                |
+     | {qaghojnISbe’moH} | «I must not cause you to learn»                |
+     | {qaghojnISmoHbe’} | (not really different than {-nISbe’moH} [imo]) |
+** TODO Suffixes allowed on adjectival verbs
+   From {may'Iq}?
+
+   TKD p.50 states: “If a Type 5 noun suffix is used (section 3.3.5), it
+   follows the verb, which, when used to modify the noun in this way, can have
+   no other suffix except the rover {-qu’} «emphatic.» The Type 5 noun suffix
+   follows {-qu’.}”
+
+   But this was later expanded to allow {-Ha’} and {-be’}:
+
+     | {wa’maH yIHmey lI’be’} [CK 26:59]  |
+     | {Duj ngaDHa’}          [KGT p.150] |
+** TODO Multiple subjects in “to be” constructions
+   From {may'Iq}?
+
+   Use {-'e'} on each of the subjects, and {je} afterwards. Multiple singular
+   subjects warrants a plural pronoun as a verb.
+
+     | {tlhInganpu’ chaH wo’rIv’e’ mara’e’ je.} [Duolingo?] |
+** TODO More on comparatives and superlatives
+   From {may'Iq}?
+
+     | «as strong as» with {rap}          |
+     | > {HoS martaq, rap wo’rIv.}        |
+     | > {wo’rIv HoS law’ martaq Hos rap} |
+     | > {wo’rIv Hos law martaq hos law’} |
+
+     | with {nIb} (about qualities)                                                    |
+     | > {woch wo’rIv jInIb.}                                                          |
+     | > {puH DujwIj ’ugh law’, ’e’levan ’ugh nIb} «my car is as heavy as an elephant» |
+
+   --------------------------------------------------------------------------------
+
+     | {wo’rIv HoS law’be’ Martok Hos puSbe’.} | «Worf is not stronger than Martok.» (HQ 13:1) |
+     | {wo’rI’v HoS law’ martaq HoS pIm.}      | «Worf is not as strong as Martok.»  (HQ 13:1) |
+
+   {DowIj law’ law’ DolIj law’ puS}]] – kommentar från Marc Shoulson?
+
+     | {nom leng Hun nom lengqu’ lut} | «stories travel faster than a khrun» ({paq’batlh} p.130–131) |
+
+   You can not use a ’question’ as an object; [...] it is not know yet if
+   Klingon question words can act one of those. (1998.05.25)
