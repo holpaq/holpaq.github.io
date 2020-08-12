@@ -237,6 +237,7 @@ function main($) {
         simplifiedAutoLink: true,
         strikethrough     : true,
         underline         : true,
+        excludeTrailingPunctuationFromURLs: true,
     });
     $elem.replaceWith(                      // replace with markdown
         converter.makeHtml(text)
