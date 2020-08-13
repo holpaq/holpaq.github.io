@@ -70,15 +70,15 @@
       table.sans caption {
         caption-side: bottom;
       }
-    </style>
-    <style>
-      /* Styling for prefix table. */
-      table.prefix b { font-weight: normal; }
-      table.prefix caption {
+      table.sans caption {
         margin: calc(var(--vgrid) * .5) 0;
         caption-side: bottom;
         font-family: var(--serif);
       }
+    </style>
+    <style>
+      /* Styling for prefix table. */
+      table.prefix b { font-weight: normal; }
       table.prefix {
         border-top: 2px solid #000;
         margin-bottom: -2px; /* compensate for 2px extra from vertical borders */
@@ -125,6 +125,14 @@
         width: 2.25em;
       }
     </style>
+    <style>
+      table.consonant td { text-align: center; }
+      table.consonant td,
+      table.consonant th { border: 1px solid #000; }
+      table.consonant th { font-size: smaller; }
+      table.consonant td:nth-child(even) { border-right: 0; }
+      table.consonant td:nth-child(odd)  { border-left:  0; }
+    </style>
   </head>
 
   <body>
@@ -135,35 +143,32 @@
 <h1 title>Big Bad Book of Klingon Grammar</h1>
 
 <div markdown todo>This intended to be a full explanation of the grammar of the
-Klingon language, complete with easily verifiable source references.</div>
+Klingon language, complete with easily verifiable source references. It is
+currently very much a work in progress and many sections below are still devoid
+of text.</div>
 
 
 # Contents
 
 <toc>
 
-<!--
 # Introduction
 
-Note that {ch}, {gh}, {ng}, {tlh} and {’} are considered letters in their own
-right, and as a result of this, when words are listed alphabetically the {nob}
-comes before {ngab}, {tup} comes before {tlhutlh} etc. The letters {q} and {Q}
-also represent two different sounds and are sorted separately.
-  -->
 
+# The Sounds of Klingon
 
-# Writing and Pronunciation
-
-<ul TODO markdown>
-  <li>{pIqaD} include canon fonts (from Haynes manual and Discovery + moar?)
-  <li>Add IPA chart here
-  <li>A note on why the mix of upper/lower case (official source for this?)
-</ul>
+<div TODO markdown>
+* Add notes on mix of upper/lower case (official source for this?)
+</div>
 
 The Klingon alphabetical order is as follows:
 
-> {a}, {b}, {ch}, {D}, {e}, {gh}, {H}, {I}, {j}, {l}, {m}, {n}, {ng}, {o}, {p},
-> {q}, {Q}, {r}, {S}, {t}, {tlh}, {u}, {v}, {w}, {y}, {’}
+> {[a](#at)}, {[b](#bay)}, {[ch](#chay)}, {[D](#day)}, {[e](#et)},
+> {[gh](#ghay)}, {[H](#hay)}, {[I](#it)}, {[j](#jay)}, {[l](#lay)},
+> {[m](#may)}, {[n](#nay)}, {[ng](#ngay)}, {[o](#ot)}, {[p](#pay)},
+> {[q](#qay)}, {[Q](#qhay)}, {[r](#ray)}, {[S](#say)}, {[t](#tay)},
+> {[tlh](#tlhay)}, {[u](#ut)}, {[v](#vay)}, {[w](#way)}, {[y](#yay)},
+> {[’](#qaghwi)}
 
 Note that {ch}, {gh}, {ng}, {tlh} and {’} are considered letters in their own
 right, and as a result of this, when words are listed alphabetically the {nob}
@@ -184,81 +189,439 @@ pronunciation of that letter differs from what one would expect in English.
 
 ## Consonants
 
-<ul TODO>
-  <li>Add phonetical description of sounds
-</ul>
+<div TODO markdown>
+* Add {w} to phonetic table
+* Elaborate on aspiration with English & Swedish examples in which it occur
+* Elaborate on the whispering echo of vowels after {’}
+</div>
 
-{b} [b] As in *__b__ronchitis*, *gaze__b__o* or *__b__ribe*.
+<table markdown class="consonant sans">
+  <caption>Where sounds appear in pairs, the one on the right is voiced.</caption>
+  <tr>
+    <th>
+    <th colspan=2>[Bilabial][bilabial]
+    <th colspan=2>[Labio­dental][labiodental]
+    <th colspan=2>[Alveolar][alveolar]
+    <th colspan=2>[Post­alveolar][postalveolar]
+    <th colspan=2>[Retro­flex][retroflex]
+    <th colspan=2>[Palatal][palatal]
+    <th colspan=2>[Velar][velar]
+    <th colspan=2>[Uvular][uvular]
+    <th colspan=2>[Glottal][glottal]
+  <tr>
+    <th>[Plosive][plosive]<td>[{p}](#pay)<td>[{b}](#bay)<td><td><td>[{t}](#tay)<td><td><td>
+    <td><td>[{D}](#day)<td><td><td><td><td>[{q}](#qay)<td><td>[{’}](#qaghwi)<td>
+  <tr>
+    <th>[Nasal][nasal]<td><td>[{m}](#may)<td><td><td><td>[{n}](#nay)<td><td>
+    <td><td><td><td><td><td>[{ng}](#ngay)<td><td><td><td>
+  <tr>
+    <th>[Trill][trill]<td><td><td><td><td><td>[{r}](#ray)<td><td>
+    <td><td><td><td><td><td><td><td><td><td>
+  <tr>
+    <th>[Fricative][fricative]<td><td><td><td>[{v}](#vay)<td><td><td><td>
+    <td>[{S}](#say)<td><td><td><td>[{H}](#hay)<td>[{gh}](#ghay)<td><td><td><td>
+  <tr>
+    <th>[Affricate][affricate]<td><td><td><td><td>[{tlh}](#tlhay)<td><td>[{ch}](#chay)<td>[{j}](#jay)
+    <td><td><td><td><td><td><td>[{Q}](#qhay)<td><td><td>
+  <tr>
+    <th>[Approx.][approximant]<td><td><td><td><td><td><td><td>
+    <td><td><td><td>[{y}](#yay)<td><td><td><td><td><td>
+  <tr>
+    <th>[Lateral Approx.][lateral approximant]<td><td><td><td><td><td>[{l}](#lay)<td><td>
+    <td><td><td><td><td><td><td><td><td><td>
+</table>
 
-{ch} [t&#865;&#643;] As in *__ch__ew* or *arti__ch__oke*.
+<a id="bay"></a>{b} [b] (*[voiced bilabial stop]*, called {bay} in Klingon) –
+This sound is quite common in Terran languages. It is pronounced as in English
+*a__b__ack* [əˈbæk], as in German <i lang=de>__B__ub</i> [buːp] («boy») or as
+in Swedish <i lang=sv>__b__ra</i> [ˈbrɑː] («good»).
 
-{D} [&#598;] As in Swedish *vä__rd__* (host), further back than English *d* as
-in *__d__ream* or *an__d__roid*. Let the tongue touch halfway between the teeth
-and the soft palate.
+<!--
+  <p class="canon">{b} As in English *bronchitis* or
+    *gazebo.* <small>[TKD 1.1]</small>a
+-->
 
-{gh} [&#611;] Put tongue as if to say *gobble*, but relax and hum. Almost the
-same as {H} but voiced.
+<a id="chay"></a>{ch} [t͡ʃ] (*[voiceless postalveolar affricate],* called {chay}
+in Klingon) – This sound pronounced as in English *blea__ch__* [bliːt͡ʃ], as in
+German <i lang=de>__Tsch__inelle</i> [t͡ʃiˈnɛlə] («cymbal»), or as in Finland
+Swedish <i lang="sv-fi">tjugo</i> [t͡ʃʉ:gʉ] («twenty»).
 
-{H} [x] As in the name of the German composer *Ba__ch__*. Very strong and
-coarse. Similar to {gh} but without humming.
+<!--
+  <p class="canon">{ch} As in English *chew* or *artichoke.* [TKD 1.1]
+-->
 
-{j} [d&#865;&#658;] As in *__j__unk* (with an initial *d*-sound), never as in
-French *jour*.
+<a id="day"></a>{D} [ɖ] (*[voiced retroflex stop]*, called {Day} in Klingon) –
+In English, this sound only occur in some dialects, such as in Indian English
+*__d__ine* [ɖaɪn] («to eat»). It further back than English *d* in *__d__ream*
+or *an__d__roid,* with the tip of the tongue touching the roof of the mouth, at
+the back of [the alveolar ridge] (this part of the alveolar ridge is covered
+with small ridges). As far as I know, this sound does not occur in German. In
+Swedish, the {D} sound exist in most central and northern dialects. This is how
+the letters *rd* are pronounced when they occur together, e.g. in the word <i
+lang=sv>no__rd__</i> [nuːɖ] («north»). (This is the result of *r* causing
+retroflexation of the following consonant, when it comes before a [dental
+consonant].)
 
-{l} [l] As in *__l__unge* or *a__l__chemy*.
+<!--
+  <p class=canon>{D} This sound is close to English *d* in *dream* or
+    *android,* but it is not quite the same. The English *d* sound is made by
+    touching the tip of the tongue to that part of the roof of the mouth just
+    behind the upper teeth. Klingon {D} can best be approximated by
+    English-speakers by touching the tip of the tongue to the roof of the mouth
+    at a point about halfway between the teeth and the velum (or soft palate),
+    that part of the roof of the mouth that is rather gooshy. As with Klingon
+    {b}, some speakers pronounce {D} as if it were more like an *nd,* and a
+    distinct minority as if it were {n}–-but, of course, with the tongue in the
+    same position as for {D}. [TKD 1.1]
+  <p class=canon>The sound at the end of the first syllable of this word,
+    {toD}, is {D}. To make this sound, point the tip of your tongue directly
+    upwards, and touch the hard part of the roof of your mouth, and the do the
+    same thing you would do to make a *d* sound. [CK]
+  <p class=canon>For instance {Dal} means «It is boring.» To get the first
+    sound in that word right make sure your tongue is pointed straight up
+    towards the roof of your mouth. [PK]
+-->
 
-{m} [m] As in *__m__ud* or *pneu__m__atic*.
+<a id="ghay"></a>{gh} [ɣ] (*[voiced velar fricative]*, called {ghay} in
+Klingon) – This sound is not like anything in English, German or Swedish. It is
+produced with the tongue in the same position as for *g* – as in English
+*__g__a__gg__le* [ˈɡæɡɫ̩], German <i lang=de>Lü__g__e</i> [ˈlyːɡə] («lie») or
+Swedish <i lang=sv>__g__ång</i> [ɡɔŋː] («path») – but relaxing somewhat and
+humming. It is a voiced version of the Klingon {H} sound. In French (and some
+southern Swedish dialects) there exists a *guttural r* [ʁ] ([voiced uvular
+fricative]) which is very similar to Klingon {gh}, except that it is pronounced
+a little bit further back. (Using a *guttural r* instead of the proper {gh}
+when speaking Klingon, does not lead to confusion, in fact most Klingon
+speakers will not even notice that you’re doing something odd.)
 
-{n} [n] As in *__n__ectarine* or *su__n__spot*.
+<!--
+  <p class=canon>{gh} This is not like anything in English. It can be produced
+    by putting the tongue in the same position it would be in to say English
+    *g* as in *gobble,* but relaxing the tongue somewhat and humming. It is the
+    same as Klingon {H} (see below), but with the vocal cords vibrating at the
+    same time. [TKD 1.1]
+  <p class=canon>[{gh},] a softer *kh,* with humming (or voicing) at the same
+    time [TKDa p. 169]
+  <p class=canon>The first sound of the word is {gh}. It’s the same as the last
+    sound of {toDSaH}, but hum while you say it. [CK]
+-->
 
-{ng} [&#331;] As in *furlo__ng__* or *thi__ng__*, never as in *e__ng__ulf*.
-Also occurs at the beginning of syllables.
+<a id="hay"></a>{H} [x] (*[voiceless velar fricative]*, called {Hay} in
+Klingon) – This sound is not common in English but can be heard in some
+pronunciations of the American exclamation of disgust *ye__ch__* [jɛx]. It also
+occur in Scottish *lo__ch__* [lɔx], and in German <i lang=de>Ku__ch__en</i>
+[kuːxən] («cake»). It is a voiceless version of the Klingon {gh}.
 
-{p} [p&#688;] As in *__p__arallax* or *o__pp__obrium*, always with a strong
-puff or pop, never laxly.
+<!--
+  <p class=canon>{H} This is also not like anything in English, but it is just
+    like *ch* in the name of the German composer <i lang=de>Bach</i> or in the
+    Yiddish toast <i lang=yi>l’chaim,</i> or the *j* in the Mexican city
+    of <i lang="es-mx">Tijuana</i> in <i lang="en-mx">Baja California.</i> It
+    is produced in the same way as Klingon {gh}, but is articulated with a very
+    coarse, strong rasp. Unlike Klingon {gh}, the vocal cords do not vibrate in
+    saying Klingon {H}. [TKD 1.1]
+  <p class=canon>[{H} as in] *ch* in German <i lang=de>Bach</i> or
+    Scottish <i lang=sco>loch</i> [TKDa p. 169]
+  <p class=canon>The last sound in the word is {H}, this is the same as the
+    sound at the end of the name of the ancient Terran
+    composer <i lang=de>Bach.</i> You’d make it the same way you make a *k*
+    sound, but force air out of your mouth at the same time. [CK]
+-->
 
-{q} [q&#688;] Similar to *k* in *kumquat*, but further back. The tongue should
-touch the uvula while saying this. A puff of air should accompany the sound.
+<a id="jay"></a>{j} [d͡ʒ] (*[voiced postalveolar affricate]*, called {jay} in
+Klingon) – As in English *__j__ump* [ˈd͡ʒʌmp] or German <i
+lang=de>__Dsch__ungel</i> [d͡ʒʊŋəl] («jungle»), and similar to *dj* in Swedish
+<i lang=sv>glä__dj__e</i> («joy») or *ke__dj__a* («chain»). This sound is
+always pronounced with a hard initial *d,* and never softly as in French <i
+lang=fr>jour</i> («day») or as Swedish <i lang=sv>jord</i> («earth»). Note:
+Making a clear distinction between {y} and {j} sounds are important in Klingon,
+not least because of the prefixes {yI-} («you–him/her/it!», imperative) and
+{jI-} («I»).
 
-{Q} [q&#865;&#967;] A harder variant of {q}, very strong and raspy.
+<!--
+  <p class="canon">{j} As in English *junk;* never ever as in French *jour.*
+    [TKD 1.1]
+-->
 
-{r} [r] A trilled *r* using the tip of the tongue, as in Swedish *__r__ö__r__*
-(pipe, tube) if properly articulated.
+<a id="lay"></a>{l} [l] (*[alveolar lateral approximant]*, called {lay} in
+Klingon) – As in English *__l__et* [lɛt], German <i lang=de>__L__iebe</i>
+[liːbə] («love») or Swedish <i lang=sv>__l__ång</i> [lɔŋ] («long»).
 
-{S} [&#642;] As in Swedish *mothå__rs__* (against the predominant direction of
-hair growth e.g. on a pet) or as an English *s* articulated with the tongue in
-the Klingon {D} position.
+<!--
+  <p class="canon">{l} As in English *lunge* or *alchemy.* [TKD 1.1]
+-->
 
-{t} [t&#688;] As in *__t__arpaulin* or *cri__t__ique*. It is accompanied by a
-puff of air.
+<a id="may"></a>{m} [m] (*[bilabial nasal]*, called {may} in Klingon) – As in
+English *hi__m__* [hɪm], German <i lang=de>rüh__m__en</i> [ˈʁyːmən] («to
+praise») or Swedish <i lang=sv>__m__ask</i> [mask] («worm»).
 
-{tlh} [t&#865;&#620;] To learn how to say this Klingon sound, first say *l*,
-then keep your tongue in the same position and exhale. Now repeat this, but let
-the air build up pressure behind your tongue before releasing it. The resulting
-sound should be voiceless, and you should be able to feel the air escape quite
-forcefully on both sides of your tongue.
+<!--
+  <p class="canon">{m} As in English *mud* or *pneumatic.* [TKD 1.1]
+-->
 
-{v} [v] As in *__v__ulgar* or *demonstrati__v__e*.
+<a id="nay"></a>{n} [n] (*[alveolar nasal]*, called {nay} in Klingon) – As in
+English *__n__ice* [naɪs], German <i lang=de>La__n__ze</i> [ˈlant͡sə] («lance»),
+or Swedish <i lang=sv>__n__ord</i> [nuːɖ] («north»).
 
-{w} [w] As in *__w__orry__w__art* or *co__w__*.
+<!--
+  <p class="canon">{n} As in English *nectarine* or *sunspot.* [TKD 1.1]
+-->
 
-{y} [j] As in *__y__odel* or *jo__y__*.
+<a id="ngay"></a>{ng} [ŋ] (*[velar nasal]*, called {ngay} in Klingon) – As in
+English *si__ng__* [sɪŋ], German <i lang=de>la__ng__</i> [laŋ] («long»), or
+Swedish <i lang=sv>i__ng__enti__ng__</i> [ɪŋːɛntʰɪŋ] («nothing»). In the most
+Terran languages this sound never come at the beginning of a word, but this
+happen in a number of Klingon words (e.g. {ngan} «inhabitant»). The letters
+*ng* are never pronounced separately (as in *e__ng__ulf*).
 
-{’} [&#660;] As in the abrupt cutoff of sound in *uh-oh* or *unh-unh* meaning
-“no”. At the end of a word this sound is usually followed by a soft echo of the
-preceding sound.
+<!--
+  <p class=canon>{ng} As in English *furlong;* never as in English *engulf.*
+    The *g* is never pronounced as a separate sound. This sound never occurs at
+    the beginning of an English word, but it does come at the beginning at a
+    number of Klingon words. English-speakers may practice making this sound at
+    the beginning of a word by saying English *dang it!,* then saying it again
+    without the *da.* [TKD 1.1]
+  <p class=canon>The sound at the beginning of the second syllable, {ngan}, is
+    the same as the sound that comes at the end of the word *thing* or *hang.*
+    [CK]
+  <p class=canon>That sound in the middle of the last word is the same as the
+    sound in the end of the federation standard *thing.* Be sure to say {ngev},
+    not {nev} or {njev}. [PK]
+-->
+
+<a id="pay"></a>{p} [pʰ] (*[aspirated voiceless bilabial stop]*, called {pay}
+in Klingon) – As in English *__p__ack* [pʰæk], German <i lang=de>__P__ack</i>
+[pʰak] («pile»), or Swedish <i lang=sv>a__p__a</i> [ˈɑːpʰa] («monkey»). In
+Klingon, this sound is always [aspirated], that is, released with an extra puff
+off air.
+
+<!--
+  <p class="canon">{p} As in English *parallax* or *opprobrium.* It is always
+    articulated with a strong puff or pop, never laxly. Speakers of English may
+    want to exercise care to avoid discharging saliva while articulating this
+    sound. It should be noted, however, that Klingons do not worry about this.
+    [TKD 1.1]
+-->
+
+<a id="qay"></a>{q} [qʰ] (*[aspirated voiceless uvular stop]*, called {qay} in
+Klingon) – This sound is similar to the *k* sound of English, German and
+Swedish but the tongue reaches further back so that it touches the uvula (the
+fleshy blob that dangles down from the back of the roof of the mouth). In
+Klingon, this sound is always [aspirated], that is, released with an extra puff
+off air. Never pronounced *kw* as in English *__q__uagmire.*
+
+<!--
+  <p class=canon>{q} Similar to English *k* in *kumquat,* but not quite that.
+    The tongue position for English *k* is like that for Klingon {gh} and {H}.
+    Indeed, the tongue reaches for or touches the uvula (the fleshy blob that
+    dangles down from the back of the roof of the mouth), so articulating {q}
+    approximates the sound of choking. The sound is usually accompanied by a
+    slight puff of air. English speakers are reminded that Klingon {q} is never
+    pronounced *kw* as in the beginning of English *quagmire.* [TKD 1.1]
+  <p class=canon>There’s a new sound at both the beginning and end of the
+    second syllable {qeq}, be careful, this is not the federation standard *k*
+    sound. You make it like a *k,* but as you did for {Q}, shove the back of
+    your tongue as far back into your mouth as you can. [CK]
+  <p class=canon>{-qoq} – Be sure you pronounce the sound at the beginning and
+    end of this suffix as far back in your mouth as you can. [PK]
+-->
+
+<a id="qhay"></a>{Q} [q͡χ] (*[voiceless uvular affricate]*, called {Qay} in
+Klingon) – It is pronounced in the same way as {q}, except that it is held
+longer while air is forced out. Another way to think of it is that you start
+off by pronouncing a {q}, then immediately after releasing it go on to say {H}
+(without pausing in between). As in some Swiss dialects of German *Gschän__k__*
+[ˈkʃæŋq͡χ] («present»). This sound is quite uncommon among Terran languages.
+
+<!--
+  <p class=canon>{Q} This is like nothing particularly noteworthy in English.
+    It is and overdone Klingon {q}. It is identical to {q} except that it is
+    very guttural and raspy and strongly articulated, somewhat like a blend of
+    Klingon {q} and {H}. [TKD 1.1]
+  <p class=canon>To make this sound, put the back of your tongue as far back
+    into your mouth as you can, then force the air up harshly, as if you’re
+    trying to dislodge a piece of food. [CK]
+-->
+
+<a id="ray"></a>{r} [r] (*[alveolar trill]*, called {ray} in Klingon) – As in
+Scottish <i lang=sco>cu__r__d</i> [kʌrd], German (in some dialects) <i
+lang=de>Schma__rr__n</i> [ʃmaːrn] («nonsense»), or Swedish <i
+lang=sv>__r__ov</i> [ruːv] («prey»). The Klingon {r} differs from the *r* of
+American English in that the Klingon one is slightly trilled or rolled.
+
+Alternatively: {r} [ɹ] (*[alveolar approximant]*) – Many Americans (among them
+Marc Okrand, the inventor of the Klingon language) find it hard to roll their
+tongue to produce the trill of {r}, and therefore the flat American *r* is an
+often heard substitute. It should be noted, however, that pronouncing {r} this
+way is a clear indication of a Terran accent.
+
+<!--
+  <p class="canon">{r} This is not like the *r* in American English, but it
+    does resemble the *r* in some dialects of British English, as well as the
+    *r* in many languages of Europe. It is slightly trilled or rolled.
+    [TKD 1.1]
+-->
+
+<a id="say"></a>{S} [ʂ] (*[voiceless retroflex fricative]*, called {Say} in
+Klingon) – As in the Swedish word <i lang=sv>fo__rs__</i> [fɔʂ] («rapids»).
+This sound is halfway between English *s* (as in *syringe*) and *sh* (as in
+*shuttlecock*). It is articulated with the tongue in the same position as for
+Klingon {D}.
+
+<!--
+  <p class=canon>{S} This sound is halfway between English *s* and *sh,* as in
+    *syringe* and *shuttlecock.* It is made with the tip of the tongue reaching
+    toward that part of the roof of the mouth which it touches to produce the
+    Klingon {D}. [TKD 1.1]
+  <p class=canon>It’s not quite either the *s* or the *sh* sound you’re
+    familiar with. For the Klingon {S}, put your tongue in the same place you
+    did to make the {D} sound, and say it with me. [CK]
+-->
+
+<a id="tay"></a>{t} [tʰ] (*[aspirated voiceless alveolar stop]*, called {tay}
+in Klingon) – As in English *__t__ick* [tʰɪk], as in German <i
+lang=de>__T__ochter</i> [ˈtʰɔxtɐ] («daughter»), or as in Swedish <i
+lang=sv>__t__ok</i> [tʰuːk] («fool»). In Klingon, this sound is always
+[aspirated], that is, released with an extra puff off air.
+
+<!--
+  <p class="canon">{t} As in English *tarpaulin* or *critique.* It differs from
+    Klingon {D} in two ways: (1) like {p}, it is accompanied by a puff of air;
+    and (2) the tongue touches a position on the roof of the mouth father
+    forward than that for {D}. [TKD 1.1]
+-->
+
+<a id="tlhay"></a>{tlh} [t͡ɬ] (*[voiceless alveolar lateral affricate]*, called
+{tlhay} when spelling) – As in Icelandic <i lang=is>bo__ll__i</i> [ˈpɔt͡ɬɪ]
+(«cup»), or the name of the Aztec language <i lang=nah>Náhua__tl__</i>
+[ˈnaːwat͡ɬ]. This sound is very uncommon in Terran languages.
+
+To find {tlh} in your mouth you can start off by saying *l* repeatedly. As you
+do this, notice: (1) the tip of the tongue remains firmly rooted to roof of the
+mouth with the air passing by on the sides of the tongue, and (2) Your vocal
+cords are vibrating (if you put your hand on your Adam’s apple you can feel the
+vibrations quite clearly). For Klingon {tlh} (1) is true (the tip of tongue
+remains rooted to the roof of the mouth) but (2) is not (the vocal cords are
+*not* vibrating).
+
+Continue repeating *l*, but now *whisper* it. (You should no longer feel any
+vibrations if you put your hand on your throat.) The sound you’re now
+articulating is a voiceless *l*, [ɬ] ([voiceless alveolar lateral fricative]).
+You’re halfway to there! – As you continue repeating a voiceless *l*, try
+spitting it out with more force. Build up a little bit of pressure behind the
+tongue, then lower the sides to spit the air out around it. This is [t͡ɬ] – the
+Klingon {tlh} sound!
+
+A different way of thinking about this is that you’re saying *t* in a weird
+way. Where you, instead of lowering the *tip* of the tongue, keep the tip in
+place, and lower *sides* of the tongue.
+
+<!--
+  <p class=canon>{tlh} This sound does not occur in English, but is very much
+    like the final sound in <i lang=nah>tetl,</i> the Aztec word for «egg,» if
+    properly pronounced. To produce this sound, the tip of the tongue touches
+    the same part of the roof of the mouth it touches for {t}, the sides of the
+    tongue are lowered away from the side upper teeth, adn the air is forced
+    through the space on both sides between tongue and teeth. The sound is
+    produced with a great deal of friction, and the warning given in the
+    description of Klingon {p} might be aptly repeated here. [TKD 1.1]
+  <p class=canon>To make this {tlh} sound, say a *t* and at the same time
+    whisper, loudly, but still just whisper, an *l.* […] Do you feel the sides
+    of the tongue going down as you say the sound? – You should. [CK]
+-->
+
+<a id="vay"></a>{v} [v] (*[voiced labiodental fricative]*, called {vay} in
+Klingon) – As in English *__v__alve* [væɫv], German <i lang=de>__W__ächter</i>
+[ˈvɛçtɐ] («guard») or Swedish <i lang=sv>__v__ägg</i> [ˈvɛɡ] («wall»).
+
+<!--
+  <p class="canon">{v} As in English *vulgar* or *demonstrative.* [TKD 1.1]
+-->
+
+<a id="way"></a>{w} [w] (*[voiced labio-velar approximant]*, called {way} in
+Klingon) – As in English *__w__eep* [wiːp].
+
+<!--
+  <p class="canon">{w} Usually as in English *worrywart* or *cow.* On rare
+    occasions, especially if the speaker is being rather deliberate, it is
+    pronounced strongly, more like {Hw} or even {Huw}. [TKD 1.1]
+-->
+
+<a id="yay"></a>{y} [j] (*[voiced palatal approximant]*, called {yay} in
+Klingon) – As in English *__y__ou* [juː], German <i lang=de>__J__och</i> [jɔx]
+(«yoke»), or Swedish <i lang=sv>__j__ag</i> [jɑːɡ] («I»). Note: Making a clear
+distinction between {y} and {j} sounds are important in Klingon, not least
+because of the prefixes {yI-} («you–him/her/it!», imperative) and {jI-} («I»).
+
+<!--
+  <p class="canon">{y} As in English *yodel* or *joy.* [TKD 1.1]
+-->
+
+<a id="qaghwi"></a>{’} [ʔ] (*[glottal stop]*, called {qaghwI’} or just {’} in
+Klingon) – This sound exist in spoken English but is not written – it is the
+slight catch in the throat between the two syllables of *uh-oh* or *unh-unh*,
+meaning “no”. In some English dialects the letter *t* is pronounced this way,
+[Cockney] <i lang="en-uk-Cockney">bo__tt__le</i> [ˈbɔʔo]. In [BBC English] the
+letter *t* is pronounced this way before *n,* e.g. in *bu__tt__on* [bʌʔn̩] (in
+speech with careful enunciation, however, *t* is often heard instead).
+
+The Swedish term for this sound is <i lang=sv>[glottal klusil]</i>
+(or <i lang=sv>[laryngal klusil]</i>) and the sound is, just as in English,
+commonly used, but not written. It is cessation of sound in the middle
+of <i lang=sv>öh-oh!</i> [œʔœ͜uː] («oops!»), or at end of some pronunciations of
+the word <i lang=sv>meh!</i> [meʔ] (used to express indifference or boredom).
+
+In German this sound is known as <i lang=de>[Knacklaut]</i> and it precedes any
+word or syllable that begins with a vowel. It has been suggested to me that the
+difference in pronunciation between <i lang=de>alkoholarmm</i> («low in alcohol
+content») and <i lang=de>alkoholarm</i> (made-up word, meaning «warning about
+the destructive effects of alcohol») would be the addition of a glottal stop in
+the middle.
+
+In Klingon, when {’} comes at the end of a word, the preceding sound is
+abruptly cut off, and then repeated (after the glottal stop) in a soft whisper.
+This echo of the preceding vowel is often extra pronounced when the speaker is
+angry or excited. If you articulate the word {paw} («arrive») and {paw’}
+(«collide») there should be a clear and distinct sense of abrupt
+discontinuation in the latter.
+
+<!--
+  <p class=canon>{’} The apostrophe indicates a sound which is frequently
+    uttered, but not written, in English. It is a glottal stop, the slight
+    catch in the throat between the two syllables of *uh-oh* or *unh-unh,*
+    meaning “no.” When Klingon {’} comes at the end of a word, the vowel
+    preceeding the {’} is often repeated in a very soft whisper, as if an echo.
+    Thus, Klingon {je’} «feed» almost sound like {je’e}, where the articulation
+    of the first {e} is abruptly cut off by the {’}, and the second {e} is an
+    barely audible whisper. When {’} follows {w} or {y} at the end of a word,
+    there is often a whispered, echoed {u} or {I} respectively. Occasionally
+    the echo is quite audible, with a guttural sound like {gh} preceeding the
+    echoed vowel. For example, {yIlI’} «transmit it!» can sound more like
+    {yIlI’ghI}. This extra-heavy echo is heard most often when the speaker is
+    particulary excited or angry. [TKD 1.1]
+  <p class=canon>Did you hear the sounds cut off abruptly in the middle of the
+    word? The correct pronounciation is {Qu’vatlh}, not {Quvatlh}. This abrupt
+    cut-off is a very common feature of Klingon, you’ll hear it a lot. [CK]
+  <p class=canon>{-na’} Notice how the sound stops abruptly at the end of this
+    suffix, it’s {-na’}, not {-naaa}. [PK]
+  <p class=canon>Many nonnative speakers of Klingon, especially those for whom
+    Federation Standard is a first language, seem to have trouble with {’}, the
+    glottal stop, at the end of a word. Articulated correctly, {’} is simply a
+    very abrupt cessation of vocalization. The most common mispronunciation of
+    {’} is as {q}, though some newer speakers leave {’} off altogether. Errors
+    of this type could lead to confusion or confrontation. [KGT pp. 194–195]
+-->
 
 
 ## Vowels
 
-<div markdown todo>
-* Add source references
+<div TODO markdown>
 * Add vowel diagram (take from www.klingonska.org/piqad)
 </div>
 
-{a} [ɑ] (*[open back unrounded vowel],* called {’at} in Klingon) – Pronounced
-as in [General American] or [BBC English] *sp__a__* [spɑː], or as in some
-dialects of German <i lang=de>T__a__g</i> [tʰɑːk] («day»), or as in
+<a id="at"></a>{a} [ɑ] (*[open back unrounded vowel],* called {’at} in Klingon)
+– Pronounced as in [General American] or [BBC English] *sp__a__* [spɑː], or as
+in some dialects of German <i lang=de>T__a__g</i> [tʰɑːk] («day»), or as in
 Swedish <i lang=sv>j__а__g</i> [jɑːɡ] («I, me»). Never as in
 *cr__a__b__a__pple*.
 
@@ -276,22 +639,23 @@ Swedish <i lang=sv>j__а__g</i> [jɑːɡ] («I, me»). Never as in
     way are customarily reprimanded. [KGT p. 139]
 -->
 
-{e} [ɛ] (*[open-mid front unrounded vowel]*, called {’et} in Klingon) –
-Pronounced as in [General American] or [BBC English] *b__e__d* [bɛd], as in
-German <i lang=de>B__e__tt</i> [bɛt] («bed»), or as in
-Swedish <i lang=sv>__e__n</i> [ɛn] («one»).
+<a id="et"></a>{e} [ɛ] (*[open-mid front unrounded vowel]*, called {’et} in
+Klingon) – Pronounced as in [General American] or [BBC English] *b__e__d*
+[bɛd], as in German <i lang=de>B__e__tt</i> [bɛt] («bed»), or as in Swedish <i
+lang=sv>__e__n</i> [ɛn] («one»).
 
 <!--
   <p class=canon>{e} As in English *sensor.* [TKD 1.2]
   <p class=canon>[{e}] as in *pet* [TKDa p. 169]
 -->
 
-{I} [ɪ] (*[near-close near-front unrounded vowel],* called {’It} in Klingon) –
-As in English *b__i__t* [bɪt], as in German <i lang=de>b__i__tte</i> [ˈbɪtə]
-(«please»), or as in Swedish <i lang=sv>sill</i> [sɪl] («herring»). This is
-written with a capital letter as a reminder that, even though the letter «i»
-has several possible pronunciations in English, only one pronunciation is
-acceptable in Klingon.<sup>[[Klingon 101, 3:24–4:07]]</sup>
+<a id="it"></a>{I} [ɪ] (*[near-close near-front unrounded vowel],* called {’It}
+in Klingon) – As in English *b__i__t* [bɪt], as in German <i
+lang=de>b__i__tte</i> [ˈbɪtə] («please»), or as in Swedish <i lang=sv>sill</i>
+[sɪl] («herring»). This is written with a capital letter as a reminder that,
+even though the letter «i» has several possible pronunciations in English, only
+one pronunciation is acceptable in Klingon.<sup>[[Klingon 101,
+3:24–4:07]]</sup>
 
 <!--
   <p class=canon>{I} As English *i* in *misfit.* Once in a while, it is
@@ -300,10 +664,11 @@ acceptable in Klingon.<sup>[[Klingon 101, 3:24–4:07]]</sup>
   <p class=canon>[{i}] as in *pit* [TKDa p. 169]
 -->
 
-{o} [o] (*[close-mid back rounded vowel]*, called {’ot} in Klingon) –
-Pronounced as English *g__o__* [goː], in German <i lang=de>__o__der</i> [ˈoːdɐ]
-(«or»), or as in Swedish <i lang=sv>__å__ka</i> [ˈoːka] («travel»). (There are
-no words that end in {ow}, as that would be indistinguishable from just {o}.)
+<a id="ot"></a>{o} [o] (*[close-mid back rounded vowel]*, called {’ot} in
+Klingon) – Pronounced as English *g__o__* [goː], in German <i
+lang=de>__o__der</i> [ˈoːdɐ] («or»), or as in Swedish <i lang=sv>__å__ka</i>
+[ˈoːka] («travel»). (There are no words that end in {ow}, as that would be
+indistinguishable from just {o}.)
 
 <!--
   <p class=canon>{o} As in English *mosaic.* [TKD 1.2]
@@ -313,10 +678,10 @@ no words that end in {ow}, as that would be indistinguishable from just {o}.)
     respectively. [TKD 1.2]
 -->
 
-{u} [u] (*[close back rounded vowel],* called {’ut} in Klingon) – Pronounced as
-in [General American] or [BBC English] *b__oo__t* [buːt], or as in
-German <i lang=de>F__u__ß</i> [fuːs] («foot»). Never pronounced as in *b__u__t*
-or *c__u__te*. (There are no words that end in {uw}, as that would be
+<a id="ut"></a>{u} [u] (*[close back rounded vowel],* called {’ut} in Klingon)
+– Pronounced as in [General American] or [BBC English] *b__oo__t* [buːt], or as
+in German <i lang=de>F__u__ß</i> [fuːs] («foot»). Never pronounced as in
+*b__u__t* or *c__u__te*. (There are no words that end in {uw}, as that would be
 indistinguishable from just {u}.)
 
 <!--
@@ -328,20 +693,13 @@ indistinguishable from just {u}.)
     [TKD 1.2]
 -->
 
-[BBC English]: http://en.wikipedia.org/wiki/Received_Pronunciation "Wikipedia"
-[General American]: http://en.wikipedia.org/wiki/General_American "Wikipedia"
-[close back rounded vowel]: http://en.wikipedia.org/wiki/Close_back_rounded_vowel "Wikipedia"
-[close-mid back rounded vowel]: http://en.wikipedia.org/wiki/Close-mid_back_rounded_vowel "Wikipedia"
-[near-close near-front unrounded vowel]: http://en.wikipedia.org/wiki/Near-close_near-front_unrounded_vowel "Wikipedia"
-[open back unrounded vowel]: http://en.wikipedia.org/wiki/Open_back_unrounded_vowel "Wikipedia"
-[open-mid front unrounded vowel]: http://en.wikipedia.org/wiki/Open-mid_front_unrounded_vowel "Wikipedia"
 
 ## Stress
 
-<ul TODO>
-  <li>Source for adjectival and nominalized stress? (Hamlet appendix)
-  <li>Examples of stress (including at least one where it’s used for disambiguation)
-</ul>
+<div TODO markdown>
+* Source for adjectival and nominalized stress? (Hamlet appendix)
+* Examples of stress (including at least one where it’s used for disambiguation)
+</div>
 
 **Verbs** are stressed on the last syllable of the stem, and the first suffix
 is unstressed. After that, any additional suffixes ending in {’} are also
@@ -357,14 +715,18 @@ stressed instead (if there are more than one, they are equally stressed).
 nouns.
 
 
-## Klingon Alphabet
+# Klingon Writing
+
+<div TODO markdown>
+* Add canon {pIqaD} fonts (from Haynes manual, Discovery – more?)
+</div>
 
 The Klingon writing system, {pIqaD}, is an alphabet which closely corresponds
 to the romanized spelling of Klingon. Each sound have one symbol, and there are
 two punctuation marks.
 
 
-# Grammatical Sketch—Introduction
+# Introduction to the Grammar
 
 
 # Verbs
@@ -417,6 +779,10 @@ two punctuation marks.
 
 
 ## Verb suffixes
+
+<div TODO markdown>
+* Link suffixes in table to relevant sections
+</div>
 
 <table class="suffix sans">
   <tr>
@@ -596,6 +962,10 @@ two punctuation marks.
 
 
 ## Noun suffixes
+
+<div TODO markdown>
+* Link suffixes in table to relevant sections
+</div>
 
 <table class="suffix sans">
   <tr><th>1<th>2<th>3<th>4<th>5</tr>
@@ -800,43 +1170,7 @@ two punctuation marks.
 ## Duress, excitement
 
 
-# Dictionary
-
-
-## Introductory Remarks
-
-
-## Klingon Affixes
-
-
-### Noun suffixes
-
-
-### Verb prefixes
-
-
-### Verb suffixes
-
-
-### Special number suffixes
-
-
-## English Index to Klingon Affixes
-
-
-### Noun suffixes
-
-
-### Verb prefixes
-
-
-### Verb suffixes
-
-
-### Special number suffixes
-
-
-# Sources
+# References
 
 * [The Klingon Dictionary](javascript:openLink('tkd.html')) (1992) by Marc Okrand
 * [Klingon Grammar Addenda](javascript:openLink('teresh.html')) (1999–2007) by Terrence Donnelly
@@ -848,6 +1182,63 @@ two punctuation marks.
 [Klingon 101, 3:40–3:50]: https://www.youtube.com/embed/F5rxEPGN69c?start=220&end=228&autoplay=1 "Klingon 101 - The Sounds of Klingon - Marc Okrand"
 [Klingon 101, 3:24–4:07]: https://www.youtube.com/embed/F5rxEPGN69c?start=204&end=247&autoplay=1 "Klingon 101 - The Sounds of Klingon - Marc Okrand"
 [Klingon 101]: https://youtu.be/F5rxEPGN69c "Klingon 101 - The Sounds of Klingon - Marc Okrand"
+
+
+[BBC English]: http://en.wikipedia.org/wiki/Received_Pronunciation "Wikipedia"
+[Cockney]: http://en.wikipedia.org/wiki/Cockney#Cockney_speech "Wikipedia"
+[General American]: https://en.wikipedia.org/wiki/General_American_English "Wikipedia"
+[Knacklaut]: https://de.wiktionary.org/wiki/Knacklaut "Wiktionary"
+[affricate]: http://en.wikipedia.org/wiki/Affricate_consonant "Wikipedia"
+[alveolar approximant]: http://en.wikipedia.org/wiki/Alveolar_approximant "Wikipedia"
+[alveolar lateral approximant]: http://en.wikipedia.org/wiki/Alveolar_lateral_approximant "Wikipedia"
+[alveolar nasal]: http://en.wikipedia.org/wiki/Alveolar_nasal "Wikipedia"
+[alveolar trill]: http://en.wikipedia.org/wiki/Alveolar_trill "Wikipedia"
+[alveolar]: http://en.wikipedia.org/wiki/Alveolar_consonant "Wikipedia"
+[approximant]: http://en.wikipedia.org/wiki/Approximant_consonant#Central_approximants "Wikipedia"
+[aspirated voiceless alveolar stop]: http://en.wikipedia.org/wiki/Voiceless_alveolar_stop "Wikipedia"
+[aspirated voiceless bilabial stop]: http://en.wikipedia.org/wiki/Voiceless_bilabial_stop "Wikipedia"
+[aspirated voiceless uvular stop]: http://en.wikipedia.org/wiki/Voiceless_uvular_stop "Wikipedia"
+[aspirated]: http://en.wikipedia.org/wiki/Aspirated_consonant "Wikipedia"
+[bilabial nasal]: http://en.wikipedia.org/wiki/Bilabial_nasal "Wikipedia"
+[bilabial]: http://en.wikipedia.org/wiki/Bilabial_consonant "Wikipedia"
+[close back rounded vowel]: http://en.wikipedia.org/wiki/Close_back_rounded_vowel "Wikipedia"
+[close-mid back rounded vowel]: http://en.wikipedia.org/wiki/Close-mid_back_rounded_vowel "Wikipedia"
+[dental consonant]: http://en.wikipedia.org/wiki/Dental_consonant "Wikipedia"
+[fricative]: http://en.wikipedia.org/wiki/Fricative_consonant "Wikipedia"
+[glottal klusil]: http://sv.wikipedia.org/wiki/Glottal_klusil "Wikipedia"
+[glottal stop]: http://en.wikipedia.org/wiki/Glottal_stop "Wikipedia"
+[glottal]: http://en.wikipedia.org/wiki/Glottal_consonant "Wikipedia"
+[guttural r]: https://en.wikipedia.org/wiki/Guttural_R "Wikipedia"
+[labiodental]: http://en.wikipedia.org/wiki/Labiodental_consonant "Wikipedia"
+[laryngal klusil]: https://sv.wikipedia.org/wiki/Laryngal_klusil "Wikipedia"
+[lateral approximant]: http://en.wikipedia.org/wiki/Approximant_consonant#Lateral_approximants "Wikipedia"
+[nasal]: http://en.wikipedia.org/wiki/Nasal_consonant "Wikipedia"
+[near-close near-front unrounded vowel]: http://en.wikipedia.org/wiki/Near-close_near-front_unrounded_vowel "Wikipedia"
+[open back unrounded vowel]: http://en.wikipedia.org/wiki/Open_back_unrounded_vowel "Wikipedia"
+[open-mid front unrounded vowel]: http://en.wikipedia.org/wiki/Open-mid_front_unrounded_vowel "Wikipedia"
+[palatal]: http://en.wikipedia.org/wiki/Palatal_consonant "Wikipedia"
+[plosive]: http://en.wikipedia.org/wiki/Plosive_consonant "Wikipedia"
+[postalveolar]: http://en.wikipedia.org/wiki/Postalveolar_consonant "Wikipedia"
+[retroflex]: http://en.wikipedia.org/wiki/Retroflex_consonant "Wikipedia"
+[the alveolar ridge]: http://en.wikipedia.org/wiki/Alveolar_ridge "Wikipedia"
+[trill]: http://en.wikipedia.org/wiki/Trill_consonant "Wikipedia"
+[uvular]: http://en.wikipedia.org/wiki/Uvular_consonant "Wikipedia"
+[velar nasal]: http://en.wikipedia.org/wiki/Velar_nasal "Wikipedia"
+[velar]: http://en.wikipedia.org/wiki/Velar_consonant "Wikipedia"
+[voiced bilabial stop]: http://en.wikipedia.org/wiki/Voiced_bilabial_stop "Wikipedia"
+[voiced labio-velar approximant]: https://en.wikipedia.org/wiki/Voiced_labio-velar_approximant "Wikipedia"
+[voiced labiodental fricative]: http://en.wikipedia.org/wiki/Voiced_labiodental_fricative "Wikipedia"
+[voiced palatal approximant]: https://en.wikipedia.org/wiki/Voiced_palatal_approximant "Wikipedia"
+[voiced postalveolar affricate]: http://en.wikipedia.org/wiki/Voiced_palato-alveolar_affricate "Wikipedia"
+[voiced retroflex stop]: http://en.wikipedia.org/wiki/Voiced_retroflex_stop "Wikipedia"
+[voiced uvular fricative]: http://en.wikipedia.org/wiki/Voiced_uvular_fricative "Wikipedia"
+[voiced velar fricative]: http://en.wikipedia.org/wiki/Voiced_velar_fricative "Wikipedia"
+[voiceless alveolar lateral affricate]: http://en.wikipedia.org/wiki/Voiceless_alveolar_lateral_affricate "Wikipedia"
+[voiceless alveolar lateral fricative]: http://en.wikipedia.org/wiki/Voiceless_alveolar_lateral_fricative "Wikipedia"
+[voiceless postalveolar affricate]: http://en.wikipedia.org/wiki/Voiceless_palato-alveolar_affricate "Wikipedia"
+[voiceless retroflex fricative]: https://en.wikipedia.org/wiki/Voiceless_retroflex_fricative "Wikipedia"
+[voiceless uvular affricate]: http://en.wikipedia.org/wiki/Voiceless_uvular_affricate "Wikipedia"
+[voiceless velar fricative]: http://en.wikipedia.org/wiki/Voiceless_velar_fricative "Wikipedia"
 
         </textarea>
       </article>
