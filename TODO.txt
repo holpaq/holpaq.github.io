@@ -1,6 +1,7 @@
 #+STARTUP: overview hidestars -*- org -*-
 
 * Programming
+** TODO Use «...» for English language examples (not *...*)
 ** TODO 'use strict' everywhere
 ** TODO Sort out CSS problem
    Each document should allow for some unique CSS (like the yellow background

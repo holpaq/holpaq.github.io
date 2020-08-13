@@ -182,10 +182,18 @@ function main($) {
                 '</b>';
         },
     });
-    showdown.extension('en', {                 // «...» = English
+    // Translation example. Use «...» for English or «:iso:...» for ISO
+    // language.
+    showdown.extension('en', {
         type: 'lang',
-        regex: /«([^»]+)»/g,
-        replace: '<i class=transl>$1</i>',
+        filter: (md) => md.replace(/«([^»]+)»/g, (_, md) => {
+            let lang = 'en';
+            md = md.replace(/^:([^:\s]+):/, (_, prefix) => {
+                lang = prefix;
+                return '';
+            });
+            return '<i lang="'+lang+'" class="transl">'+md+'</i>';
+        }),
     });
     showdown.extension('ref', {
         type: 'lang',
