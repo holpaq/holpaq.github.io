@@ -17,6 +17,30 @@ if (!String.prototype.supplant) {
     let lookup = input.reduce((a, k, i) => Object.assign(a, {[k]: output[i]}), {});
 }
 
+function walkTheDOM(e, func) {
+    func(e);
+    e = e.firstChild;
+    while (e) {
+        walkTheDOM(e, func);
+        e = e.nextSibling;
+    }
+}
+
+// Traverse jQuery set recursively, and insert '<wbr>' after '/' in text nodes.
+function insertOptionalBreakAfterSlash($e) {
+    $e.each((_, e) => {
+        walkTheDOM(e, (e) => {
+            if (e.nodeType === 3) {
+                const text = e.data;
+                const html = text.replace(/\//g, '/<wbr>')
+                if (html !== text) {
+                    $(e).replaceWith(html);
+                }
+            }
+        });
+    });
+}
+
 /******************************************************************************/
 
 const scriptPath = getRelativeScriptPath();
@@ -352,7 +376,7 @@ function main($) {
             level = num;
             let z = "<li class='h{level}' hanging><a href='#{link}'>{text}</a>\n".supplant({
                 level: num,
-                text: $h.html().replace(/[^<]\//g, (x) => x + "<wbr>"),
+                text: $h.html(),
                 link: $h.attr("id"),
             });
             //console.log(num, z);
@@ -365,6 +389,8 @@ function main($) {
 
     // Add 'target="_blank"' to all external links.
     $("a[href]:not([href^='#'],[href^='javascript:'])").attr("target", "_blank");
+
+    insertOptionalBreakAfterSlash($('html'));
 }
 
 function openLink(src) {
