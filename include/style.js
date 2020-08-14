@@ -17,6 +17,13 @@ if (!String.prototype.supplant) {
     let lookup = input.reduce((a, k, i) => Object.assign(a, {[k]: output[i]}), {});
 }
 
+function escapeHtml(text) {
+    'use strict';
+    return text.replace(/[\"&<>]/g, function (a) {
+        return { '"': '&quot;', '&': '&amp;', '<': '&lt;', '>': '&gt;' }[a];
+    });
+}
+
 function walkTheDOM(e, func) {
     func(e);
     e = e.firstChild;
@@ -39,6 +46,53 @@ function insertOptionalBreakAfterSlash($e) {
             }
         });
     });
+}
+
+// This will replace any occurrence of the tag '<toc>' with a nested unordered
+// list containing a table of contents for the document with links to the
+// relevant headings. The outermost <ul> tag in the newly generated table of
+// content will have 'class=toc' set, and any attributes specified in the
+// '<toc>' tag will also be copied over.
+//
+// <h#> tags that have the class 'title' will not be included in the
+// table-of-contents.
+function insertTableOfContent() {
+    let $toc = $("toc");
+    var tocAttrs = $.map(
+        $toc.prop("attributes"),
+        (x) => " " + x.name +
+            (x.value === undefined ? "" : '="' + escapeHtml(x.value) + '"')
+    ).join("");
+
+    if ($toc.length === 0) { return; }
+    let level = 0;
+    let html = "";
+    $("h1,h2,h3,h4,h5,h6,h7").each((_, h) => {
+        let $h = $(h);
+        if ($h.attr('title') === "") {   // skip if 'title' attribute is used
+            return;
+        }
+        let num = $h.prop("tagName").match(/\d$/)[0];
+        if (!level) { level = num; }
+        if (num > level) {
+            //console.log("DEEPER");
+            html += (new Array(num - level + 1)).join("<ul>\n");
+        } else if (num < level) {
+            //console.log("SHALLOWER");
+            html += (new Array(level - num + 1)).join("</ul>\n");
+        }
+        level = num;
+        let z = "<li class='h{level}' hanging><a href='#{link}'>{text}</a>\n".supplant({
+            level: num,
+            text: $h.html(),
+            link: $h.attr("id"),
+        });
+        //console.log(num, z);
+        html += z;
+    });
+    $toc.replaceWith(
+        "<ul class=toc" + tocAttrs + " style='padding-top:0'>" + html + "</ul>"
+    );
 }
 
 /******************************************************************************/
@@ -340,57 +394,11 @@ function main($) {
         }
     });
 
-    function escapeHtml(text) {
-        'use strict';
-        return text.replace(/[\"&<>]/g, function (a) {
-            return { '"': '&quot;', '&': '&amp;', '<': '&lt;', '>': '&gt;' }[a];
-        });
-    }
-
-    // Add ID attribute to <h#> tags.
-    (() => {
-        let $toc = $("toc");
-        var tocAttrs = $.map(
-            $toc.prop("attributes"),
-            (x) => " " + x.name +
-                (x.value === undefined ? "" : '="' + escapeHtml(x.value) + '"')
-        ).join("");
-
-        if ($toc.length === 0) { return; }
-        let level = 0;
-        let html = "";
-        $("h1,h2,h3,h4,h5,h6,h7").each((_, h) => {
-            let $h = $(h);
-            if ($h.attr('title') === "") {   // skip if 'title' attribute is used
-                return;
-            }
-            let num = $h.prop("tagName").match(/\d$/)[0];
-            if (!level) { level = num; }
-            if (num > level) {
-                //console.log("DEEPER");
-                html += (new Array(num - level + 1)).join("<ul>\n");
-            } else if (num < level) {
-                //console.log("SHALLOWER");
-                html += (new Array(level - num + 1)).join("</ul>\n");
-            }
-            level = num;
-            let z = "<li class='h{level}' hanging><a href='#{link}'>{text}</a>\n".supplant({
-                level: num,
-                text: $h.html(),
-                link: $h.attr("id"),
-            });
-            //console.log(num, z);
-            html += z;
-        });
-        $toc.replaceWith(
-            "<ul class=toc" + tocAttrs + " style='padding-top:0'>" + html + "</ul>"
-        );
-    })();
-
     // Add 'target="_blank"' to all external links.
     $("a[href]:not([href^='#'],[href^='javascript:'])").attr("target", "_blank");
 
     insertOptionalBreakAfterSlash($('html'));
+    insertTableOfContent();
 }
 
 function openLink(src) {
