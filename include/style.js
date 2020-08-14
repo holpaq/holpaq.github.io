@@ -33,13 +33,17 @@ function walkTheDOM(e, func) {
     }
 }
 
-// Traverse jQuery set recursively, and insert '<wbr>' after '/' in text nodes.
+// Traverse a set of jQuery elements recursively, inserting '<wbr>' after '/'
+// in text nodes if the word after '/' is five letters or longer (this
+// limitation is mostly to not break 'him/her/it/them' combinations, which, if
+// it occurs in the first cell of a table in TKD, looks really ugly since line
+// breaks are forced there).
 function insertOptionalBreakAfterSlash($e) {
     $e.each((_, e) => {
         walkTheDOM(e, (e) => {
             if (e.nodeType === 3) {
                 const text = e.data;
-                const html = text.replace(/\//g, '/<wbr>')
+                const html = text.replace(/\/(?=\w{5,})/g, '/<wbr>');
                 if (html !== text) {
                     $(e).replaceWith(html);
                 }
