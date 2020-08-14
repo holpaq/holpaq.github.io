@@ -1,6 +1,8 @@
 #+STARTUP: overview hidestars -*- org -*-
 
 * Programming
+** TODO Linking between main document and sources
+** TODO Use Microsoft Times New Roman (for IPA support)
 ** TODO Use «...» for English language examples (not *...*)
 ** TODO 'use strict' everywhere
 ** TODO Sort out CSS problem
@@ -17,11 +19,11 @@
 ** TODO Allow for videos with transcripts
    Youtube videos with Marc is a good source for some stuff. We need to be able
    to link to it, somehow.
-** TODO Markup for page numbers
-   This would be used for TKD, TKW and KGT (at least)
-** TODO Markup for adding <a id="SOMETHING"></a>
-   This would be used by teresh.html
-** TODO Resizing of source & main div
+** TODO Allow for resizing of source & main div
+** TODO Table of content function should not convert element <-> HTML
+   Currently the `insertTableOfContent()` function extracts `<h#>` tags
+   converts them to HTML. There's no real need for going from elements to HTML
+   and then back again, and maybe we shouldn't do that?
 * Sources to add
 ** TODO [Klingon 101: The Sounds of Klingon][Klingon 101] (video, November 2016)
    A lecture on Klingon given by Marc Okrand at Starbase Indy 2016 in
@@ -209,3 +211,10 @@
    CLOSED: [2020-08-12 Wed 18:41]
 ** DONE Add newer suffix tables
    CLOSED: [2020-08-12 Wed 21:53]
+** DONE Markup for adding <a id="SOMETHING"></a>
+   CLOSED: [2020-08-14 Fri 09:22]
+   This is used by `teresh.html` and `index.html` and page numbers in
+   `tkd.html`.
+** DONE Markup for page numbers
+   CLOSED: [2020-08-14 Fri 18:14]
+   This would be used for TKD, TKW and KGT (at least)

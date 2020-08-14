@@ -294,6 +294,16 @@ function main($) {
         regex: /‹([^›]+)›/g,
         replace: '<mark>$1</mark>',
     });
+    // [#...] -> <a id="..."></a>. IDs must not contain space, nor any of
+    // '.:[]' (colon and period interferes with CSS styling). Note: Spaces and
+    // tabs following the tag are also stripped (but not newlines, so if you
+    // put it on a paragraph of its own you'll get an empty paragraph with just
+    // an <a> tag in it!)
+    showdown.extension('id', {
+        type: 'lang',
+        regex: /\[#([^.:\[\]\s]+)\][\t ]*/g,
+        replace: '<a id="$1"></a>',
+    });
     // Table in '| xxx | yyy' format. Cell separator ('|') may be surrounded by
     // space. Rows start with '|', but do not end in '|' (unless you want extra
     // empty table cells at the end of the row). Last cell have 'colspan'
@@ -335,7 +345,7 @@ function main($) {
     });
     // https://github.com/showdownjs/showdown/wiki/Showdown-Options
     const converter = new showdown.Converter({
-        extensions        : ['table', 'tlh', 'en', 'ref'],
+        extensions        : ['id', 'table','tlh', 'en', 'ref'],
         simplifiedAutoLink: true,
         strikethrough     : true,
         underline         : true,
