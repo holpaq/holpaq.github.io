@@ -57,41 +57,39 @@ function insertOptionalBreakAfterSlash($e) {
 // <h#> tags that have the class 'title' will not be included in the
 // table-of-contents.
 function insertTableOfContent() {
-    let $toc = $("toc");
-    var tocAttrs = $.map(
-        $toc.prop("attributes"),
-        (x) => " " + x.name +
-            (x.value === undefined ? "" : '="' + escapeHtml(x.value) + '"')
-    ).join("");
+    let $toc = $('toc');
+    if ($toc.length === 0) {                   // abort if <toc> not found
+        return;
+    }
+    let tocAttrs = $.map(
+        $toc.prop('attributes'),
+        (x) => ' ' + x.name +
+            (x.value === undefined ? '' : '="' + escapeHtml(x.value) + '"')
+    ).join('');
 
-    if ($toc.length === 0) { return; }
     let level = 0;
-    let html = "";
-    $("h1,h2,h3,h4,h5,h6,h7").each((_, h) => {
+    let html = '';
+    $('h1,h2,h3,h4,h5,h6,h7').each((_, h) => {
         let $h = $(h);
-        if ($h.attr('title') === "") {   // skip if 'title' attribute is used
+        if ($h.attr('title') === '') {   // skip if 'title' attribute is used
             return;
         }
-        let num = $h.prop("tagName").match(/\d$/)[0];
+        let num = $h.prop('tagName').match(/\d$/)[0];
         if (!level) { level = num; }
         if (num > level) {
-            //console.log("DEEPER");
-            html += (new Array(num - level + 1)).join("<ul>\n");
+            html += (new Array(num - level + 1)).join('<ul>\n');
         } else if (num < level) {
-            //console.log("SHALLOWER");
-            html += (new Array(level - num + 1)).join("</ul>\n");
+            html += (new Array(level - num + 1)).join('</ul>\n');
         }
         level = num;
-        let z = "<li class='h{level}' hanging><a href='#{link}'>{text}</a>\n".supplant({
+        html += '<li class="h{level}" hanging><a href="#{link}">{text}</a>\n'.supplant({
             level: num,
             text: $h.html(),
-            link: $h.attr("id"),
+            link: $h.attr('id'),
         });
-        //console.log(num, z);
-        html += z;
     });
     $toc.replaceWith(
-        "<ul class=toc" + tocAttrs + " style='padding-top:0'>" + html + "</ul>"
+        '<ul class=toc' + tocAttrs + ' style="padding-top:0">' + html + '</ul>',
     );
 }
 
