@@ -57,6 +57,7 @@ function insertOptionalBreakAfterSlash($e) {
 // <h#> tags that have the class 'title' will not be included in the
 // table-of-contents.
 function insertTableOfContent() {
+    'use strict';
     let $toc = $('toc');
     if ($toc.length === 0) {                   // abort if <toc> not found
         return;
@@ -67,6 +68,19 @@ function insertTableOfContent() {
             (x.value === undefined ? '' : '="' + escapeHtml(x.value) + '"')
     ).join('');
 
+    // Create ToC item from '<h#>...</h#>' element.
+    function tocItem($h) {
+        let $i = $h.clone();
+        $i.find('a').replaceWith(function() { // strip any <a> tags, but keep
+            return $(this).contents();        //   their content
+        });
+        $i.find('[id],[name]').replaceWith(   // strip content 'id' and 'name'
+            function() {                      //   attributes
+                return $(this).removeAttr('id').removeAttr('name');
+            }
+        );
+        return $i.html();
+    }
     let level = 0;
     let html = '';
     $('h1,h2,h3,h4,h5,h6,h7').each((_, h) => {
@@ -84,7 +98,7 @@ function insertTableOfContent() {
         level = num;
         html += '<li class="h{level}" hanging><a href="#{link}">{text}</a>\n'.supplant({
             level: num,
-            text: $h.html(),
+            text: tocItem($h),
             link: $h.attr('id'),
         });
     });
