@@ -55,4 +55,13 @@ sub { top: .4em; }
 .toc, .toc ul { list-style: none; }       /* no bullets */
 .toc ul { margin-top: 0; }
 
+/***** Marking of source chunks *****/
+mark {
+    background: rgba(0, 0, 0, .05);
+    border-radius: 4px;
+}
+mark:hover {
+    background: rgba(0, 0, 0, .2);
+}
+
 /* eof */
