@@ -4,4 +4,13 @@
     box-sizing: border-box;
 }
 
+/***** Subscript/superscript ********/
+sup, sub {
+    vertical-align: baseline;
+    position: relative;
+    line-height: 0;
+    top: -.4em;
+}
+sub { top: .4em; }
+
 /* eof */

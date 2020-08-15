@@ -287,13 +287,4 @@ mark:hover {
     background: rgba(0, 0, 0, .2);
 }
 
-sup, sub {
-    vertical-align: baseline;
-    position: relative;
-    line-height: 0;
-    top: -.4em;
-}
-sub {
-    top: .4em;
-}
 /* eof */
