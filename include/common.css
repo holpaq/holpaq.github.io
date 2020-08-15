@@ -94,6 +94,9 @@ td[indent], th[indent] {
     padding-left: calc(var(--cellpad) + var(--hgrid));
 }
 
+/***** Background color for TODO notes and errata *****/
+err, [TODO] { background: var(--hilite); }
+
 /***** Button *****/
 button {
     background: #aaf;

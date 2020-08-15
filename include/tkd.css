@@ -104,6 +104,4 @@ h4 {
 
 h4 + h4 { margin-top: 0; }
 
-err, [TODO] { background: var(--hilite); }
-
 /* eof */
