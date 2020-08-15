@@ -33,6 +33,14 @@ html {
     --serif: 'Times New Roman', TimesNewRoman, Times;
 }
 
+/***** Links ********/
+a {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
 /***** Subscript/superscript ********/
 sup, sub {
     vertical-align: baseline;

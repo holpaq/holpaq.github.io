@@ -162,11 +162,4 @@ td[indent], th[indent] {
     /* background: var(--hilite); */
 }
 
-a {
-    text-decoration: none;
-}
-a:hover {
-    text-decoration: underline;
-}
-
 /* eof */
