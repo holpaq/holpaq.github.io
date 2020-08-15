@@ -1,6 +1,6 @@
 @import url("common.css");
 
-:root {
+html { /* or :root */
     font-size: 18px;
     line-height: 1.5;      /* = 27px for (unresized) 18px text */
     --rem: 18px;
