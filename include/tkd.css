@@ -122,16 +122,6 @@ h4 + h4 { margin-top: 0; }
 
 details, err, [TODO] { background: var(--hilite); }
 
-[hanging] {
-    text-indent: calc(var(--hgrid) * -1);
-    padding-left: var(--hgrid);
-}
-[hanging] td {
-    width: 33%;
-    text-indent: calc(var(--hgrid) * -1);
-    padding-left: calc(var(--cellpad) + var(--hgrid));
-}
-
 aside {
     /* Every 4th line of text lines up with every 3rd line of the main text */
     --line-height: calc(var(--vgrid) * 2 / 3); /* 2/3 of vgrid */
@@ -148,14 +138,6 @@ aside {
 
     /* Push text down to baseline using top margin. */
     margin: var(--line-height)  0      calc(var(--vgrid) * .5)  var(--hgrid);
-}
-
-[indent] {
-    padding-left: var(--hgrid);
-}
-td[indent], th[indent] {
-    padding-left: calc(var(--cellpad) + var(--hgrid));
-    /* background: var(--hilite); */
 }
 
 /* eof */

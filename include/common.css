@@ -78,6 +78,22 @@ mark:hover {
     background: rgba(0, 0, 0, .2);
 }
 
+/***** Special indents *****/
+[hanging] {
+    text-indent: calc(var(--hgrid) * -1);
+    padding-left: var(--hgrid);
+}
+[hanging] td {
+    text-indent: calc(var(--hgrid) * -1);
+    padding-left: calc(var(--cellpad) + var(--hgrid));
+}
+[indent] {
+    padding-left: var(--hgrid);
+}
+td[indent], th[indent] {
+    padding-left: calc(var(--cellpad) + var(--hgrid));
+}
+
 /***** Button *****/
 button {
     background: #aaf;
