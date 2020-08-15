@@ -27,27 +27,18 @@ html.DEBUG {
     }
 }
 
-blockquote, ol, ul {
+ol, ul {
     margin-left: var(--hgrid);
 }
-blockquote {
-    margin-left: var(--hgrid);
-    margin-right: var(--hgrid);
-}
-
 li > ol, li > ul {
     margin-left: 0;
 }
 
 /* Margins */
-blockquote, ol, table, ul {
+ol, table, ul {
     margin-top: var(--vgrid);
 }
 h4 + h4 { margin-top: 0; }
-
-blockquote {
-    text-align: justify;
-}
 
 hr {
     padding: calc(var(--vgrid) * .5) 0 calc(var(--vgrid) * .5);

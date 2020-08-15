@@ -49,6 +49,12 @@ p + p {
     text-indent: var(--hgrid);
 }
 
+/***** Blockquotes *****/
+blockquote {
+    margin: var(--vgrid) var(--hgrid) 0;
+    text-align: justify;
+}
+
 /***** Links ********/
 a {
     text-decoration: none;
