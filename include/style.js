@@ -75,11 +75,11 @@ function insertTableOfContent() {
     // Create ToC item from '<h#>...</h#>' element.
     function tocItem($h) {
         let $i = $h.clone();
-        $i.find('a').replaceWith(function() { // strip any <a> tags, but keep
-            return $(this).contents();        //   their content
+        $i.find('a,err').replaceWith(function() { // strip <err> and <a> tags,
+            return $(this).contents();            //    but keep their content
         });
-        $i.find('[id],[name]').replaceWith(   // strip content 'id' and 'name'
-            function() {                      //   attributes
+        $i.find('[id],[name]').replaceWith(       // strip 'id' and 'name'
+            function() {                          //   attributes
                 return $(this).removeAttr('id').removeAttr('name');
             }
         );
