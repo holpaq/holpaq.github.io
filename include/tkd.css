@@ -25,10 +25,6 @@ html { /* or :root */
     /* background-position: 0 -9px; */
 }
 
-body {
-    margin: 0 var(--hgrid) var(--vgrid);
-}
-
 h1, h2, h3 {
     text-align: left;
 }

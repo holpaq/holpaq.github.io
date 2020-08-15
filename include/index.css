@@ -11,9 +11,6 @@ html { /* or :root */
     --hilite: rgba(0, 0, 255, .25);
     --sans: sans-serif;
     font-family: var(--serif);
-
-    height: 100%;
-    overflow-y: scroll;
 }
 
 html.DEBUG {
@@ -29,12 +26,6 @@ html.DEBUG {
         background-position: calc(50% + (var(--vgrid) * .5)) -7px;
     }
 }
-
-body {
-    margin: 0 var(--hgrid) var(--vgrid);
-    min-height: 100%;
-}
-
 
 blockquote, ol, ul {
     margin-left: var(--hgrid);

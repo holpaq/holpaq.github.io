@@ -31,6 +31,12 @@
 }
 html {
     --serif: 'Times New Roman', TimesNewRoman, Times;
+
+    height: 100%; overflow-y: scroll;
+}
+body {
+    margin: 0 var(--hgrid) var(--vgrid);
+    min-height: 100%;
 }
 
 /***** Links ********/
