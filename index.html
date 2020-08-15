@@ -11,15 +11,10 @@
       body, html { margin: 0; }
       article { padding: var(--vgrid) var(--hgrid); }
       aside {
-        padding: 1em;
+        padding: calc(var(--vgrid) * .5) calc(var(--hgrid) * .5);
         margin: 0;
         display: block;
-        XXborder: 1px solid black;
         position: fixed;
-      }
-      article {
-        XXbackground: #fff;
-        XXbox-shadow: 0 0 15px 15px rgba(0,0,0,.5);
       }
       iframe {
         background: #fff;

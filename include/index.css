@@ -40,10 +40,8 @@ li > ol, li > ul {
 }
 
 /* Margins */
-aside, blockquote, details, ol, p, table, ul {
+blockquote, ol, p, table, ul {
     margin-top: var(--vgrid);
-    /* border-top: var(--vgrid) solid transparent; /\* rgba(255,0,0,.5); *\/ */
-    /* outline: 1px solid var(--hilite); */
 }
 p + p, h4 + h4 { margin-top: 0; }
 p + p { text-indent: var(--hgrid); }
@@ -65,20 +63,15 @@ table {
     font-size: inherit;
     line-height: inherit;
 
-    /* table-layout: fixed; */
     border-collapse: collapse;
     margin-left: calc(var(--hgrid) * .75); /* with cellpadding, a whole <hgrid> */
 }
 table.example td:empty {
     width: var(--vgrid); /* with cellpadding, a whole <vgrid> */
 }
-table.example td:empty:not([colspan]) {
-    /* background: red !important; */
-}
 table td,
 table th {
     padding: 0 var(--cellpad);
-    /* outline: 1px solid var(--hilite); */
     height: var(--vgrid);
     vertical-align: top;
     width: 1%;
@@ -133,36 +126,6 @@ h4 {
     font-size: 1rem;
 }
 
-details, err, [TODO] { background: var(--hilite); }
-
-details {
-    padding-left: var(--hgrid);
-    padding-right: var(--hgrid);
-}
-details > summary {
-    margin-left: calc(var(--hgrid) * -1);
-    margin-right: calc(var(--hgrid) * -1);
-}
-
-details[open] { padding-bottom: var(--vgrid); }
-details[open] > summary { margin-bottom: var(--vgrid); }
-
-aside {
-    /* Every 4th line of text lines up with every 3rd line of the main text */
-    --line-height: calc(var(--vgrid) * 2 / 3); /* 2/3 of vgrid */
-    --font-size:   calc(1rem * .8);            /* 80% of base font size */
-    --vpadding:    calc(var(--vgrid) * .5);
-    --hpadding:    var(--hgrid);
-    line-height: var(--line-height);
-    font-size:   var(--font-size);
-
-    float: right;
-    width: calc(var(--hgrid) * 7);
-    XXoutline: 1px solid black;
-    padding: var(--vpadding) var(--hpadding);
-
-    /* Push text down to baseline using top margin. */
-    margin: var(--line-height)  0      calc(var(--vgrid) * .5)  var(--hgrid);
-}
+err, [TODO] { background: var(--hilite); }
 
 /* eof */
