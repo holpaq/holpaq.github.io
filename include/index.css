@@ -171,11 +171,7 @@ h4 {
     font-size: 1rem;
 }
 
-page {
-    display: none;
-}
-
-details, err, [todo] { background: var(--hilite); }
+details, err, [TODO] { background: var(--hilite); }
 
 details {
     padding-left: var(--hgrid);

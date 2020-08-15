@@ -148,11 +148,7 @@ h4 {
 
 h4 + h4 { margin-top: 0; }
 
-page {
-    display: none;
-}
-
-details, err, [todo] { background: var(--hilite); }
+details, err, [TODO] { background: var(--hilite); }
 
 [hanging] {
     text-indent: calc(var(--hgrid) * -1);
