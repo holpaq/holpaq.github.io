@@ -8,6 +8,7 @@ html { /* or :root */
     --vgrid: calc(var(--rem) * 1.5);
     --cellpad: calc(var(--hgrid) * .25); /* table cell padding */
 
+    font-family: var(--serif);
     --hilite: rgba(0, 0, 255, .25);
 }
 

@@ -2,7 +2,6 @@
 
 * Programming
 ** TODO Linking between main document and sources
-** TODO Use Microsoft Times New Roman (for IPA support)
 ** TODO Use «...» for English language examples (not *...*)
 ** TODO 'use strict' everywhere
 ** TODO Sort out CSS problem
@@ -218,3 +217,5 @@
 ** DONE Markup for page numbers
    CLOSED: [2020-08-14 Fri 18:14]
    This would be used for TKD, TKW and KGT (at least)
+** DONE Use Microsoft Times New Roman (for IPA support)
+   CLOSED: [2020-08-15 Sat 16:39]

@@ -9,7 +9,6 @@ html { /* or :root */
     --cellpad: calc(var(--hgrid) * .25); /* table cell padding */
 
     --hilite: rgba(0, 0, 255, .25);
-    --serif: Georgia, serif;
     --sans: sans-serif;
     font-family: var(--serif);
 

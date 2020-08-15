@@ -4,6 +4,35 @@
     box-sizing: border-box;
 }
 
+/***** Fonts ********/
+@font-face {
+    font-family: 'Times New Roman';
+    src: url('fonts/times.ttf');
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Times New Roman';
+    src: url('fonts/timesbd.ttf');
+    font-weight: bold;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Times New Roman';
+    src: url('fonts/timesi.ttf');
+    font-style: italic;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Times New Roman';
+    src: url('fonts/timesbi.ttf');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+html {
+    --serif: 'Times New Roman', TimesNewRoman, Times;
+}
+
 /***** Subscript/superscript ********/
 sup, sub {
     vertical-align: baseline;
