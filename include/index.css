@@ -40,13 +40,12 @@ li > ol, li > ul {
 }
 
 /* Margins */
-blockquote, ol, p, table, ul {
+blockquote, ol, table, ul {
     margin-top: var(--vgrid);
 }
-p + p, h4 + h4 { margin-top: 0; }
-p + p { text-indent: var(--hgrid); }
+h4 + h4 { margin-top: 0; }
 
-p, blockquote {
+blockquote {
     text-align: justify;
 }
 

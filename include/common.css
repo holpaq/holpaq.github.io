@@ -39,6 +39,16 @@ body {
     min-height: 100%;
 }
 
+/***** Paragraphs *****/
+p {
+    margin-top: var(--vgrid);
+    text-align: justify;
+}
+p + p {
+    margin-top: 0;
+    text-indent: var(--hgrid);
+}
+
 /***** Links ********/
 a {
     text-decoration: none;

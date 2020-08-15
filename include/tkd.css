@@ -27,14 +27,7 @@ li > ol, li > ul {
     margin-left: 0;
 }
 
-h4, p, table { margin-top: var(--vgrid); }
-p {
-    text-align: justify;
-}
-p + p {
-    margin-top: 0;
-    text-indent: var(--hgrid);
-}
+h4, table { margin-top: var(--vgrid); }
 
 hr {
     padding: calc(var(--vgrid) * .5) 0 calc(var(--vgrid) * .5);
