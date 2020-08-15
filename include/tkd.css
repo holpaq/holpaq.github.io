@@ -1,9 +1,4 @@
-* {
-    margin: 0;
-    padding: 0;
-    XXbackground: rgba(255, 0, 0, .25);
-    box-sizing: border-box;
-}
+@import url("common.css");
 
 :root {
     font-size: 18px;
