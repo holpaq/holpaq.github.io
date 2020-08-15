@@ -107,7 +107,7 @@ function insertTableOfContent() {
         });
     });
     $toc.replaceWith(
-        '<ul class=toc' + tocAttrs + ' style="padding-top:0">' + html + '</ul>',
+        '<ul class=toc' + tocAttrs + '>' + html + '</ul>',
     );
 }
 
