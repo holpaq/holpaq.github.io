@@ -13,4 +13,17 @@ sup, sub {
 }
 sub { top: .4em; }
 
+/***** Table-of-contents *****/
+.toc {
+    margin-left: 0;                       /* don't indent 1st <ul> level */
+    text-align: left;
+    columns: calc(var(--hgrid) * 10) auto;
+    column-gap: var(--hgrid);
+    /* column-rule: 1px solid black; */
+}
+.toc .h4,                                 /* hide <h4> headers */
+.toc > li:first-child { display: none; }  /* hide 1st entry 'Contents' */
+.toc, .toc ul { list-style: none; }       /* no bullets */
+.toc ul { margin-top: 0; }
+
 /* eof */

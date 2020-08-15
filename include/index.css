@@ -36,12 +36,6 @@ body {
     min-height: 100%;
 }
 
-.toc {
-    text-align: left;
-}
-.toc .h4 {
-    display: none;
-}
 
 blockquote, ol, ul {
     margin-left: var(--hgrid);
@@ -67,23 +61,6 @@ p + p { text-indent: var(--hgrid); }
 p, blockquote {
     text-align: justify;
 }
-
-.toc {
-    columns: calc(var(--hgrid) * 10) auto;
-    column-gap: var(--hgrid);
-    XXcolumn-rule-color: black;
-    XXcolumn-rule-style: solid;
-    XXcolumn-rule-width: 1px;
-}
-
-/* Lists in table-of-contents. */
-.toc > li:first-child { display: none; }  /* hide 1st entry 'Contents' */
-.toc { margin-left: 0; }                  /* don't indent 1st level */
-.toc, .toc ul {                           /* no bullets */
-    list-style: none;
-    background: none;
-}
-.toc ul { margin-top: 0; }
 
 hr {
     padding: calc(var(--vgrid) * .5) 0 calc(var(--vgrid) * .5);

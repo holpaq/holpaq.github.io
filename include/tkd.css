@@ -28,11 +28,8 @@ body {
     margin: 0 var(--hgrid) var(--vgrid);
 }
 
-.toc, h1, h2, h3 {
+h1, h2, h3 {
     text-align: left;
-}
-.toc .h4 {
-    display: none;
 }
 
 ol, ul {
@@ -51,23 +48,6 @@ p + p {
     margin-top: 0;
     text-indent: var(--hgrid);
 }
-
-.toc {
-    columns: calc(var(--hgrid) * 10) auto;
-    column-gap: var(--hgrid);
-    XXcolumn-rule-color: black;
-    XXcolumn-rule-style: solid;
-    XXcolumn-rule-width: 1px;
-}
-
-/* Lists in table-of-contents. */
-ul.toc > li:first-child { display: none; }  /* hide 1st entry 'Contents' */
-ul.toc { margin-left: 0; }                /* don't indent 1st level */
-ul.toc, ul.toc ul {                       /* no bullets */
-    list-style: none;
-    background: none;
-}
-
 
 hr {
     padding: calc(var(--vgrid) * .5) 0 calc(var(--vgrid) * .5);
