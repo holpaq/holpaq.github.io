@@ -1,6 +1,8 @@
 #+STARTUP: overview hidestars -*- org -*-
 
 * Programming
+** TODO Styling of lists
+   Nested lists are not handled properly.
 ** TODO Linking between main document and sources
 ** TODO Use «...» for English language examples (not *...*)
 ** TODO 'use strict' everywhere

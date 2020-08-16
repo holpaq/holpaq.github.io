@@ -55,6 +55,14 @@ blockquote {
     text-align: justify;
 }
 
+/***** Lists *****/
+ol, ul {
+    margin: var(--vgrid) 0 0 var(--hgrid);
+}
+li > ol, li > ul {
+    margin-left: 0;
+}
+
 /***** Links ********/
 a {
     text-decoration: none;

@@ -27,15 +27,8 @@ html.DEBUG {
     }
 }
 
-ol, ul {
-    margin-left: var(--hgrid);
-}
-li > ol, li > ul {
-    margin-left: 0;
-}
-
 /* Margins */
-ol, table, ul {
+table {
     margin-top: var(--vgrid);
 }
 h4 + h4 { margin-top: 0; }

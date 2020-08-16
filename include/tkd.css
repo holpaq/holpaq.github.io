@@ -20,13 +20,6 @@ html.DEBUG {
     background-position: 0 -9px;
 }
 
-ol, ul {
-    margin-left: var(--hgrid);
-}
-li > ol, li > ul {
-    margin-left: 0;
-}
-
 h4, table { margin-top: var(--vgrid); }
 
 hr {
