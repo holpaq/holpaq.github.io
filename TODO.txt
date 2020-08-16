@@ -1,6 +1,10 @@
 #+STARTUP: overview hidestars -*- org -*-
 
 * Programming
+** TODO Styling of tables
+   Are these lines necessary?
+   font-size: inherit;
+   line-height: inherit;
 ** TODO Styling of lists
    Nested lists are not handled properly.
 ** TODO Linking between main document and sources

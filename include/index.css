@@ -28,9 +28,6 @@ html.DEBUG {
 }
 
 /* Margins */
-table {
-    margin-top: var(--vgrid);
-}
 h4 + h4 { margin-top: 0; }
 
 hr {
@@ -41,29 +38,6 @@ hr {
     border: 0;
 }
 hr:before { content: "★  ★  ★"; }
-
-table {
-    font-size: inherit;
-    line-height: inherit;
-
-    border-collapse: collapse;
-    margin-left: calc(var(--hgrid) * .75); /* with cellpadding, a whole <hgrid> */
-}
-table.example td:empty {
-    width: var(--vgrid); /* with cellpadding, a whole <vgrid> */
-}
-table td,
-table th {
-    padding: 0 var(--cellpad);
-    height: var(--vgrid);
-    vertical-align: top;
-    width: 1%;
-}
-
-table td:last-child,
-table th:last-child {
-    width: unset;
-}
 
 [title] { text-align: center; }
 
