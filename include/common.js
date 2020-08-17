@@ -1,6 +1,10 @@
+/*jshint esversion: 9, strict: true, browser: true, jquery: true, devel: false*/
+/*global showdown */
+
 if (!String.prototype.supplant) {
     String.prototype.supplant = function (o) {
-        return this.replace(/{([^{}]*)}/g, (a, b) => {
+        'use strict';
+        return this.replace(/\{([^{}]*)\}/g, (a, b) => {
             let r = o[b];
             return typeof r === 'string' || typeof r === 'number' ? r : a;
         });
@@ -10,8 +14,9 @@ if (!String.prototype.supplant) {
 // From: https://codereview.stackexchange.com/a/132140/197081
 {
     String.prototype.rot13 = function() {
+        'use strict';
         return this.split('').map(x => lookup[x] || x).join('');
-    }
+    };
     let input  = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
     let output = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'.split('');
     let lookup = input.reduce((a, k, i) => Object.assign(a, {[k]: output[i]}), {});
@@ -19,12 +24,13 @@ if (!String.prototype.supplant) {
 
 function escapeHtml(text) {
     'use strict';
-    return text.replace(/[\"&<>]/g, function (a) {
+    return text.replace(/["&<>]/g, function (a) {
         return { '"': '&quot;', '&': '&amp;', '<': '&lt;', '>': '&gt;' }[a];
     });
 }
 
 function walkTheDOM(e, func) {
+    'use strict';
     func(e);
     e = e.firstChild;
     while (e) {
@@ -39,6 +45,7 @@ function walkTheDOM(e, func) {
 // it occurs in the first cell of a table in TKD, looks really ugly since line
 // breaks are forced there).
 function insertOptionalBreakAfterSlash($e) {
+    'use strict';
     $e.each((_, e) => {
         walkTheDOM(e, (e) => {
             if (e.nodeType === 3) {
@@ -118,6 +125,7 @@ const scriptPath = getRelativeScriptPath();
 include(scriptPath + "jquery-3.5.1.slim.min.js", afterjQueryLoad);
 
 function afterjQueryLoad() {
+    'use strict';
     // jQuery .reduce() plugin (from https://bugs.jquery.com/ticket/1886)
     jQuery.fn.reduce = [].reduce;
 
@@ -137,6 +145,7 @@ function afterjQueryLoad() {
 
 // Enable 'Show page' button when showdown has loaded.
 function afterShowdownLoad() {
+    'use strict';
     const $elem = $('[markdown]:first');   // 1st element with attr 'markdown'
     if ($elem.is('[rot13]')) {
         const $btn = $('<button>Show page</button>').prependTo('body');
@@ -159,6 +168,7 @@ function afterShowdownLoad() {
 
 // Load Javascript, then invoke callback function.
 function include(url, callback) {
+    'use strict';
     var tag;
     if (url.match(/\.css$/i)) {                 // CSS
         tag = document.createElement("link");
@@ -180,6 +190,7 @@ function include(url, callback) {
 // Get Javascript path. (Path name relative to the page the script was included
 // on.)
 function getRelativeScriptPath() {
+    'use strict';
     // Lists with each path component for element (removing trailing filename).
     let [script, page] = [
         document.currentScript.src.split("/").slice(0, -1), // page url
@@ -198,9 +209,10 @@ function getRelativeScriptPath() {
 }
 
 function asciify(txt) {
+    'use strict';
     return txt
         .normalize("NFD")                  // turn accents into own chars
-        .replace(/[^a-z0-9\n\r -]/gui, "") // strip off non A-Z, space or hyphen
+        .replace(/[^a-z0-9\n\r\u0020\-]/gui, "") // strip off non A-Z, space or hyphen
         .replace(/\s+/gu, "-")
         .toLowerCase();
 }
@@ -210,6 +222,7 @@ function asciify(txt) {
 // reconfigured markdown, and the second is an object with references to for
 // all the links found.
 function getMarkdownLinks(md) {
+    'use strict';
     let refs = {};
     const singleRefReStr = '\\[([^\\[\\]]+)\\]:\\s*(\\S+)(?:\\s+"([^"]*)")?\\n';
     const onlyReferences = new RegExp("^(" + singleRefReStr + ")+$");
@@ -245,7 +258,7 @@ function getMarkdownLinks(md) {
         Object.keys(refs).sort().map((name) => {
             const [fullLink, title] = refs[name];
             const [link, pageOffset] = fullLink
-                .match(/^(.*?)([+-][0-9]+)?$/).slice(1);
+                .match(/^(.*?)([+\-][0-9]+)?$/).slice(1);
             refs[name].push(parseInt(pageOffset, 10) || 0);
             refs[name][0] = link;
             return (
@@ -259,6 +272,7 @@ function getMarkdownLinks(md) {
 /******************************************************************************/
 
 function main($) {
+    'use strict';
     const $elem = $('[markdown]:first');   // 1st element with attr 'markdown'
     const [text, refs] = getMarkdownLinks(($elem.text() || "")[
         $elem.is('[rot13]') ? 'rot13' : 'toString' // rot13 decode
@@ -428,6 +442,7 @@ function main($) {
 }
 
 function openLink(src) {
+    'use strict';
     $('iframe').attr('src', src);
 }
 
