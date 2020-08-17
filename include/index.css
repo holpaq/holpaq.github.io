@@ -1,34 +1,11 @@
 @import url("common.css");
 
-html { /* or :root */
-    font-size: 18px;
-    line-height: 1.3333333333em;      /* = 24px for (unresized) 18px text */
-    --rem: 18px;
-    --hgrid: calc(var(--rem) * 1.3333333333);
-    --vgrid: calc(var(--rem) * 1.3333333333);
-    --cellpad: calc(var(--hgrid) * .25); /* table cell padding */
-
-    --hilite: rgba(0, 0, 255, .25);
-    --sans: sans-serif;
-    font-family: var(--serif);
-}
-
-html.DEBUG {
-    /* Background grid. */
-    background-image: linear-gradient(       var(--hilite) 1px, transparent 1px),
-                      linear-gradient(90deg, var(--hilite) 1px, transparent 1px);
-    background-size:  var(--hgrid) var(--vgrid);
-    background-position: 0 -7px;
-}
 /* Landscape mode. */
 @media (min-aspect-ratio: 1/1) {
     html.DEBUG {
-        background-position: calc(50% + (var(--vgrid) * .5)) -7px;
+        background-position: calc(50% + (var(--vgrid) * .5)) -9px;
     }
 }
-
-/* Margins */
-h4 + h4 { margin-top: 0; }
 
 hr {
     padding: calc(var(--vgrid) * .5) 0 calc(var(--vgrid) * .5);
@@ -38,49 +15,5 @@ hr {
     border: 0;
 }
 hr:before { content: "★  ★  ★"; }
-
-[title] { text-align: center; }
-
-/* https://web.archive.org/save/_embed/https://www.modularscale.com/?18&px&1.25 */
-/* Base fontsize: 18px, ratio 1.25 (4:5 major third) */
-h1[title] {
-    margin-top: calc(var(--vgrid) * 3);
-    line-height: calc(var(--vgrid) * 3);
-    font-size: 54.932px;                 /* or 3.052em */
-    position: relative; top: -13px;      /* text baseline to vertical rhythm */
-}
-h2[title] {
-    margin-top: calc(var(--vgrid) * 3);
-    line-height: calc(var(--vgrid) * 2);
-    font-size: 43.945px;                 /* or 2.441em */
-    position: relative; top: -21px;      /* text baseline to vertical rhythm */
-}
-
-h1 {
-    margin-top: calc(var(--vgrid) * 3);
-    line-height: calc(var(--vgrid) * 2);
-    font-size: 35.156px;                 /* or 1.953em */
-    position: relative; top: -18px;      /* text baseline to vertical rhythm */
-}
-
-h2 {
-    margin-top: calc(var(--vgrid) * 2);
-    line-height: calc(var(--vgrid) * 2);
-    font-size: 28.125px;                 /* or 1.563em */
-    position: relative; top: 8px;        /* text baseline to vertical rhythm */
-}
-
-h3 {
-    margin-top: var(--vgrid);
-    line-height: calc(var(--vgrid) * 2);
-    font-size: 22.5px;                   /* or 1.25em */
-    position: relative; top: 10px;       /* text baseline to vertical rhythm */
-}
-
-h4 {
-    margin-top: var(--vgrid);
-    font-weight: normal;
-    font-size: 1rem;
-}
 
 /* eof */

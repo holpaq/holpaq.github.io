@@ -1,27 +1,5 @@
 @import url("common.css");
 
-html { /* or :root */
-    font-size: 18px;
-    line-height: 1.5;      /* = 27px for (unresized) 18px text */
-    --rem: 18px;
-    --hgrid: calc(var(--rem) * 1.5);
-    --vgrid: calc(var(--rem) * 1.5);
-    --cellpad: calc(var(--hgrid) * .25); /* table cell padding */
-
-    font-family: var(--serif);
-    --hilite: rgba(0, 0, 255, .25);
-}
-
-html.DEBUG {
-    /* Background grid. */
-    background-image: linear-gradient(       var(--hilite) 1px, transparent 1px),
-                      linear-gradient(90deg, var(--hilite) 1px, transparent 1px);
-    background-size:  var(--hgrid) var(--vgrid);
-    background-position: 0 -9px;
-}
-
-h4 { margin-top: var(--vgrid); }
-
 hr {
     padding: calc(var(--vgrid) * .5) 0 calc(var(--vgrid) * .5);
     padding: var(--vgrid) 0 0 0;
@@ -30,41 +8,5 @@ hr {
     border: 0;
 }
 hr:before { content: "★  ★  ★"; }
-
-h1, h2, h3, h4 {
-    margin-top: calc(var(--vgrid) * 2);
-}
-
-[title] { text-align: center; }
-
-h1 {
-    line-height: calc(var(--vgrid) * 3);
-    font-size: calc(1rem * 3);
-    /* Push text down to baseline. */
-    position: relative; top: calc(1em * .275);
-}
-
-h2 {
-    line-height: calc(var(--vgrid) * 2);
-    font-size: calc(1rem * 2);
-    /* Push text down to baseline. */
-    position: relative; top: calc(1em * .2);
-}
-
-h3 {
-    margin-top: var(--vgrid);
-    line-height: calc(var(--vgrid) * 2);
-    font-size: calc(1rem * 1.5);
-    /* Push text down to baseline. */
-    position: relative; top: calc(1em * .375);
-}
-
-h4 {
-    font-size: 1rem;
-    font-weight: normal;
-    margin-top: var(--vgrid);
-}
-
-h4 + h4 { margin-top: 0; }
 
 /* eof */

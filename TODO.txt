@@ -10,6 +10,10 @@
 ** TODO Linking between main document and sources
 ** TODO Use «...» for English language examples (not *...*)
 ** TODO 'use strict' everywhere
+** TODO Minimal CSS reset: box-sizing
+   Use this for box-sizing:
+   https://allthingssmitty.com/2017/01/09/css-reset-for-minimalists/
+** TODO Minimal CSS reset: margin/padding
 ** TODO Sort out CSS problem
    Each document should allow for some unique CSS (like the yellow background
    of the Klingon Grammar Addenda – kept to imitate the original) but there
@@ -29,6 +33,25 @@
    Currently the `insertTableOfContent()` function extracts `<h#>` tags
    converts them to HTML. There's no real need for going from elements to HTML
    and then back again, and maybe we shouldn't do that?
+** TODO Apply vertical rhythm more thoroughly
+** TODO Use modular scale typography?
+   Currently heading sizes increase kinda arbitrarily, with <h4> = 1em, <h3> =
+   1.5em, <h2> = 2em and <h1> = 3em. Maybe this should be replaced by a modular
+   scale? Possibly using a ratio of 2:3 (perfect fifth)?
+
+   https://www.modularscale.com/?1&em&1.5
+
+   * https://alistapart.com/article/more-meaningful-typography/
+     "More Meaningful Typography"
+
+   * More on modular scales:
+     https://vimeo.com/17079380 "Tim Brown - More Perfect Typography"
+
+   * Note: Maybe the document titles should also be made larger than the other
+     headings when this is done?
+
+   * "The Elements of Typographic Style" has some info on modular scales as
+     well.
 * Sources to add
 ** TODO [Klingon 101: The Sounds of Klingon][Klingon 101] (video, November 2016)
    A lecture on Klingon given by Marc Okrand at Starbase Indy 2016 in
