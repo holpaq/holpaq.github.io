@@ -30,18 +30,19 @@
     font-display: swap;
 }
 html {
-    font-size: 18px;
-    line-height: 1.5;      /* = 27px for (unresized) 18px text */
-    --rem: 18px;
-    --hgrid: calc(var(--rem) * 1.5);
-    --vgrid: calc(var(--rem) * 1.5);
+    --rem: 18px;  /* root font size */
+    --rlead: 1.5; /* root line height (unitless) */
+    --hgrid: calc(var(--rem) * var(--rlead));
+    --vgrid: calc(var(--rem) * var(--rlead));
     --cellpad: calc(var(--hgrid) * .25); /* table cell padding */
 
     --serif: 'Times New Roman', TimesNewRoman, Times;
     --sans: sans-serif;
-
-    font-family: var(--serif);
     --hilite: rgba(0, 0, 255, .25);
+
+    font-size: var(--rem);
+    line-height: var(--rlead); /* = 27px for (unresized) 18px text */
+    font-family: var(--serif);
 
     height: 100%; overflow-y: scroll;
 }
@@ -72,29 +73,29 @@ p + p {
 [title] { text-align: center; }
 h1 {
     margin-top: calc(var(--vgrid) * 2);
-    line-height: calc(var(--vgrid) * 3);
     font-size: calc(1rem * 3);
+    line-height: calc(var(--vgrid) * 3);
     /* Push text down to baseline. */
     position: relative; top: calc(1em * .275);
 }
 h2 {
     margin-top: calc(var(--vgrid) * 2);
-    line-height: calc(var(--vgrid) * 2);
     font-size: calc(1rem * 2);
+    line-height: calc(var(--vgrid) * 2);
     /* Push text down to baseline. */
     position: relative; top: calc(1em * .2);
 }
 h3 {
     margin-top: var(--vgrid);
-    line-height: calc(var(--vgrid) * 2);
     font-size: calc(1rem * 1.5);
+    line-height: calc(var(--vgrid) * 2);
     /* Push text down to baseline. */
     position: relative; top: calc(1em * .375);
 }
 h4 {
+    margin-top: var(--vgrid);
     font-size: 1rem;
     font-weight: normal;
-    margin-top: var(--vgrid);
 }
 h4 + h4 { margin-top: 0; }
 
