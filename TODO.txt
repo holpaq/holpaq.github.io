@@ -10,9 +10,6 @@
 ** TODO Linking between main document and sources
 ** TODO Use «...» for English language examples (not *...*)
 ** TODO 'use strict' everywhere
-** TODO Minimal CSS reset: box-sizing
-   Use this for box-sizing:
-   https://allthingssmitty.com/2017/01/09/css-reset-for-minimalists/
 ** TODO Minimal CSS reset: margin/padding
 ** TODO Sort out CSS problem
    Each document should allow for some unique CSS (like the yellow background
@@ -248,3 +245,8 @@
    This would be used for TKD, TKW and KGT (at least)
 ** DONE Use Microsoft Times New Roman (for IPA support)
    CLOSED: [2020-08-15 Sat 16:39]
+** DONE Minimal CSS reset: box-sizing
+   CLOSED: [2020-08-17 Mon 17:41]
+   Use this for box-sizing:
+   https://allthingssmitty.com/2017/01/09/css-reset-for-minimalists/
+   "CSS reset for minimalists"
