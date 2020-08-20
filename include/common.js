@@ -372,17 +372,8 @@ function main($) {
     // Add ID attribute to <h#> tags.
     $("h1,h2,h3,h4,h5,h6,h7").each((_, h) => {
         const $h = $(h);
-        $h.attr("id", asciify($h.text()));
-    });
-
-    // Add ID attribute to paragraps of term list.
-    // (Paragraphs containing <strong> as 1st child, and <em> as second.)
-    $("[terms] > p").each((_, p) => {
-        let $p = $(p);
-        let $termSv = $p.find(":nth-child(1)");
-        let $termEn = $p.find(":nth-child(2)");
-        if ($termSv.is("strong") && $termEn.is("em")) {
-            $p.attr({ id: asciify($termSv.text()) });
+        if (!$h.attr('id')) {                // if parent 'id' is unset
+            $h.attr('id', asciify($h.text()));
         }
     });
 
