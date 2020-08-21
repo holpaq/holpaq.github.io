@@ -59,6 +59,24 @@ function insertOptionalBreakAfterSlash($e) {
     });
 }
 
+// Move all 'id' found inside <a id=...> tags to its parent element (removing
+// the <a> tag). This will only happen if a) the parent element does not
+// already have an 'id' attribute set, b) the <a> tag occurs first inside the
+// parent (i.e. not even text can precede it) and c) the <a> tag has no content
+// of its own (e.g. <a..>CONTENT</a>). If these criteria are not met, then the
+// <a> tag will be left unmodified.
+function insertIdIntoParentElement() {
+    'use strict';
+    $('a[id]:empty:first-child')                      // find <a> tags
+        .filter((_, e) => e.previousSibling === null) //   not preceded by text
+        .each((_, e) => {
+            const $parent = $(e.parentElement);
+            if (!$parent.attr('id')) {                // if parent 'id' is unset
+                $parent.attr('id', $(e).remove().attr('id'));
+            }
+        });
+}
+
 // This will replace any occurrence of the tag '<toc>' with a nested unordered
 // list containing a table of contents for the document with links to the
 // relevant headings. The outermost <ul> tag in the newly generated table of
@@ -360,6 +378,7 @@ function main($) {
     // https://github.com/showdownjs/showdown/wiki/Showdown-Options
     const converter = new showdown.Converter({
         extensions        : ['id', 'table','tlh', 'en', 'ref'],
+        noHeaderId        : true,
         simplifiedAutoLink: true,
         strikethrough     : true,
         underline         : true,
@@ -368,6 +387,8 @@ function main($) {
     $elem.replaceWith(                      // replace with markdown
         converter.makeHtml(text)
     );
+
+    insertIdIntoParentElement();
 
     // Add ID attribute to <h#> tags.
     $("h1,h2,h3,h4,h5,h6,h7").each((_, h) => {
@@ -430,6 +451,13 @@ function main($) {
 
     insertOptionalBreakAfterSlash($('html'));
     insertTableOfContent();
+
+    // After page load: Jump to hash location.
+    if (window.location.hash) {
+        setTimeout(() => {
+            window.location.href = window.location.hash;
+        }, 100);
+    }
 }
 
 function openLink(src) {
