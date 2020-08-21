@@ -70,9 +70,12 @@ function insertIdIntoParentElement() {
     $('a[id]:empty:first-child')                      // find <a> tags
         .filter((_, e) => e.previousSibling === null) //   not preceded by text
         .each((_, e) => {
+            const $e = $(e);
             const $parent = $(e.parentElement);
-            if (!$parent.attr('id')) {                // if parent 'id' is unset
-                $parent.attr('id', $(e).remove().attr('id'));
+            const id = $e.attr('id') || '';
+            if (!$parent.attr('id') &&                // if parent 'id' is unset
+                !id.match(/^p\d+$/)) {                //   and id isnt page number
+                $parent.attr('id', $e.remove().attr('id'));
             }
         });
 }
