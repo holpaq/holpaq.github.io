@@ -50,6 +50,9 @@
    * "The Elements of Typographic Style" has some info on modular scales as
      well.
 * Sources to add
+** TODO Check all occurrences of "noun-noun" in TKD
+   Should the occurrences of "noun-noun" (written with a hyphen) be corrected
+   to use en-dash?
 ** TODO [Klingon 101: The Sounds of Klingon][Klingon 101] (video, November 2016)
    A lecture on Klingon given by Marc Okrand at Starbase Indy 2016 in
    Indianapolis, Indiana, USA covering Klingon pronunciation.
@@ -250,3 +253,5 @@
    Use this for box-sizing:
    https://allthingssmitty.com/2017/01/09/css-reset-for-minimalists/
    "CSS reset for minimalists"
+** DONE Add KGT transcript
+   CLOSED: [2020-10-07 ons 03:50]
