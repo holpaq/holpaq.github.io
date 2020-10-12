@@ -73,31 +73,107 @@
     </style>
     <style>
       /* Styling for prefix table. */
+      /* FIXME:
+         * Highlight subject and object headings on mouseover(?)
+         * Scale width of prefix cells to same width (instead of using min-width)
+         * Vertical rhythm
+      */
       table.prefix b { font-weight: normal; }
       table.prefix {
-        border-top: 2px solid #000;
+        margin-left: 0;
+        --thick-border: 2px solid currentcolor;
+        --thin-border: 2px solid currentcolor;
+        --hairline-border: 1px solid #ccc;
+        --empty-background: #0002;
         margin-bottom: -2px; /* compensate for 2px extra from vertical borders */
       }
       table.prefix td,
       table.prefix th {
-        vertical-align: middle;
+        vertical-align: top;
+        line-height: calc(var(--vgrid) * 1.5);
         padding-left: calc(var(--hgrid) *.5);
         white-space: nowrap;
         height: calc(var(--vgrid) * 1.5);
-        width: 1%;
-      }
-      table.prefix .obj,
-      table.prefix tbody tr:nth-child(even) {
-        border-bottom: 1px solid #000;
+        min-width: 4.5em;
       }
       table.prefix,
       table.prefix thead {
-        border-bottom: 2px solid #000;
+        border-bottom: var(--thick-border);
+        border-top: var(--thick-border);
       }
-      table.prefix .obj {
-        border-top: 2px solid #000;
+      table.prefix thead th {
+        vertical-align: bottom;
       }
-      table.prefix td:not(:empty):hover { background: var(--hilite) }
+      table.prefix th[vert] {
+        padding: .75em 0 0 0;
+      }
+      table.prefix th[vert] div {
+        display: inline-block;
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+      }
+      table.prefix tbody tr:nth-child(odd) {
+        border-top: var(--thin-border);
+      }
+      table.prefix td:not(.na):hover {
+        background: var(--hilite);
+      }
+      table.prefix td.na {
+        background: var(--empty-background);
+        background-clip: padding-box;
+      }
+      table.prefix td {
+        border: var(--hairline-border);
+      }
+      /* Joined cells for {-} (next to each other) */
+      table.prefix td.joinnext {
+        border-right: 0;
+      }
+      table.prefix td.joinnext + td {
+        position: relative;
+        border-left: 0;
+      }
+      table.prefix td.joinnext + td:before {
+        position: absolute;
+        content: "";
+        width: 50%;
+        height: 50%;
+        right: 100%;
+        background: inherit;
+      }
+      /* Joined cells for {yI-} and {-lu'} (with one cell between) */
+      table.prefix td.joinnextnext + td + td {
+        position: relative;
+      }
+      table.prefix td.joinnextnext + td + td:before {
+        display: block;
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: calc(100% + 2px);
+        right: calc(200% + 2px);
+        top: -1px;
+        background: inherit;
+      }
+      /* In-between cell */
+      table.prefix td.joinnextnext + td + td:hover:after {
+        background: linear-gradient(var(--hilite), var(--hilite)), #fff;
+      }
+      table.prefix td.joinnextnext + td + td:after {
+        display: block;
+        position: absolute;
+        content: "";
+        width: calc(100% + 2px);
+        height: 20%;
+        top: -2px;
+        right: 100%;
+        background: #fff;
+        border-bottom: var(--hairline-border);
+        border-top: var(--thin-border);
+      }
+      table.prefix td.joinnextnext.dblheight + td + td:before {
+        height: calc(200% + 4px);
+      }
     </style>
     <style>
       /* Styling for suffix tables. */
@@ -742,18 +818,21 @@ two punctuation marks.
 
 <table markdown class="prefix sans">
   <thead>
-    <tr><th colspan=7 class=obj>Object<th></tr>
-    <tr><th>I<th>we<th>you<th>you(pl.)<th>he/she/it<th>them<th>(none)<th>Subject</tr>
+    <tr><th colspan=2>Object<th vert rowspan=2><div>you</div><th vert rowspan=2><div>you (pl.)</div><th vert rowspan=2><div>him/her/it</div><th vert rowspan=2><div>them</div><th vert rowspan=2><div>(none)</div><th></tr>
+    <tr><th vert><div>me</div><th vert><div>us</div><th>Subject</tr>
   </thead>
-  <tr><td>{HI-}<td>{gho-}<td><td><td>{yI-}<td>{tI-}<td>{yI-}<th>imp: you</tr>
-  <tr><td>{HI-}<td>{gho-}<td><td><td>{yI-}<td>{tI-}<td>{pe-}<th>imp: you (pl.)</tr>
-  <tr><td><td><td>{qa-}<td>{Sa-}<td>{vI-}<td>{vI-}<td>{jI-}<th>I</tr>
-  <tr><td><td><td>{pI-}<td>{re-}<td>{wI-}<td>{DI-}<td>{ma-}<th>we</tr>
-  <tr><td>{cho-}<td>{ju-}<td><td><td>{Da-}<td>{Da-}<td>{bI-}<th>you</tr>
-  <tr><td>{tu-}<td>{che-}<td><td><td>{bo-}<td>{bo-}<td>{Su-}<th>you (pl.)</tr>
-  <tr><td>{mu-}<td>{nu-}<td>{Du-}<td>{lI-}<td>{-}<td>{-}<td>{-}<th>he/she/it</tr>
-  <tr><td>{mu-}<td>{nu-}<td>{nI-}<td>{lI-}<td>{lu-}<td>{-}<td>{-}<th>them</tr>
-  <tr><td>{vI-lu’}<td>{wI-lu’}<td>{Da-lu’}<td>{bo-lu’}<td>{-lu’}<td>{lu-lu’}<td>{-lu’}<th>(general)</tr>
+  <tr><td rowspan=2>{HI-}<td rowspan=2>{gho-}<td class=na colspan=2 rowspan=2><td rowspan=2 class="joinnextnext dblheight">{yI-}<td rowspan=2>{tI-}<td><th>imp: you</tr>
+  <tr><td>{pe-}<th>imp: you (pl.)</tr>
+  <tr><td class=na colspan=2 rowspan=2><td>{qa-}<td>{Sa-}<td colspan=2>{vI-}<td>{jI-}<th>I</tr>
+  <tr><td>{pI-}<td>{re-}<td>{wI-}<td>{DI-}<td>{ma-}<th>we</tr>
+  <tr><td>{cho-}<td>{ju-}<td class=na colspan=2 rowspan=2><td colspan=2>{Da-}<td>{bI-}<th>you</tr>
+  <tr><td>{tu-}<td>{che-}<td colspan=2>{bo-}<td>{Su-}<th>you (pl.)</tr>
+  <tr><td rowspan=2>{mu-}<td rowspan=2>{nu-}<td>{Du-}<td rowspan=2>{lI-}<td class=joinnext>{-}<td colspan=2 rowspan=2><th>he/she/it</tr>
+  <tr><td>{nI-}<td>{lu-}<th>them</tr>
+  <tr><td>{vI-lu’}<td>{wI-lu’}<td>{Da-lu’}<td>{bo-lu’}<td class=joinnextnext>{-lu’}<td>{lu-lu’}<td><th>(general)</tr>
+  <caption>Prefixes are not repeated above, but connected cells show when a
+    prefix have multiple meanings. Gray areas indicate combinations for which
+    no prefixes exist. “{-}” indicate that no prefix is used.</caption>
 </table>
 
 
