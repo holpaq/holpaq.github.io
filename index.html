@@ -94,7 +94,6 @@
         padding-left: calc(var(--hgrid) *.5);
         white-space: nowrap;
         height: calc(var(--vgrid) * 1.5);
-        min-width: 4.5em;
       }
       table.prefix,
       table.prefix thead {
@@ -106,6 +105,15 @@
       }
       table.prefix th[vert] {
         padding: .75em 0 0 0;
+      }
+      /* This inserts a zero height content with the same width as the widest
+      prefix cell content, to force all prefix cells to have the same width. */
+      table.prefix tbody td:before {
+        content: "Da-lu’\awI-lu’\a";
+        white-space: pre;
+        height: 0;
+        display: block;
+        overflow: hidden;
       }
       table.prefix th[vert] div {
         display: inline-block;
