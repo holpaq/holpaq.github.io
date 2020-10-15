@@ -97,6 +97,9 @@ h3 {
     /* Push text down to baseline. */
     position: relative; top: calc(1em * .375);
 }
+h1 b, h2 b, h3 b {
+    font-style: italic;
+}
 h4 {
     margin-top: var(--vgrid);
     font-size: 1rem;
