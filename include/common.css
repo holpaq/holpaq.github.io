@@ -213,8 +213,6 @@ sub { top: .4em; }
     column-gap: var(--hgrid);
     /* column-rule: 1px solid black; */
 }
-.toc .h4,                                 /* hide <h4> headers */
-.toc > li:first-child { display: none; }  /* hide 1st entry 'Contents' */
 .toc, .toc ul { list-style: none; }       /* no bullets */
 .toc ul { margin-top: 0; }
 

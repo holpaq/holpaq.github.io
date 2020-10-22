@@ -117,7 +117,9 @@ function insertTableOfContent() {
     let html = '';
     $('h1,h2,h3,h4,h5,h6,h7').each((_, h) => {
         let $h = $(h);
-        if ($h.attr('title') === '') {   // skip if 'title' attribute is used
+        if ($h.attr('title') === '' ||   // skip if 'title' or 'notoc'
+            $h.attr('notoc') === '' ||   //   attribute or 'id=toc'
+            $h.attr('id') === 'toc') {   //   is used
             return;
         }
         let num = $h.prop('tagName').match(/\d$/)[0];
