@@ -154,6 +154,15 @@ a:hover {
     background: var(--hilite);
 }
 
+/* If single link in table cell, expand it to take up whole cell. */
+table td a:first-child:last-child,
+table th a:first-child:last-child {
+    display: block;
+    height: 100%;
+    margin: 0 calc(var(--cellpad) * -1);
+    padding: 0 var(--cellpad);
+}
+
 /***** Hashlink target *****/
 :target {
     transition: background-color 1s ease;

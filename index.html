@@ -11,6 +11,65 @@
 /* (Here used for suffix headings, not for chapters.) */
 .toc .h4  { display: none; }
 </style>
+<style>
+.sans  { font-family: var(--sans);  }
+.serif { font-family: var(--serif); }
+</style>
+<style>
+table {
+  --thick-width: 2px;
+  --thick-color: currentcolor;
+  --thin-width: 1px;
+  --thin-color: currentcolor;
+  --hairline-width: 1px;
+  --hairline-color: #0003;
+}
+table.border {
+  --negative-hairline: calc(var(--hairline-width) * -1);
+  --hairline-border-left-outside: var(--negative-hairline)   0 var(--hairline-color);
+  --hairline-border-left:   inset var(--hairline-width)      0 var(--hairline-color);
+  --hairline-border-right:  inset var(--negative-hairline)   0 var(--hairline-color);
+  --hairline-border-top:    inset 0 var(--hairline-width)      var(--hairline-color);
+  --hairline-border-bottom: inset 0 var(--negative-hairline)   var(--hairline-color);
+  --thin-border-top:        inset 0 var(--thin-width)          var(--thin-color);
+}
+table.border td,
+table.border th { box-shadow: var(--hairline-border-bottom), var(--hairline-border-right); }
+table.border    { box-shadow: var(--hairline-border-top),    var(--hairline-border-left);  }
+
+table.border:not(.hide-empty) td:first-child:not(.normal):before,
+table.border:not(.hide-empty) th:first-child:not(.normal):before,
+table.border td:first-child:not(:empty):not(.normal):before,
+table.border th:first-child:not(:empty):not(.normal):before {
+  position: absolute; top:0; left:0; right: 0; height: 100%;
+  content: "";
+  box-shadow: var(--hairline-border-left);
+  pointer-events: none;
+}
+
+/* Thick border before/after table head/body/foot. */
+table.border {
+  box-shadow: 0 calc(var(--thick-width) *  .5) var(--thick-color),
+              0 calc(var(--thick-width) * -.5) var(--thick-color);
+}
+table.border thead, table.border tbody, table.border tfoot {
+  box-shadow: inset 0 calc(var(--thick-width) *  .5) var(--thick-color),
+              inset 0 calc(var(--thick-width) * -.5) var(--thick-color);
+}
+
+/* Remove borders around empty table cells, but keep them towards adjacent
+cells with content. */
+table.border.hide-empty td:empty { box-shadow: none; }
+table.border.hide-empty td:empty + td:not(:empty):before {
+  position: absolute; top:0; left:0; right: 0; height: 100%;
+  content: "";
+  box-shadow: var(--hairline-border-left-outside);
+}
+
+/* For placing pseudo-elements on table cells. */
+th, td { position: relative; }
+
+</style>
     <style>
       main { position: relative; }
       body, html { margin: 0; }
@@ -64,16 +123,16 @@
       table.sans caption b {
         font-weight: bold;
       }
+      table.sans td,
       table.sans th {
+        font-size: smaller;
+        line-height: var(--vgrid);
         text-align: left;
       }
       table.sans caption {
         caption-side: bottom;
-      }
-      table.sans caption {
-        margin: calc(var(--vgrid) * .5) 0;
-        caption-side: bottom;
         font-family: var(--serif);
+        margin-top: var(--vgrid);
       }
     </style>
     <style>
@@ -81,44 +140,34 @@
       /* FIXME:
          * Highlight subject and object headings on mouseover(?)
          * Scale width of prefix cells to same width (instead of using min-width)
-         * Vertical rhythm
       */
-      table.prefix b { font-weight: normal; }
       table.prefix {
-        margin-left: 0;
-        --thick-border: 2px solid currentcolor;
-        --thin-border: 2px solid currentcolor;
-        --hairline-border: 1px solid #ccc;
+        margin-left: calc(var(--hgrid) *.5);
         --empty-background: #0002;
-        margin-bottom: -2px; /* compensate for 2px extra from vertical borders */
+        margin-top: calc(var(--vgrid) * 1.5);
+      }
+      table.prefix thead [rowspan="2"] {
+        height: calc(var(--vgrid) * 3.5);
       }
       table.prefix td,
       table.prefix th {
-        vertical-align: top;
-        line-height: calc(var(--vgrid) * 1.5);
-        padding-left: calc(var(--hgrid) *.5);
-        white-space: nowrap;
-        height: calc(var(--vgrid) * 1.5);
-      }
-      table.prefix,
-      table.prefix thead {
-        border-bottom: var(--thick-border);
-        border-top: var(--thick-border);
-      }
-      table.prefix thead th {
         vertical-align: bottom;
+        line-height: var(--vgrid);
+        padding-left: calc(var(--hgrid) *.5);
+      }
+      table.prefix tbody td,
+      table.prefix tbody th {
+        box-shadow: var(--hairline-border-top),
+                    var(--hairline-border-right);
+      }
+      table.prefix td {
+        min-width: calc(var(--hgrid) * 2.5);
+      }
+      table.prefix tbody th {
+        min-width: calc(var(--hgrid) * 5);
       }
       table.prefix th[vert] {
-        padding: .75em 0 0 0;
-      }
-      /* This inserts a zero height content with the same width as the widest
-      prefix cell content, to force all prefix cells to have the same width. */
-      table.prefix tbody td:before {
-        content: "Da-lu’\awI-lu’\a";
-        white-space: pre;
-        height: 0;
-        display: block;
-        overflow: hidden;
+        padding: .75em 0 0 .25em;
       }
       table.prefix th[vert] div {
         display: inline-block;
@@ -126,29 +175,26 @@
         transform: rotate(180deg);
       }
       table.prefix tbody tr:nth-child(odd) {
-        border-top: var(--thin-border);
+        box-shadow: var(--thin-border-top);
       }
       table.prefix td:not(.na):hover {
         background: var(--hilite);
       }
       table.prefix td.na {
         background: var(--empty-background);
-        background-clip: padding-box;
       }
-      table.prefix td {
-        border: var(--hairline-border);
+      table.prefix td:not(:first-child).na {
+        box-shadow: calc(var(--hairline-width) * -1) 0 var(--empty-background),
+          var(--hairline-border-right);
       }
       /* Joined cells for {-} (next to each other) */
       table.prefix td.joinnext {
-        border-right: 0;
-      }
-      table.prefix td.joinnext + td {
-        position: relative;
-        border-left: 0;
+        box-shadow: none;
       }
       table.prefix td.joinnext + td:before {
         position: absolute;
         content: "";
+        top: 0;
         width: 50%;
         height: 50%;
         right: 100%;
@@ -159,13 +205,12 @@
         position: relative;
       }
       table.prefix td.joinnextnext + td + td:before {
-        display: block;
         position: absolute;
         content: "";
         width: 100%;
-        height: calc(100% + 2px);
-        right: calc(200% + 2px);
-        top: -1px;
+        height: 100%;
+        right: 200%;
+        top: 0;
         background: inherit;
       }
       /* In-between cell */
@@ -173,49 +218,26 @@
         background: linear-gradient(var(--hilite), var(--hilite)), #fff;
       }
       table.prefix td.joinnextnext + td + td:after {
-        display: block;
         position: absolute;
         content: "";
-        width: calc(100% + 2px);
-        height: 20%;
-        top: -2px;
+        width: calc(100% + var(--hairline-width));
+        height: 25%;
+        top: 0;
         right: 100%;
         background: #fff;
-        border-bottom: var(--hairline-border);
-        border-top: var(--thin-border);
+        box-shadow: var(--thin-border-top), var(--hairline-border-bottom);
       }
       table.prefix td.joinnextnext.dblheight + td + td:before {
-        height: calc(200% + 4px);
-      }
-    </style>
-    <style>
-      /* Styling for suffix tables. */
-      table.suffix {
-          border-bottom: 2px solid black;
-          border-top: 2px solid black;
-      }
-      table.suffix td {
-        padding: 0;
-      }
-      table.suffix th {
-        padding-left: .7em;
-      }
-      table.suffix td {
-        border-top: 1px solid black;
-        padding: 0 calc(var(--hgrid) *.25);
-      }
-      table.suffix span {
-        display: inline-block;
-        width: 2.25em;
+        height: 200%;
       }
     </style>
     <style>
       table.consonant td { text-align: center; }
       table.consonant td,
-      table.consonant th { border: 1px solid #000; }
-      table.consonant th { font-size: smaller; }
-      table.consonant td:nth-child(even) { border-right: 0; }
-      table.consonant td:nth-child(odd)  { border-left:  0; }
+      table.consonant th { line-height: var(--vgrid); }
+      table.consonant td:nth-child(even) {
+        box-shadow: var(--hairline-border-bottom);  /* remove right border */
+      }
     </style>
   </head>
 
@@ -279,8 +301,9 @@ pronunciation of that letter differs from what one would expect in English.
 * Elaborate on the whispering echo of vowels after {’}
 </div>
 
-<table markdown class="consonant sans">
+<table markdown class="sans border consonant">
   <caption>Where sounds appear in pairs, the one on the right is voiced.</caption>
+  <thead>
   <tr>
     <th>
     <th colspan=2>[Bilabial][bilabial]
@@ -292,6 +315,7 @@ pronunciation of that letter differs from what one would expect in English.
     <th colspan=2>[Velar][velar]
     <th colspan=2>[Uvular][uvular]
     <th colspan=2>[Glottal][glottal]
+  </thead>
   <tr>
     <th>[Plosive][plosive]<td>[{p}](#pay)<td>[{b}](#bay)<td><td><td>[{t}](#tay)<td><td><td>
     <td><td>[{D}](#day)<td><td><td><td><td>[{q}](#qay)<td><td>[{’}](#qaghwi)<td>
@@ -811,37 +835,19 @@ two punctuation marks.
 
 ## Verb prefixes
 
-<!--<table class="prefix">
+<table markdown class="sans border prefix">
   <thead>
-    <tr><th colspan=7 class=obj>Object<th rowspan=2></tr>
-    <tr><td><td><td><td><td>{’oH}<td>{bIH}<td></tr>
-    <tr><td>{jIH}<td>{maH}<td>{SoH}<td>{tlhIH}<td>{ghaH}<td>{chaH}<td>({pagh})<th>Subject</tr>
-  </thead>
-  <tr><td>{HI-}<td>{gho-}<td><td><td>{yI-}<td>{tI-}<td>{yI-}<td>{SoH} ({ra’})</tr>
-  <tr><td>{HI-}<td>{gho-}<td><td><td>{yI-}<td>{tI-}<td>{pe-}<td>{tlhIH} ({ra’})</tr>
-  <tr><td><td><td>{qa-}<td>{Sa-}<td>{vI-}<td>{vI-}<td>{jI-}<td>{jIH}</tr>
-  <tr><td><td><td>{pI-}<td>{re-}<td>{wI-}<td>{DI-}<td>{ma-}<td>{maH}</tr>
-  <tr><td>{cho-}<td>{ju-}<td><td><td>{Da-}<td>{Da-}<td>{bI-}<td>{SoH}</tr>
-  <tr><td>{tu-}<td>{che-}<td><td><td>{bo-}<td>{bo-}<td>{Su-}<td>{tlhIH}</tr>
-  <tr><td>{mu-}<td>{nu-}<td>{Du-}<td>{lI-}<td>{-}<td>{-}<td>{-}<td>{ghaH}/{’oH}</tr>
-  <tr><td>{mu-}<td>{nu-}<td>{nI-}<td>{lI-}<td>{lu-}<td>{-}<td>{-}<td>{chaH}/{bIH}</tr>
-  <tr><td>{vI-lu’}<td>{wI-lu’}<td>{Da-lu’}<td>{bo-lu’}<td>{-lu’}<td>{lu-lu’}<td>{-lu’}<td>({vay’})</tr>
-</table>-->
-
-
-<table markdown class="prefix sans">
-  <thead>
-    <tr><th colspan=2>Object<th vert rowspan=2><div>you</div><th vert rowspan=2><div>you (pl.)</div><th vert rowspan=2><div>him/her/it</div><th vert rowspan=2><div>them</div><th vert rowspan=2><div>(none)</div><th></tr>
-    <tr><th vert><div>me</div><th vert><div>us</div><th>Subject</tr>
+    <tr><th colspan=2 style="height:calc(var(--vgrid) * 1.15);box-shadow:none">Object<th vert rowspan=2><div>you</div><th vert rowspan=2><div>you (pl.)</div><th vert rowspan=2><div>him/her/it</div><th vert rowspan=2><div>them</div><th vert rowspan=2><div>(none)</div><th rowspan=2>Subject</tr>
+    <tr><th vert><div>me</div><th vert><div>us</div></tr>
   </thead>
   <tr><td rowspan=2>{HI-}<td rowspan=2>{gho-}<td class=na colspan=2 rowspan=2><td rowspan=2 class="joinnextnext dblheight">{yI-}<td rowspan=2>{tI-}<td><th>imp: you</tr>
-  <tr><td>{pe-}<th>imp: you (pl.)</tr>
+  <tr><td class=normal>{pe-}<th>imp: you (pl.)</tr>
   <tr><td class=na colspan=2 rowspan=2><td>{qa-}<td>{Sa-}<td colspan=2>{vI-}<td>{jI-}<th>I</tr>
-  <tr><td>{pI-}<td>{re-}<td>{wI-}<td>{DI-}<td>{ma-}<th>we</tr>
+  <tr><td class=normal>{pI-}<td>{re-}<td>{wI-}<td>{DI-}<td>{ma-}<th>we</tr>
   <tr><td>{cho-}<td>{ju-}<td class=na colspan=2 rowspan=2><td colspan=2>{Da-}<td>{bI-}<th>you</tr>
   <tr><td>{tu-}<td>{che-}<td colspan=2>{bo-}<td>{Su-}<th>you (pl.)</tr>
   <tr><td rowspan=2>{mu-}<td rowspan=2>{nu-}<td>{Du-}<td rowspan=2>{lI-}<td class=joinnext>{-}<td colspan=2 rowspan=2><th>he/she/it</tr>
-  <tr><td>{nI-}<td>{lu-}<th>them</tr>
+  <tr><td class=normal>{nI-}<td>{lu-}<th>them</tr>
   <tr><td>{vI-lu’}<td>{wI-lu’}<td>{Da-lu’}<td>{bo-lu’}<td class=joinnextnext>{-lu’}<td>{lu-lu’}<td><th>(general)</tr>
   <caption>Prefixes are not repeated above, but connected cells show when a
     prefix have multiple meanings. Gray areas indicate combinations for which
@@ -864,21 +870,22 @@ two punctuation marks.
 * Link suffixes in table to relevant sections
 </div>
 
-<table class="suffix sans">
+<table markdown class="sans border hide-empty">
+  <thead>
   <tr>
     <th>1<th>2<th>3<th>4<th>5<th>6<th>7<th>8<th>9<th>Rover</tr>
-  <tr>
-    <td>{-’egh}<br>{-chuq}</td>
-    <td>{-nIS}<br>{-qang}<br>{-rup}<br>{-beH}<br>{-vIp}</td>
-    <td>{-choH}<br>{-qa’}</td>
-    <td>{-moH}</td>
-    <td>{-lu’}<br>{-laH}</td>
-    <td>{-chu’}<br>{-bej}<br>{-law’}<br>{-ba’}</td>
-    <td>{-pu’}<br>{-ta’}<br>{-taH}<br>{-lI’}</td>
-    <td>{-neS}</td>
-    <td>{-DI’}<br>{-chugh}<br>{-pa’}<br>{-vIS}<br>{-bogh}<br>
-          {-meH}<br>{-mo’}<br>{-’a’}<br>{-jaj}<br>{-wI’}<br>{-ghach}</td>
-    <td>{-be’}<br>{-Qo’}<br>{-Ha’}<br>{-qu’}</td>
+  </thead>
+  <tr><td>{-’egh}<td>{-nIS}<td>{-choH}<td>{-moH}<td>{-lu’}<td>{-chu’}<td>{-pu’}<td>{-neS}<td>{-DI’}<td>{-be’}</tr>
+  <tr><td>{-chuq}<td>{-qang}<td>{-qa’}<td><td>{-laH}<td>{-bej}<td>{-ta’}<td><td>{-chugh}<td>{-Qo’}</tr>
+  <tr><td><td>{-rup}<td><td><td><td>{-law’}<td>{-taH}<td><td>{-pa’}<td>{-Ha’}</tr>
+  <tr><td><td>{-beH}<td><td><td><td>{-ba’}<td>{-lI’}<td><td>{-vIS}<td>{-qu’}</tr>
+  <tr><td><td>{-vIp}<td><td><td><td><td><td><td>{-bogh}</tr>
+  <tr><td colspan=8><td>{-meH}</tr>
+  <tr><td colspan=8><td>{-mo’}</tr>
+  <tr><td colspan=8><td>{-’a’}</tr>
+  <tr><td colspan=8><td>{-jaj}</tr>
+  <tr><td colspan=8><td>{-wI’}</tr>
+  <tr><td colspan=8><td>{-ghach}</tr>
 </table>
 
 
@@ -1047,19 +1054,18 @@ two punctuation marks.
 * Link suffixes in table to relevant sections
 </div>
 
-<table class="suffix sans">
-  <tr><th>1<th>2<th>3<th>4<th>5</tr>
-  <tr>
-    <td>{-’a’}<br>{-Hom}<br>{-oy}</td>
-    <td>{-pu’}<br>{-Du’}<br>{-mey}</td>
-    <td>{-qoq}<br>{-Hey}<br>{-na’}</td>
-    <td style="white-space:nowrap">
-      <span>{-wIj}</span>/ {-wI’}<br>
-      <span>{-maj}</span>/ {-ma’}<br>
-      <span>{-lIj}</span>/ {-lI’}<br>
-      <span>{-raj}</span>/ {-ra’}<br>
-      {-Daj}<br>{-chaj}<br>{-vam}<br>{-vetlh}</td>
-    <td>{-Daq}<br>{-vo’}<br>{-mo’}<br>{-vaD}<br>{-’e’}</td>
+<table markdown class="sans border hide-empty">
+  <thead>
+    <tr><th>1<th>2<th>3<th>4<th>5</tr>
+  </thead>
+  <tr><td>{-’a’}<td>{-pu’}<td>{-qoq}<td>{-wIj} / {-wI’}<td>{-Daq}</tr>
+  <tr><td>{-Hom}<td>{-Du’}<td>{-Hey}<td>{-maj} / {-ma’}<td>{-vo’}</tr>
+  <tr><td>{-oy}<td>{-mey}<td>{-na’}<td>{-lIj} / {-lI’}<td>{-mo’}</tr>
+  <tr><td colspan=3><td>{-raj} / {-ra’}<td>{-vaD}</td>
+  <tr><td colspan=3><td>{-Daj}<td>{-’e’}</td>
+  <tr><td colspan=3><td>{-chaj}<td></td>
+  <tr><td colspan=3><td>{-vam}<td></td>
+  <tr><td colspan=3><td>{-vetlh}<td></td>
 </table>
 
 
@@ -1173,14 +1179,20 @@ two punctuation marks.
 
 ## Numbers
 
-<table class="suffix sans">
-  <tr>
-    <td>{wa’}<br>{cha’}<br>{wej}<br>{loS}<br>
-      {vagh}<br>{jav}<br>{Soch}<br>{chorgh}<br>{Hut}</td>
-    <td>{-maH}<br>{-vatlh}<br>{-SaD}<br>
-      {-SanID}<br>{-netlh}<br>{-bIp}<br>{-’uy’}</td>
-    <td>{-DIch}<br>{-logh}</td>
-    <caption>(<b lang=tlh>pagh</b> is not a number.)</caption>
+<table markdown class="sans border hide-empty">
+  <tr><td>{wa’}<td>{-maH}<td>{-DIch}</tr>
+  <tr><td>{cha’}<td>{-vatlh}<td>{-logh}</tr>
+  <tr><td>{wej}<td>{-SaD} / {-SanID}</tr>
+  <tr><td>{loS}<td>{-netlh}</tr>
+  <tr><td>{vagh}<td>{-bIp}</tr>
+  <tr><td>{jav}<td>{-’uy’}</tr>
+  <tr><td>{Soch}<td>-maH’uy’ / -vatlhbIp</tr>
+  <tr><td>{chorgh}<td><nobr>-vatlh’uy’ / -SaDbIp / -SanIDbIp</nobr></tr>
+  <tr><td>{Hut}<td>-Saghan</tr>
+  <tr><td><td>-maHSaghan / -netlh’uy’</tr>
+  <tr><td><td>-vatlhSaghan / -bIp’uy’</tr>
+  <tr><td><td>-SaDSaghan / -SanIDSaghan</tr>
+  <caption>(<b lang=tlh>pagh</b> is not a number.)</caption>
 </table>
 
 
