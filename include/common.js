@@ -467,6 +467,7 @@ function main($) {
 
 function openLink(src) {
     'use strict';
+    $('html').addClass('show-source');
     $('iframe').attr('src', src);
 }
 

@@ -2,7 +2,7 @@
 
 /* Landscape mode. */
 @media (min-aspect-ratio: 1/1) {
-    html.DEBUG {
+    html.DEBUG.show-source {
         background-position: calc(50% + (var(--vgrid) * .5)) -9px;
     }
 }

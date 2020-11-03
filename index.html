@@ -74,11 +74,14 @@ th, td { position: relative; }
       main { position: relative; }
       body, html { margin: 0; }
       article { padding: var(--vgrid) var(--hgrid); }
-      aside {
+      #source {
         padding: calc(var(--vgrid) * .5) calc(var(--hgrid) * .5);
         margin: 0;
         display: block;
         position: fixed;
+      }
+      html:not(.show-source) #source {
+        display: none;
       }
       iframe {
         background: #fff;
@@ -89,24 +92,24 @@ th, td { position: relative; }
       }
       /* Portrait mode. */
       @media (max-aspect-ratio: 1/1) {
-        aside {
+        #source {
           bottom: 0;
           height: 33vh;
           width: 100%;
         }
-        article {
+        html.show-source body {
           margin-bottom: 33vh;
         }
       }
       /* Landscape mode. */
       @media (min-aspect-ratio: 1/1) {
-        aside {
+        #source {
           width: 50%;
           height: 100vh;
           top: 0;
           left: 0;
         }
-        article {
+        html.show-source article {
           margin-left: 50%;
         }
       }
@@ -1337,7 +1340,7 @@ two punctuation marks.
 
         </textarea>
       </article>
-      <aside><iframe src="tkd.html"></iframe></aside>
+      <aside id=source><iframe src="tkd.html"></iframe></aside>
     </main>
     <script src="include/common.js"></script>
   </body>
