@@ -326,6 +326,11 @@ function main($) {
             return '<i lang="'+lang+'" class="transl">'+md+'</i>';
         }),
     });
+    showdown.extension('sup', {
+        type: 'lang',
+        regex: /\^([^^]+)\^/g,
+        replace: '<sup>$1</sup>',
+    });
     showdown.extension('ref', {
         type: 'lang',
         regex: /‹([^›]+)›/g,
@@ -382,7 +387,7 @@ function main($) {
     });
     // https://github.com/showdownjs/showdown/wiki/Showdown-Options
     const converter = new showdown.Converter({
-        extensions        : ['id', 'table','tlh', 'en', 'ref'],
+        extensions        : ['id', 'table','tlh', 'en', 'ref', 'sup'],
         noHeaderId        : true,
         simplifiedAutoLink: true,
         strikethrough     : true,
