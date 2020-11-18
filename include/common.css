@@ -309,4 +309,9 @@ button {
     100% { transform: translate(24px, 0); }
 }
 
+/* For *...* inside «...». */
+i.transl em {
+    font-weight: bold;
+}
+
 /* eof */
