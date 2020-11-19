@@ -149,18 +149,13 @@ table th:last-child {
 a {
     text-decoration: none;
 }
-a:hover {
+a:hover, .hover {
+    cursor: pointer;
     text-decoration: underline;
     background: var(--hilite);
 }
-
-/* If single link in table cell, expand it to take up whole cell. */
-table td a:first-child:last-child,
-table th a:first-child:last-child {
-    display: block;
-    height: 100%;
-    margin: 0 calc(var(--cellpad) * -1);
-    padding: 0 var(--cellpad);
+.hover > a {
+    background: none;
 }
 
 /***** Hashlink target *****/
