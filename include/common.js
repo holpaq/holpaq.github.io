@@ -130,14 +130,14 @@ function insertTableOfContent() {
             html += (new Array(level - num + 1)).join('</ul>\n');
         }
         level = num;
-        html += '<li class="h{level}" hanging><a href="#{link}">{text}</a>\n'.supplant({
+        html += '<li class="h{level}"><a href="#{link}">{text}</a>\n'.supplant({
             level: num,
             text: tocItem($h),
             link: $h.attr('id'),
         });
     });
     $toc.replaceWith(
-        '<ul class=toc' + tocAttrs + '>' + html + '</ul>',
+        '<ul class=toc hanging' + tocAttrs + '>' + html + '</ul>',
     );
 }
 
@@ -377,7 +377,7 @@ function main($) {
             );
             // Number of cells in longest row.
             let maxcols = Math.max(...tbl.map((x) => x.length));
-            return pre + '<table markdown class=example>\n' +
+            return pre + '<table markdown class=example hanging>\n' +
                 tbl.map((row, i) => {
                     return '<tr>' + row.map((text, i) => {
                         return processCell(text, i + 1, row.length, maxcols);

@@ -65,14 +65,7 @@ body {
 }
 
 /***** Paragraphs *****/
-p {
-    margin-top: var(--vgrid);
-    text-align: justify;
-}
-p + p {
-    margin-top: 0;
-    text-indent: var(--hgrid);
-}
+p { text-align: justify; }
 
 /***** Headings *****/
 [title] { text-align: center; }
@@ -230,22 +223,6 @@ mark:hover {
     background: rgba(0, 0, 0, .2);
 }
 
-/***** Special indents *****/
-[hanging] {
-    text-indent: calc(var(--hgrid) * -1);
-    padding-left: var(--hgrid);
-}
-[hanging] td {
-    text-indent: calc(var(--hgrid) * -1);
-    padding-left: calc(var(--cellpad) + var(--hgrid));
-}
-[indent] {
-    padding-left: var(--hgrid);
-}
-td[indent], th[indent] {
-    padding-left: calc(var(--cellpad) + var(--hgrid));
-}
-
 /***** Background color for TODO notes and errata *****/
 err, [TODO] { background: var(--hilite); }
 
@@ -307,6 +284,70 @@ button {
 /* For *...* inside «...». */
 i.transl em {
     font-weight: bold;
+}
+
+/*******************************************************************************
+Indentation: Attributes 'indent'/'noindent' add/remove left indentation to
+paragraphs. Is inherited, so you can wrap any number of paragraphs with
+a <div indent>. Not inherited by tables, but can be applied directly to
+<td> or <th> elements.
+*/
+html, tr,
+[noindent] { --indent: 0em; }
+[indent]   { --indent: var(--hgrid); }
+
+/*******************************************************************************
+Paragraph separation: There are three modes, controlled by the following
+HTML attributes. Is inherited, so you can wrap any number of paragraphs
+with a <div hanging>.
+
+  'book'    -- separate paragraphs by indenting first line, except for first
+               paragraph (default)
+  'blank'   -- separated by blank lines
+  'hanging' -- hanging indent (default in tables)
+*/
+html, [book] {
+  --paragraph-between: 0em;             /* blank line? */
+  --paragraph-indent: 0em;              /* indentation */
+  --text-indent-first: 0em;
+  --text-indent-other: var(--hgrid);
+}
+[blank] {
+  --paragraph-between: var(--vgrid);    /* blank line? */
+  --paragraph-indent: 0em;              /* indentation */
+  --text-indent-first: 0em;
+  --text-indent-other: 0em;
+}
+[hanging] {
+  --paragraph-between: 0em;             /* blank line? */
+  --paragraph-indent: var(--hgrid);     /* indentation */
+  --text-indent-first: calc(var(--hgrid) * -1);
+  --text-indent-other: calc(var(--hgrid) * -1);
+}
+p {
+  margin-top: var(--vgrid);
+  text-indent: var(--text-indent-first);
+  padding-left: var(--paragraph-indent);
+  margin-left: var(--indent);
+}
+/* Width of <td> cannot be smaller that padding-left, so empty hanging indent
+   cells become too wide unless :not(:empty) is used. */
+td:not(:empty), th:not(:empty) {
+  text-indent: var(--text-indent-first);
+  padding-left: calc(var(--paragraph-indent) + var(--indent) + var(--cellpad));
+}
+li {
+  text-indent: var(--text-indent-first);
+  padding-left: var(--paragraph-indent);
+}
+li > p, td > p, th > p, p + p {
+  margin-top: var(--paragraph-between);
+  text-indent: var(--text-indent-other);
+  padding-left: var(--paragraph-indent);
+}
+li > p, td > p, th > p {
+  /* Shift paragraph to left to negate <td> margin. */
+  margin-left: calc(var(--paragraph-indent) * -1);
 }
 
 /* eof */
