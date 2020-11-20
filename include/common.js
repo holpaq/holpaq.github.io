@@ -377,7 +377,7 @@ function main($) {
             );
             // Number of cells in longest row.
             let maxcols = Math.max(...tbl.map((x) => x.length));
-            return pre + '<table markdown class=example hanging>\n' +
+            return pre + '<table markdown class=example>\n' +
                 tbl.map((row, i) => {
                     return '<tr>' + row.map((text, i) => {
                         return processCell(text, i + 1, row.length, maxcols);

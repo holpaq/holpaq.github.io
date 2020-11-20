@@ -297,28 +297,38 @@ html, tr,
 [indent]   { --indent: var(--hgrid); }
 
 /*******************************************************************************
-Paragraph separation: There are three modes, controlled by the following
-HTML attributes. Is inherited, so you can wrap any number of paragraphs
-with a <div hanging>.
+Paragraph mode: There are three modes, controlled by the following HTML
+attributes. Is inherited, so you can wrap any number of paragraphs with a <div
+hanging>.
 
   'book'    -- separate paragraphs by indenting first line, except for first
                paragraph (default)
   'blank'   -- separated by blank lines
   'hanging' -- hanging indent (default in tables)
+
+Tables also inherit paragraph mode, if none is specified then tables of class
+'example' will default to 'hanging', while other tables will default to 'book'.
 */
-html, [book] {
+html,
+[book],
+table,
+[book] table.example {
   --paragraph-between: 0em;             /* blank line? */
   --paragraph-indent: 0em;              /* indentation */
   --text-indent-first: 0em;
   --text-indent-other: var(--hgrid);
 }
-[blank] {
+[blank],
+[blank] table,
+[blank] table.example {
   --paragraph-between: var(--vgrid);    /* blank line? */
   --paragraph-indent: 0em;              /* indentation */
   --text-indent-first: 0em;
   --text-indent-other: 0em;
 }
-[hanging] {
+[hanging],
+[hanging] table,
+table.example {
   --paragraph-between: 0em;             /* blank line? */
   --paragraph-indent: var(--hgrid);     /* indentation */
   --text-indent-first: calc(var(--hgrid) * -1);
