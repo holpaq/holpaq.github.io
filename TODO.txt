@@ -1,5 +1,25 @@
 #+STARTUP: overview hidestars -*- org -*-
 
+* CSS
+** '--vgrid' should never be used for width                             :BUG:
+   There are a couple of occurrences of this. Find with:
+       ----------------------------------------
+       grep 'width:.*vgrid' **/*.css
+       ----------------------------------------
+** Table borders
+   These table borders are pretty. They have no overlap (good for
+   semi-transparent borders).
+       ----------------------------------------
+       table { box-shadow: .5px .5px 0 .5px #0008; }
+       td, th { box-shadow: inset 1px 1px #0008; }
+       ----------------------------------------
+** Rename --hgrid/--vgrid -> --indent/--blank
+** Rename 'indent' -> 'indented'(?)
+   Should be consistent, if we use 'hanging' rather that 'hang' then should
+   also use 'indented' rather than 'indent'.
+** Write some kind of guideline document for CSS
+   With examples of 'hanging', 'indent' etc. -- See 'css.html' for a start of
+   something.
 * Design
 ** TODO Times New Roman is gosh-darn ugly! Replace it!
    + The font need to distinguish between uppercase I and lowercase L, which
