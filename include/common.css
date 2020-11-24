@@ -43,7 +43,7 @@ html {
 
     --serif: 'Times New Roman', TimesNewRoman, Times;
     --sans: sans-serif;
-    --hilite: rgba(0, 0, 255, .25);
+    --hilite: #00f4;
 
     font-size: var(--rem);
     line-height: var(--rlead); /* = 27px for (unresized) 18px text */
@@ -168,7 +168,7 @@ a:hover, .hover {
     bottom: 1em;
     display: inline-block;
     vertical-align: middle;
-    filter: drop-shadow(0px 2px 10px rgba(0, 0, 0, .5));
+    filter: drop-shadow(0px 2px 10px #0008);
 }
 :empty:target:before {
     content: attr(id);
@@ -216,11 +216,11 @@ sub { top: .4em; }
 
 /***** Marking of source chunks *****/
 mark {
-    background: rgba(0, 0, 0, .05);
+    background: #0001;
     border-radius: 4px;
 }
 mark:hover {
-    background: rgba(0, 0, 0, .2);
+    background: #0003;
 }
 
 /***** Background color for TODO notes and errata *****/
