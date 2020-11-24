@@ -68,6 +68,16 @@
     * Brill -- It looks too squished for my taste, with tall drawn out
       characters.
 
+* Git hooks
+  Establish workflow which automatically decodes/encodes TKD, TKW and KGT on
+  when needed. Need functions for:
+
+  + diffing -- I currently use: `git diff =(./rot13 tkw.html) tkw-decoded.html`
+  + adding -- Should never add to these files directly, but instead add the
+    encoded content to corresponding encoded file.
+  + pulling -- Should automatically update decoded versions (if possible, of
+    course) on `git pull`
+  + status -- Should report changes in these files.
 * Programming
 ** TODO Styling of tables
    Are these lines necessary?
