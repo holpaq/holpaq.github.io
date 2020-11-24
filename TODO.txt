@@ -30,44 +30,6 @@
    the various columns should balance each other, and maintain approximately
    equal width.
 * Design
-** TODO Times New Roman is gosh-darn ugly! Replace it!
-   + The font need to distinguish between uppercase I and lowercase L, which
-     means it (probably) needs to a serif font.
-
-   + It'd be cool to have a headline font which we can distinguish bold
-     (Klingon) text. Either a font that has an extra-bold version, or a font
-     that looks pretty as a headline even when it's not bold.
-
-   + Preferably IPA should be supported (ideally we should have both a serif,
-     and a sans-serif font which both support IPA).
-
-   + Make sure the vertical rhythm works when changing the fonts!
-
-   Minion Pro is a pretty serif font (it can be seen here
-   https://theweek.com/articles/617776/how-identify-language-glance). It does
-   not support IPA, but maybe a similar font can be chosen which sorta matches
-   the Minion Pro look for the IPA characters? - This Stackoverflow question
-   https://tex.stackexchange.com/questions/47070 suggests replacing the IPA
-   characters with Gentium, while scaling the font to get the same x-height as
-   the surrounding Minion Pro -- but the question explains how to do this
-   XeLaTeX, maybe this can be adapted for HTML?
-
-   + List of IPA capable fonts:
-     https://www.internationalphoneticassociation.org/content/ipa-fonts
-
-   + Much better list of IPA capable fonts:
-     https://www.isoglosse.de/2016/06/fonts-for-phonetic-transcriptions/
-
-   + Even better still (though in German) list of IPA capable fonts (even
-     better because it contains font examples with pictures) of the same fonts
-     as the above link.
-     https://www.isoglosse.de/2014/03/schriftarten-ipa-transkriptionen/#brill
-
-
-  + Fonts I've tried:
-    * Brill -- It looks too squished for my taste, with tall drawn out
-      characters.
-
 * Git hooks
   Establish workflow which automatically decodes/encodes TKD, TKW and KGT on
   when needed. Need functions for:
@@ -316,6 +278,61 @@
    You can not use a ’question’ as an object; [...] it is not know yet if
    Klingon question words can act one of those. (1998.05.25)
 * DONE
+** DONE Now use Minion 3 instead of Times New Roman
+   CLOSED: [2020-11-24 Tue 14:50]
+
+   Minion 3 works as a (much prettier!) drop-in replacement for Times New Roman
+   (with its baseline with the vertical rhythm even lining up perfectly with
+   the squares in the debug background), except for it's slightly smaller size.
+
+   Therefore increased text size (from 18px to 20px), but continue to use Times
+   New Roman as a fallback (should Minion 3 not load for some reason).
+
+   + New font is 'Minion 3', the font downloaded from:
+     https://fontshub.pro/font/minion-3-download
+
+   + More info about the font:
+     https://minion.typekit.com/
+
+   ----------------------------------------
+
+   + The font need to distinguish between uppercase I and lowercase L, which
+     means it (probably) needs to a serif font.
+
+   + It'd be cool to have a headline font which we can distinguish bold
+     (Klingon) text. Either a font that has an extra-bold version, or a font
+     that looks pretty as a headline even when it's not bold.
+
+   + Preferably IPA should be supported (ideally we should have both a serif,
+     and a sans-serif font which both support IPA).
+
+   + Make sure the vertical rhythm works when changing the fonts!
+
+   Minion Pro is a pretty serif font (it can be seen here
+   https://theweek.com/articles/617776/how-identify-language-glance). It does
+   not support IPA, but maybe a similar font can be chosen which sorta matches
+   the Minion Pro look for the IPA characters? - This Stackoverflow question
+   https://tex.stackexchange.com/questions/47070 suggests replacing the IPA
+   characters with Gentium, while scaling the font to get the same x-height as
+   the surrounding Minion Pro -- but the question explains how to do this
+   XeLaTeX, maybe this can be adapted for HTML?
+
+   + List of IPA capable fonts:
+     https://www.internationalphoneticassociation.org/content/ipa-fonts
+
+   + Much better list of IPA capable fonts:
+     https://www.isoglosse.de/2016/06/fonts-for-phonetic-transcriptions/
+
+   + Even better still (though in German) list of IPA capable fonts (even
+     better because it contains font examples with pictures) of the same fonts
+     as the above link.
+     https://www.isoglosse.de/2014/03/schriftarten-ipa-transkriptionen/#brill
+
+
+  + Fonts I've tried:
+    * Brill -- It looks too squished for my taste, with tall drawn out
+      characters.
+
 ** DONE Added transcript of "The Klingon Hamlet: Appendix II"
    CLOSED: [2020-11-22 Sun 13:35]
 ** DONE Use «...» for English language examples (not *...*)

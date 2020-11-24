@@ -8,45 +8,229 @@
 html {
     box-sizing: border-box;
 }
-
-/***** Fonts ********/
+/******************************************************************************/
+/* Font: Minion 3 [https://minion.typekit.com/]
+   Text    (for sizes 9pt--14pt)
+   Caption (for sizes 6pt--9pt)
+   Subhead (for sizes 14--24pt)
+   Display (for sizes 24pt and up)
+*/
+/* Text Regular (weight 400) */
 @font-face {
-    font-family: 'Times New Roman';
-    src: url('fonts/times.ttf');
+    font-family: 'Minion 3';
+    src: url('fonts/minion3-regular.woff2');
+    font-weight: normal;
+    font-style: normal;
     font-display: swap;
 }
 @font-face {
-    font-family: 'Times New Roman';
-    src: url('fonts/timesbd.ttf');
-    font-weight: bold;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Times New Roman';
-    src: url('fonts/timesi.ttf');
+    font-family: 'Minion 3';
+    src: url('fonts/minion3-italic.woff2');
+    font-weight: normal;
     font-style: italic;
     font-display: swap;
 }
+/* Text Medium (weight 500) */
 @font-face {
-    font-family: 'Times New Roman';
-    src: url('fonts/timesbi.ttf');
+    font-family: 'Minion 3';
+    src: url('fonts/minion3-medium.woff2');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Minion 3';
+    src: url('fonts/minion3-medium-italic.woff2');
+    font-weight: 500;
+    font-style: italic;
+}
+/* Text Semibold (weight 600) */
+@font-face {
+    font-family: 'Minion 3';
+    src: url('fonts/minion3-semibold.woff2');
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Minion 3';
+    src: url('fonts/minion3-semibold-italic.woff2');
+    font-weight: 600;
+    font-style: italic;
+}
+/* Text Bold (weight 700) */
+@font-face {
+    font-family: 'Minion 3';
+    src: url('fonts/minion3-bold.woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Minion 3';
+    src: url('fonts/minion3-bold-italic.woff2');
     font-weight: bold;
     font-style: italic;
     font-display: swap;
 }
+/******************************************************************************/
+/* Caption Regular (weight 400) */
+@font-face {
+    font-family: 'Minion 3 Caption';
+    src: url('fonts/minion3-caption-regular.woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Minion 3 Caption';
+    src: url('fonts/minion3-caption-italic.woff2');
+    font-weight: normal;
+    font-style: italic;
+}
+/* Caption Medium (weight 500) */
+@font-face {
+    font-family: 'Minion 3 Caption';
+    src: url('fonts/minion3-caption-medium.woff2');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Minion 3 Caption';
+    src: url('fonts/minion3-caption-medium-italic.woff2');
+    font-weight: 500;
+    font-style: italic;
+}
+/* Caption Semibold (weight 600) */
+@font-face {
+    font-family: 'Minion 3 Caption';
+    src: url('fonts/minion3-caption-semibold.woff2');
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Minion 3 Caption';
+    src: url('fonts/minion3-caption-semibold-italic.woff2');
+    font-weight: 600;
+    font-style: italic;
+}
+/* Caption Bold (weight 700) */
+@font-face {
+    font-family: 'Minion 3 Caption';
+    src: url('fonts/minion3-caption-bold-italic.woff2');
+    font-weight: bold;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Minion 3 Caption';
+    src: url('fonts/minion3-caption-bold.woff2');
+    font-weight: bold;
+    font-style: normal;
+}
+/******************************************************************************/
+/* Subhead Regular (weight 400) */
+@font-face {
+    font-family: 'Minion 3 Subhead';
+    src: url('fonts/minion3-subhead-regular.woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Minion 3 Subhead';
+    src: url('fonts/minion3-subhead-italic.woff2');
+    font-weight: normal;
+    font-style: italic;
+}
+/* Subhead Medium (weight 500) */
+@font-face {
+    font-family: 'Minion 3 Subhead';
+    src: url('fonts/minion3-subhead-medium.woff2');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Minion 3 Subhead';
+    src: url('fonts/minion3-subhead-medium-italic.woff2');
+    font-weight: 500;
+    font-style: italic;
+}
+/* Subhead Bold (weight 700) */
+@font-face {
+    font-family: 'Minion 3 Subhead';
+    src: url('fonts/minion3-subhead-bold.woff2');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Minion 3 Subhead';
+    src: url('fonts/minion3-subhead-bold-italic.woff2');
+    font-weight: bold;
+    font-style: italic;
+}
+/******************************************************************************/
+/* Display Regular (weight 400) */
+@font-face {
+    font-family: 'Minion 3 Display';
+    src: url('fonts/minion3-display-regular.woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Minion 3 Display';
+    src: url('fonts/minion3-display-italic.woff2');
+    font-weight: normal;
+    font-style: italic;
+}
+/* Display Medium (weight 500) */
+@font-face {
+    font-family: 'Minion 3 Display';
+    src: url('fonts/minion3-display-medium.woff2');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Minion 3 Display';
+    src: url('fonts/minion3-display-medium-italic.woff2');
+    font-weight: 500;
+    font-style: italic;
+}
+/* Display Semibold (weight 600) */
+@font-face {
+    font-family: 'Minion 3 Display';
+    src: url('fonts/minion3-display-semibold.woff2');
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Minion 3 Display';
+    src: url('fonts/minion3-display-semibold-italic.woff2');
+    font-weight: 600;
+    font-style: italic;
+}
+/* Display Bold (weight 700) */
+@font-face {
+    font-family: 'Minion 3 Display';
+    src: url('fonts/minion3-display-bold.woff2');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Minion 3 Display';
+    src: url('fonts/minion3-display-bold-italic.woff2');
+    font-weight: bold;
+    font-style: italic;
+}
+/******************************************************************************/
 html {
-    --rem: 18px;  /* root font size */
+    --rem: 20px;  /* root font size */
     --rlead: 1.5; /* root line height (unitless) */
     --hgrid: calc(var(--rem) * var(--rlead));
     --vgrid: calc(var(--rem) * var(--rlead));
     --cellpad: calc(var(--hgrid) * .25); /* table cell padding */
 
-    --serif: 'Times New Roman', TimesNewRoman, Times;
+    --serif: 'Minion 3', Minion3, 'Times New Roman', TimesNewRoman, Times;
     --sans: sans-serif;
     --hilite: #00f4;
 
     font-size: var(--rem);
-    line-height: var(--rlead); /* = 27px for (unresized) 18px text */
+    line-height: var(--rlead);
     font-family: var(--serif);
 
     height: 100%; overflow-y: scroll;
