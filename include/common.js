@@ -338,12 +338,13 @@ function main($) {
     });
     // [#...] -> <a id="..."></a>. IDs must not contain space, nor any of
     // '.:[]' (colon and period interferes with CSS styling). Note: Spaces and
-    // tabs following the tag are also stripped (but not newlines, so if you
-    // put it on a paragraph of its own you'll get an empty paragraph with just
-    // an <a> tag in it!)
+    // tabs following the tag are also stripped, as is a single newline -- but
+    // if is followed by another newline it is left as-is; so if you put a
+    // [#...] in a paragraph of its own you'll get an empty paragraph with a
+    // single <a> tag in it!)
     showdown.extension('id', {
         type: 'lang',
-        regex: /\[#([^.:\[\]\s]+)\][\t ]*/g,
+        regex: /\[#([^.:\[\]\s]+)\][\t ]*(\n(?!\n))?/g,
         replace: '<a id="$1"></a>',
     });
     // Table in '| xxx | yyy' format. Cell separator ('|') may be surrounded by
