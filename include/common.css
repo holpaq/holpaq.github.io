@@ -347,36 +347,35 @@ a:hover, .hover {
 /* For 'id's on empty elements, indicate position with speech bubble. */
 :empty:target {
     position: relative;
-    right: .1875em;
-    height: 0;
+    height: 1em;
     width: 0;
-    bottom: 1em;
     display: inline-block;
-    vertical-align: middle;
-    filter: drop-shadow(0px 2px 10px #0008);
+    vertical-align: baseline;
+    filter: drop-shadow(0 2px 10px #0004);
+    outline: 3px solid #00f5;
 }
 :empty:target:before {
+    font: 1rem/var(--rlead) var(--serif);
     content: attr(id);
     background: #bbf;
     display: inline-block;
-    padding: .125em .5em;
+    padding: calc(1rem / 10) var(--cellpad);
     transform: translateX(-50%);
-    position: relative;
-    bottom: var(--vgrid);
+    position: absolute;
     border: 1px solid var(--hilite);
     border-radius: .25em;
+    top: calc(100% + (var(--vgrid) * .2));
 }
 :empty:target:after {
     content: '';
     background: #bbf;
-    border: 1px solid var(--hilite);
-    border-top: 0;
-    border-left: 0;
-    margin-top: -1.9em;
+    border: solid var(--hilite);
+    border-width: 1px 0 0 1px;
     position: absolute;
-    transform: translateX(-50%) rotate(45deg);
-    width:  calc(var(--vgrid) * .5);
-    height: calc(var(--vgrid) * .5);
+    transform: translate(-50%, -50%) rotate(45deg);
+    width:  calc(var(--vgrid) * .375);
+    height: calc(var(--vgrid) * .375);
+    top: calc(100% + (var(--vgrid) * .2));
 }
 
 /***** Subscript/superscript ********/
