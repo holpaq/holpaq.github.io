@@ -41,6 +41,8 @@
     course) on `git pull`
   + status -- Should report changes in these files.
 * Programming
+** TODO Move hashlink code to outside of the main() function
+   Breakout the hashlink menu thingy and put into a module elsewhere in the code
 ** TODO Styling of tables
    Are these lines necessary?
    font-size: inherit;

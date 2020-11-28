@@ -327,9 +327,11 @@ table th:last-child {
 a {
     text-decoration: none;
 }
+a:hover, a.hover {
+    text-decoration: underline;
+}
 a:hover, .hover {
     cursor: pointer;
-    text-decoration: underline;
     background: var(--hilite);
 }
 .hover > a {
@@ -338,44 +340,30 @@ a:hover, .hover {
 
 /***** Hashlink target *****/
 :target {
-    transition: background-color 1s ease;
-    background-color: var(--hilite);
-    border-radius: calc(var(--vgrid) * .125);
+    background: var(--hilite);
 }
-
-/***** Empty hashlink target *****/
-/* For 'id's on empty elements, indicate position with speech bubble. */
-:empty:target {
-    position: relative;
-    height: 1em;
-    width: 0;
-    display: inline-block;
-    vertical-align: baseline;
-    filter: drop-shadow(0 2px 10px #0004);
-    outline: 3px solid #00f5;
+[id] {
+    pointer-events: none;
+    cursor: text;
 }
-:empty:target:before {
-    font: 1rem/var(--rlead) var(--serif);
-    content: attr(id);
-    background: #bbf;
+[id]:hover:before { opacity: .75; } /* link icon */
+[id]:before { /* link icon */
+    pointer-events: all;
+    cursor: pointer;
+    background: left no-repeat url(link.svg);
+    content: '​'; /* zero-width space sets height */
     display: inline-block;
-    padding: calc(1rem / 10) var(--cellpad);
-    transform: translateX(-50%);
+    width: 20px;
+    left: calc(var(--cellpad) * .5);
     position: absolute;
-    border: 1px solid var(--hilite);
-    border-radius: .25em;
-    top: calc(100% + (var(--vgrid) * .2));
+    opacity: .2;
 }
-:empty:target:after {
+[id]:target:empty:after,
+[id].hover:empty:after {
     content: '';
-    background: #bbf;
-    border: solid var(--hilite);
-    border-width: 1px 0 0 1px;
-    position: absolute;
-    transform: translate(-50%, -50%) rotate(45deg);
-    width:  calc(var(--vgrid) * .375);
-    height: calc(var(--vgrid) * .375);
-    top: calc(100% + (var(--vgrid) * .2));
+    height: 1em;
+    display: inline-block;
+    outline: 5px solid var(--hilite);
 }
 
 /***** Subscript/superscript ********/

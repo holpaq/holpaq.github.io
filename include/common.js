@@ -463,6 +463,73 @@ function main($) {
     insertOptionalBreakAfterSlash($('html'));
     insertTableOfContent();
 
+    /* FIXME: put into separate module */
+    // Hashlinks
+    (function ($win, $doc) {
+        let menu = [];
+        let shown = false;
+        let $menu = $('<div class=menu hidden></div>')
+            .css({
+                position: 'fixed',
+                zIndex: 2147483647, /* topmost allowed */
+                background: '#fff',
+                borderRadius: 2,
+                padding: 'calc(var(--cellpad) * .25) calc(var(--cellpad) * .5)',
+                boxShadow: '0 2px 15px #0008',
+                fontSize: '1rem',
+                lineHeight: 'var(--rlead)',
+            })
+            .on('mouseover', 'a', addHilite)
+            .on('mouseout', 'a', removeHilite)
+            .appendTo('body');
+
+        $doc.on('click', '[id]', (e) => {
+            let id = $(e.currentTarget).attr('id');
+            menu.push($(`<a href="#${id}">#${id}</a>`).css({
+                display: 'block',
+                width: '100%',
+                padding: '0 var(--cellpad)',
+            }));
+            openMenu(e.clientX - 10, e.clientY - 10);
+        });
+
+        function addHilite(e) {
+            let id = $(e.target).attr('href');
+            $(id).addClass('hover');
+        }
+        function removeHilite(e) {
+            let id = $(e.target).attr('href');
+            $(id).removeClass('hover');
+        }
+        function openMenu(x, y) {
+            shown = true;
+            // Display element topleft to get its height + width.
+            $menu
+                .css({ left: 0, top: 0 })
+                .html(menu)
+                .show();
+
+            // Now use height and width of displayed menu, to move it to the right
+            // place (making sure it doesn't stick out of right/bottom corner of
+            // window).
+            let xMax = $win.width()  - $menu.outerWidth();
+            let yMax = $win.height() - $menu.outerHeight();
+            $menu.css({
+                left: x < xMax ? x : (xMax < 0 ? 0 : xMax),
+                top:  y < yMax ? y : (yMax < 0 ? 0 : yMax),
+            });
+        }
+        function hideMenu() {
+            if (shown) {
+                menu = [];
+                shown = false;
+                $menu.hide();
+            }
+        }
+        $win.on('hashchange resize', hideMenu);
+        $doc.on('scroll keydown mouseup', hideMenu);
+    }($(window), $(document)));
+
     /* If table cell contains single link: Allow click/click on whole cell. */
     $('td:has(>a:only-child),th:has(>a:only-child)').hover(function () {
         $(this).toggleClass('hover');
