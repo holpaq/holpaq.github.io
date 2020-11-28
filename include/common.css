@@ -255,25 +255,25 @@ p { text-align: justify; }
 /***** Headings *****/
 [title] { text-align: center; }
 h1 {
-    margin-top: calc(var(--vgrid) * 2);
+    --push: calc(1em * .275); /* push down baseline to grid */
+    margin-top: calc(var(--vgrid) * 2 + var(--push));
+    margin-bottom: calc(var(--push) * -1);
     font-size: calc(1rem * 3);
     line-height: calc(var(--vgrid) * 3);
-    /* Push text down to baseline. */
-    position: relative; top: calc(1em * .275);
 }
 h2 {
-    margin-top: calc(var(--vgrid) * 2);
+    --push: calc(1em * .2); /* push down baseline to grid */
+    margin-top: calc(var(--vgrid) * 2 + var(--push));
+    margin-bottom: calc(var(--push) * -1);
     font-size: calc(1rem * 2);
     line-height: calc(var(--vgrid) * 2);
-    /* Push text down to baseline. */
-    position: relative; top: calc(1em * .2);
 }
 h3 {
-    margin-top: var(--vgrid);
+    --push: calc(1em * .375); /* push down baseline to grid */
+    margin-top: calc(var(--vgrid) + var(--push));
+    margin-bottom: calc(var(--push) * -1);
     font-size: calc(1rem * 1.5);
     line-height: calc(var(--vgrid) * 2);
-    /* Push text down to baseline. */
-    position: relative; top: calc(1em * .375);
 }
 h1 b, h2 b, h3 b {
     font-style: italic;
