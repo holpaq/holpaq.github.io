@@ -73,7 +73,10 @@ th, td { position: relative; }
     <style>
       main { position: relative; }
       body, html { margin: 0; }
-      article { padding: var(--vgrid) var(--hgrid); }
+      article {
+        position: relative; /* needed for id link icon placement */
+        padding: var(--vgrid) var(--hgrid);
+      }
       #source {
         padding: calc(var(--vgrid) * .5) calc(var(--hgrid) * .5);
         margin: 0;

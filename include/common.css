@@ -342,12 +342,12 @@ a:hover, .hover {
 :target {
     background: var(--hilite);
 }
-[id] {
+:not(aside)[id] {
     pointer-events: none;
     cursor: text;
 }
-[id]:hover:before { opacity: .75; } /* link icon */
-[id]:before { /* link icon */
+:not(aside)[id]:hover:before { opacity: .75; } /* link icon */
+:not(aside)[id]:before { /* link icon */
     pointer-events: all;
     cursor: pointer;
     background: left no-repeat url(link.svg);
@@ -358,8 +358,8 @@ a:hover, .hover {
     position: absolute;
     opacity: .2;
 }
-[id]:target:empty:after,
-[id].hover:empty:after {
+:not(aside)[id]:target:empty:after,
+:not(aside)[id].hover:empty:after {
     content: '';
     height: 1em;
     display: inline-block;
