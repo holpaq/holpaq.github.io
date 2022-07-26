@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Klingon Grammar | tlhIngan Hol pab</title>
-    <meta name="description" content="Klingon Grammar | tlhIngan Hol pab">
-    <!--meta name="author" content=""-->
-    <link rel="stylesheet" href="include/index.css">
+<meta charset="utf-8">
+<title>Klingon Grammar | tlhIngan Hol pab</title>
+<meta name="description" content="Klingon Grammar | tlhIngan Hol pab">
+<!--meta name="author" content=""-->
+<link rel="stylesheet" href="include/index.css">
 <style>
 /* Hide <h4> headings in table-of-content. */
 /* (Here used for suffix headings, not for chapters.) */
@@ -70,187 +68,185 @@ table.border.hide-empty td:empty + td:not(:empty):before {
 th, td { position: relative; }
 
 </style>
-    <style>
-      main { position: relative; }
-      body, html { margin: 0; }
-      article {
-        position: relative; /* needed for id link icon placement */
-        padding: var(--vgrid) var(--hgrid);
-      }
-      #source {
-        padding: calc(var(--vgrid) * .5) calc(var(--hgrid) * .5);
-        margin: 0;
-        display: block;
-        position: fixed;
-      }
-      html:not(.show-source) #source {
-        display: none;
-      }
-      iframe {
-        background: #fff;
-        box-shadow: 0 0 10px 10px #0005;
-        border: 0;
-        width: 100%;
-        height: 100%;
-      }
-      /* Portrait mode. */
-      @media (max-aspect-ratio: 1/1) {
-        #source {
-          bottom: 0;
-          height: 33vh;
-          width: 100%;
-        }
-        html.show-source body {
-          margin-bottom: 33vh;
-        }
-      }
-      /* Landscape mode. */
-      @media (min-aspect-ratio: 1/1) {
-        #source {
-          width: 50%;
-          height: 100vh;
-          top: 0;
-          left: 0;
-        }
-        html.show-source article {
-          margin-left: 50%;
-        }
-      }
-    </style>
-    <style>
-      /* General styling for tables. */
-      table.sans {
-        font-family: var(--sans);
-        width: 1%;
-      }
-      table.sans b {
-        font-weight: normal;
-      }
-      table.sans caption b {
-        font-weight: bold;
-      }
-      table.sans td,
-      table.sans th {
-        font-size: smaller;
-        line-height: var(--vgrid);
-        text-align: left;
-      }
-      table.sans caption {
-        caption-side: bottom;
-        font-family: var(--serif);
-        margin-top: var(--vgrid);
-      }
-    </style>
-    <style>
-      /* Styling for prefix table. */
-      /* FIXME:
-         * Highlight subject and object headings on mouseover(?)
-         * Scale width of prefix cells to same width (instead of using min-width)
-      */
-      table.prefix {
-        margin-left: calc(var(--hgrid) *.5);
-        --empty-background: #0002;
-        margin-top: calc(var(--vgrid) * 1.5);
-      }
-      table.prefix thead [rowspan="2"] {
-        height: calc(var(--vgrid) * 3.5);
-      }
-      table.prefix td,
-      table.prefix th {
-        vertical-align: bottom;
-        line-height: var(--vgrid);
-        padding-left: calc(var(--hgrid) *.5);
-      }
-      table.prefix tbody td,
-      table.prefix tbody th {
-        box-shadow: var(--hairline-border-top),
-                    var(--hairline-border-right);
-      }
-      table.prefix td {
-        min-width: calc(var(--hgrid) * 2.5);
-      }
-      table.prefix tbody th {
-        min-width: calc(var(--hgrid) * 5);
-      }
-      table.prefix th[vert] {
-        padding: .75em 0 0 .25em;
-      }
-      table.prefix th[vert] div {
-        display: inline-block;
-        writing-mode: vertical-rl;
-        transform: rotate(180deg);
-      }
-      table.prefix tbody tr:nth-child(odd) {
-        box-shadow: var(--thin-border-top);
-      }
-      table.prefix td:not(.na):hover {
-        background: var(--hilite);
-      }
-      table.prefix td.na {
-        background: var(--empty-background);
-      }
-      table.prefix td:not(:first-child).na {
-        box-shadow: calc(var(--hairline-width) * -1) 0 var(--empty-background),
-          var(--hairline-border-right);
-      }
-      /* Joined cells for {-} (next to each other) */
-      table.prefix td.joinnext {
-        box-shadow: none;
-      }
-      table.prefix td.joinnext + td:before {
-        position: absolute;
-        content: "";
-        top: 0;
-        width: 50%;
-        height: 50%;
-        right: 100%;
-        background: inherit;
-      }
-      /* Joined cells for {yI-} and {-lu'} (with one cell between) */
-      table.prefix td.joinnextnext + td + td {
-        position: relative;
-      }
-      table.prefix td.joinnextnext + td + td:before {
-        position: absolute;
-        content: "";
-        width: 100%;
-        height: 100%;
-        right: 200%;
-        top: 0;
-        background: inherit;
-      }
-      /* In-between cell */
-      table.prefix td.joinnextnext + td + td:hover:after {
-        background: linear-gradient(var(--hilite), var(--hilite)), #fff;
-      }
-      table.prefix td.joinnextnext + td + td:after {
-        position: absolute;
-        content: "";
-        width: calc(100% + var(--hairline-width));
-        height: 25%;
-        top: 0;
-        right: 100%;
-        background: #fff;
-        box-shadow: var(--thin-border-top), var(--hairline-border-bottom);
-      }
-      table.prefix td.joinnextnext.dblheight + td + td:before {
-        height: 200%;
-      }
-    </style>
-    <style>
-      table.consonant td { text-align: center; }
-      table.consonant td,
-      table.consonant th { line-height: var(--vgrid); }
-      table.consonant td:nth-child(even) {
-        box-shadow: var(--hairline-border-bottom);  /* remove right border */
-      }
-    </style>
-  </head>
+<style>
+  main { position: relative; }
+  body, html { margin: 0; }
+  article {
+    position: relative; /* needed for id link icon placement */
+    padding: var(--vgrid) var(--hgrid);
+  }
+  #source {
+    padding: calc(var(--vgrid) * .5) calc(var(--hgrid) * .5);
+    margin: 0;
+    display: block;
+    position: fixed;
+  }
+  html:not(.show-source) #source {
+    display: none;
+  }
+  iframe {
+    background: #fff;
+    box-shadow: 0 0 10px 10px #0005;
+    border: 0;
+    width: 100%;
+    height: 100%;
+  }
+  /* Portrait mode. */
+  @media (max-aspect-ratio: 1/1) {
+    #source {
+      bottom: 0;
+      height: 33vh;
+      width: 100%;
+    }
+    html.show-source body {
+      margin-bottom: 33vh;
+    }
+  }
+  /* Landscape mode. */
+  @media (min-aspect-ratio: 1/1) {
+    #source {
+      width: 50%;
+      height: 100vh;
+      top: 0;
+      left: 0;
+    }
+    html.show-source article {
+      margin-left: 50%;
+    }
+  }
+</style>
+<style>
+  /* General styling for tables. */
+  table.sans {
+    font-family: var(--sans);
+    width: 1%;
+  }
+  table.sans b {
+    font-weight: normal;
+  }
+  table.sans caption b {
+    font-weight: bold;
+  }
+  table.sans td,
+  table.sans th {
+    font-size: smaller;
+    line-height: var(--vgrid);
+    text-align: left;
+  }
+  table.sans caption {
+    caption-side: bottom;
+    font-family: var(--serif);
+    margin-top: var(--vgrid);
+  }
+</style>
+<style>
+  /* Styling for prefix table. */
+  /* FIXME:
+     * Highlight subject and object headings on mouseover(?)
+     * Scale width of prefix cells to same width (instead of using min-width)
+  */
+  table.prefix {
+    margin-left: calc(var(--hgrid) *.5);
+    --empty-background: #0002;
+    margin-top: calc(var(--vgrid) * 1.5);
+  }
+  table.prefix thead [rowspan="2"] {
+    height: calc(var(--vgrid) * 3.5);
+  }
+  table.prefix td,
+  table.prefix th {
+    vertical-align: bottom;
+    line-height: var(--vgrid);
+    padding-left: calc(var(--hgrid) *.5);
+  }
+  table.prefix tbody td,
+  table.prefix tbody th {
+    box-shadow: var(--hairline-border-top),
+                var(--hairline-border-right);
+  }
+  table.prefix td {
+    min-width: calc(var(--hgrid) * 2.5);
+  }
+  table.prefix tbody th {
+    min-width: calc(var(--hgrid) * 5);
+  }
+  table.prefix th[vert] {
+    padding: .75em 0 0 .25em;
+  }
+  table.prefix th[vert] div {
+    display: inline-block;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+  table.prefix tbody tr:nth-child(odd) {
+    box-shadow: var(--thin-border-top);
+  }
+  table.prefix td:not(.na):hover {
+    background: var(--hilite);
+  }
+  table.prefix td.na {
+    background: var(--empty-background);
+  }
+  table.prefix td:not(:first-child).na {
+    box-shadow: calc(var(--hairline-width) * -1) 0 var(--empty-background),
+      var(--hairline-border-right);
+  }
+  /* Joined cells for {-} (next to each other) */
+  table.prefix td.joinnext {
+    box-shadow: none;
+  }
+  table.prefix td.joinnext + td:before {
+    position: absolute;
+    content: "";
+    top: 0;
+    width: 50%;
+    height: 50%;
+    right: 100%;
+    background: inherit;
+  }
+  /* Joined cells for {yI-} and {-lu'} (with one cell between) */
+  table.prefix td.joinnextnext + td + td {
+    position: relative;
+  }
+  table.prefix td.joinnextnext + td + td:before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    right: 200%;
+    top: 0;
+    background: inherit;
+  }
+  /* In-between cell */
+  table.prefix td.joinnextnext + td + td:hover:after {
+    background: linear-gradient(var(--hilite), var(--hilite)), #fff;
+  }
+  table.prefix td.joinnextnext + td + td:after {
+    position: absolute;
+    content: "";
+    width: calc(100% + var(--hairline-width));
+    height: 25%;
+    top: 0;
+    right: 100%;
+    background: #fff;
+    box-shadow: var(--thin-border-top), var(--hairline-border-bottom);
+  }
+  table.prefix td.joinnextnext.dblheight + td + td:before {
+    height: 200%;
+  }
+</style>
+<style>
+  table.consonant td { text-align: center; }
+  table.consonant td,
+  table.consonant th { line-height: var(--vgrid); }
+  table.consonant td:nth-child(even) {
+    box-shadow: var(--hairline-border-bottom);  /* remove right border */
+  }
+</style>
 
-  <body>
-    <main>
-      <article>
-        <textarea markdown hidden>
+<main>
+  <article>
+    <textarea markdown hidden>
 
 <h1 title>Big Bad Book of Klingon Grammar</h1>
 
@@ -1551,10 +1547,9 @@ wo’rIv} or {wo’rIv jupwI’} (though [Klingon Grammar Addenda
 [S32]: http://klingonska.org/canon/1997-sbx-s32.txt "SkyBox Trading Card S32"
 [S33]: http://klingonska.org/canon/1997-sbx-s33.txt "SkyBox Trading Card S33"
 
-        </textarea>
-      </article>
-      <aside id=source><iframe src="tkd.html"></iframe></aside>
-    </main>
-    <script src="include/common.js"></script>
-  </body>
-</html>
+    </textarea>
+  </article>
+  <aside id=source><iframe src="tkd.html"></iframe></aside>
+</main>
+<script src="include/common.js"></script>
+<!--[eof]-->
