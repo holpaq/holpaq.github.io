@@ -145,7 +145,7 @@ function insertTableOfContent() {
 
 const scriptPath = getRelativeScriptPath();
 
-include(scriptPath + "jquery-3.5.1.slim.min.js", afterjQueryLoad);
+include(scriptPath + "jquery-3.6.0.slim.min.js", afterjQueryLoad);
 
 function afterjQueryLoad() {
     'use strict';
