@@ -296,9 +296,6 @@ function getMarkdownLinks(md) {
 
 function main($) {
     'use strict';
-    $('head').append(
-        '<meta name="viewport" content="width=device-width,initial-scale=1">');
-
     const $elem = $('[markdown]:first');   // 1st element with attr 'markdown'
     const [text, refs] = getMarkdownLinks(($elem.text() || "")[
         $elem.is('[rot13]') ? 'rot13' : 'toString' // rot13 decode
