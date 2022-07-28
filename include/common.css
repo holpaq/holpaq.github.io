@@ -339,32 +339,28 @@ a:hover, .hover {
 }
 
 /***** Hashlink target *****/
-:target {
-    background: var(--hilite);
-}
-:not(aside)[id] {
-    pointer-events: none;
-    cursor: text;
-}
-:not(aside)[id]:hover:before { opacity: .75; } /* link icon */
-:not(aside)[id]:before { /* link icon */
-    pointer-events: all;
-    cursor: pointer;
-    background: left no-repeat url(link.svg);
-    content: '​'; /* zero-width space sets height */
-    display: inline-block;
-    width: 20px;
-    left: calc(var(--cellpad) * .5);
+[id].hover, :target { background: var(--hilite); }
+a[id].hover, a[id]:target { outline: 5px solid var(--hilite); }
+/* Margin links (added for element with 'id' attribute set). */
+.linky {
     position: absolute;
+    left: calc(var(--cellpad) * .5);
+    user-select: none;
+    vertical-align: top;
+    display: inline-block;
+}
+.linky > div {
+    vertical-align: middle;
+    display: inline-block;
+}
+.linky a {
+    display: block;
+    background: left no-repeat url(link.svg);
+    width: 20px;
+    height: 20px;
     opacity: .2;
 }
-:not(aside)[id]:target:empty:after,
-:not(aside)[id].hover:empty:after {
-    content: '';
-    height: 1em;
-    display: inline-block;
-    outline: 5px solid var(--hilite);
-}
+.linky a:hover { opacity: .75; }
 
 /***** Subscript/superscript ********/
 sup, sub {

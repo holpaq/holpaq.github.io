@@ -155,12 +155,6 @@ function afterjQueryLoad() {
     $('html').attr('lang', 'en');                     // set document language
     if (window.location.search.match(/\bDEBUG\b/i)) { // set 'class=DEBUG'
         $('html').addClass('DEBUG');
-        // If there are <iframe>s, add '?DEBUG' parameter in those too.
-        $('iframe').each((_, elem) => {
-            const $elem = $(elem);
-            const src = $elem.attr('src');
-            $elem.attr('src', src + '?DEBUG');
-        });
     }
 
     include(scriptPath + "showdown.min.js", afterShowdownLoad);
@@ -463,72 +457,50 @@ function main($) {
     insertOptionalBreakAfterSlash($('html'));
     insertTableOfContent();
 
-    /* FIXME: put into separate module */
-    // Hashlinks
-    (function ($win, $doc) {
-        let menu = [];
-        let shown = false;
-        let $menu = $('<div class=menu hidden></div>')
-            .css({
-                position: 'fixed',
-                zIndex: 2147483647, /* topmost allowed */
-                background: '#fff',
-                borderRadius: 2,
-                padding: 'calc(var(--cellpad) * .25) calc(var(--cellpad) * .5)',
-                boxShadow: '0 2px 15px #0008',
-                fontSize: '1rem',
-                lineHeight: 'var(--rlead)',
-            })
-            .on('mouseover', 'a', addHilite)
-            .on('mouseout', 'a', removeHilite)
-            .appendTo('body');
-
-        $doc.on('click', '[id]', (e) => {
-            let id = $(e.currentTarget).attr('id');
-            menu.push($(`<a href="#${id}">#${id}</a>`).css({
-                display: 'block',
-                width: '100%',
-                padding: '0 var(--cellpad)',
-            }));
-            openMenu(e.clientX - 10, e.clientY - 10);
-        });
-
-        function addHilite(e) {
-            let id = $(e.target).attr('href');
-            $(id).addClass('hover');
-        }
-        function removeHilite(e) {
-            let id = $(e.target).attr('href');
-            $(id).removeClass('hover');
-        }
-        function openMenu(x, y) {
-            shown = true;
-            // Display element topleft to get its height + width.
-            $menu
-                .css({ left: 0, top: 0 })
-                .html(menu)
-                .show();
-
-            // Now use height and width of displayed menu, to move it to the right
-            // place (making sure it doesn't stick out of right/bottom corner of
-            // window).
-            let xMax = $win.width()  - $menu.outerWidth();
-            let yMax = $win.height() - $menu.outerHeight();
-            $menu.css({
-                left: x < xMax ? x : (xMax < 0 ? 0 : xMax),
-                top:  y < yMax ? y : (yMax < 0 ? 0 : yMax),
-            });
-        }
-        function hideMenu() {
-            if (shown) {
-                menu = [];
-                shown = false;
-                $menu.hide();
+    // Add left margin link icon for each hashlink in document.
+    (function (body) {
+        let prev = {};
+        // Walk DOM, invoking cb for each element (ignoring text nodes). If cb
+        // returns true, continue recursing through its child elements.
+        function domwalk(e, cb) {
+            if (cb(e)) {
+                e = e.firstElementChild;
+                while (e) {
+                    domwalk(e, cb);
+                    e = e.nextElementSibling;
+                }
             }
         }
-        $win.on('hashchange resize', hideMenu);
-        $doc.on('scroll keydown mouseup', hideMenu);
-    }($(window), $(document)));
+        // Find topmost tags with 'id' attributes, add margin element with
+        // links (on left side) for each of them.
+        domwalk(body, e => {
+            const id = e.getAttribute('id');
+            if (id) {
+                // If tag is a <a> tag inside a previously seen tag, add it to
+                // the same margin element, otherwise add new margin element.
+                const $m = e.tagName === 'A' && e.parentElement === prev.parent
+                  ? prev.$sidebar
+                  : $('<div>').appendTo($('<div class=linky>').prependTo(e));
+                prev = { parent: e.parentElement, $sidebar: $m };
+                // Add all 'id's in this element (and its children) to current
+                // margin element.
+                domwalk(e, e => {
+                    const id = e.getAttribute('id')
+                    if (id) {
+                        $m.append(`<a title="#${id}" href="#${id}"></a>`)
+                    }
+                    return true;
+                })
+            }
+            return !id;  // don't traverse below found 'id' attr
+        });
+
+        // Set 'hover' class on hash target when hovering over a #-link.
+        $(body).on('mouseover mouseout', 'a[href^="#"]', e => {
+            const id = $(e.target).attr('href');
+            $(id)[e.type === 'mouseout' ? 'removeClass' : 'addClass']('hover');
+        });
+    }(document.body));
 
     /* If table cell contains single link: Allow click/click on whole cell. */
     $('td:has(>a:only-child),th:has(>a:only-child)').hover(function () {
@@ -543,12 +515,6 @@ function main($) {
             window.location.href = window.location.hash;
         }, 100);
     }
-}
-
-function openLink(src) {
-    'use strict';
-    $('html').addClass('show-source');
-    $('iframe').attr('src', src);
 }
 
 /*[eof]*/

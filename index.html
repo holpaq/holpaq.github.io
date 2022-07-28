@@ -76,45 +76,6 @@ th, td { position: relative; }
     position: relative; /* needed for id link icon placement */
     padding: var(--vgrid) var(--hgrid);
   }
-  #source {
-    padding: calc(var(--vgrid) * .5) calc(var(--hgrid) * .5);
-    margin: 0;
-    display: block;
-    position: fixed;
-  }
-  html:not(.show-source) #source {
-    display: none;
-  }
-  iframe {
-    background: #fff;
-    box-shadow: 0 0 10px 10px #0005;
-    border: 0;
-    width: 100%;
-    height: 100%;
-  }
-  /* Portrait mode. */
-  @media (max-aspect-ratio: 1/1) {
-    #source {
-      bottom: 0;
-      height: 33vh;
-      width: 100%;
-    }
-    html.show-source body {
-      margin-bottom: 33vh;
-    }
-  }
-  /* Landscape mode. */
-  @media (min-aspect-ratio: 1/1) {
-    #source {
-      width: 50%;
-      height: 100vh;
-      top: 0;
-      left: 0;
-    }
-    html.show-source article {
-      margin-left: 50%;
-    }
-  }
 </style>
 <style>
   /* General styling for tables. */
@@ -833,11 +794,10 @@ word is a verb or a noun.
   | {__nov__pu’} | (verb) | «He/she/it used to be foreign»
   | {nov__pu’__} | (noun) | «foreigners»
 
-Only in the TKD appendix ([pp.169–173](javascript:openLink('tkd.html#p169')))
-do we find Klingon phrases written with indication of stress. All the sentences
-here have an additional “rough pronunciation” written in a pseudo-English
-respelling (for example describing the pronunciation of {Ha’DIbaH} «animal» as
-“KHA-di-bakh”).
+Only in the TKD appendix ([pp.169–173](tkd.html#p169)) do we find Klingon
+phrases written with indication of stress. All the sentences here have an
+additional “rough pronunciation” written in a pseudo-English respelling (for
+example describing the pronunciation of {Ha’DIbaH} «animal» as “KHA-di-bakh”).
 
   | {__qaS__taHvIS wa’ ram loS__SaD__ Hugh __SIj__laH __qet__bogh loD}
   | «Four thousand throats may be cut in one night by a running man.»
@@ -1292,7 +1252,7 @@ The following are some canon examples of apposition:
 As far as I can see, there is no particular order to the elements of apposition
 in Klingon, i.e. «my friend Worf» seems to be translatable as either {jupwI’
 wo’rIv} or {wo’rIv jupwI’} (though [Klingon Grammar Addenda
-3.4.3](javascript:openLink('teresh.html#nouns-34b')) disagrees with this).
+3.4.3](teresh.html#nouns-34b) disagrees with this).
 
 
 ## Adjectives
@@ -1403,20 +1363,15 @@ wo’rIv} or {wo’rIv jupwI’} (though [Klingon Grammar Addenda
 
 # References
 
-  * [*The Klingon Dictionary*](javascript:openLink('tkd.html')) (1992) by Marc
-    Okrand
-  * [*The Klingon Way*](javascript:openLink('tkw.html')) (1996) by Marc Okrand
-  * [*Klingon for the Galactic Traveler*](javascript:openLink('kgt.html'))
-    (1997) by Marc Okrand
-  * [Klingon Grammar Addenda](javascript:openLink('teresh.html')) (1999–2007)
-    by Terrence Donnelly
-  * [#hamlet] “[Notes on the Scansion of
-    *Khamlet*](javascript:openLink('hamlet.html'))” (*The Klingon Hamlet*,
-    2000, pp.215–216) by Nick Nicholas and Andrew Strader (contains some
-    non-canon suggestions for Klingon stress)
-  * [Duolingo Klingon Course Notes](javascript:openLink('duolingo.html'))
-    (2018–) by Philip Newton, Felix Malmenbeck, Jéremy Cowan and Robyn Stewart
-    et al.
+  * [*The Klingon Dictionary*](tkd.html) (1992) by Marc Okrand
+  * [*The Klingon Way*](tkw.html) (1996) by Marc Okrand
+  * [*Klingon for the Galactic Traveler*](kgt.html) (1997) by Marc Okrand
+  * [Klingon Grammar Addenda](teresh.html) (1999–2007) by Terrence Donnelly
+  * [#hamlet] “[Notes on the Scansion of *Khamlet*](hamlet.html)” (*The Klingon
+    Hamlet*, 2000, pp.215–216) by Nick Nicholas and Andrew Strader (contains
+    some non-canon suggestions for Klingon stress)
+  * [Duolingo Klingon Course Notes](duolingo.html) (2018–) by Philip Newton,
+    Felix Malmenbeck, Jéremy Cowan and Robyn Stewart et al.
 
 [Star Trek: Discovery]: https://youtu.be/nBgW0YNHSfw "Star Trek: Discovery – Special with Marc Okrand"
 [What is Klingon?]: https://youtu.be/HOPG7dZcd0o "Marc Okrand: “What is Klingon?” (21 November 2014)"
@@ -1549,6 +1504,5 @@ wo’rIv} or {wo’rIv jupwI’} (though [Klingon Grammar Addenda
 [S33]: http://klingonska.org/canon/1997-sbx-s33.txt "SkyBox Trading Card S33"
   </textarea>
 </article>
-<aside id=source><iframe src="tkd.html"></iframe></aside>
 <script src="include/common.js"></script>
 <!--[eof]-->
