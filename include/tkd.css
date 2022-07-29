@@ -1,11 +1,12 @@
+/*-*- css-indent-offset: 2-*-*/
 @import url("common.css");
 
 hr {
-    padding: calc(var(--vgrid) * .5) 0 calc(var(--vgrid) * .5);
-    padding: var(--vgrid) 0 0 0;
-    line-height: var(--vgrid);
-    text-align: center;
-    border: 0;
+  padding: calc(var(--vgrid) * .5) 0 calc(var(--vgrid) * .5);
+  padding: var(--vgrid) 0 0 0;
+  line-height: var(--vgrid);
+  text-align: center;
+  border: 0;
 }
 hr:before { content: "★  ★  ★"; }
 

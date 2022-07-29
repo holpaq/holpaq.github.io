@@ -1,13 +1,14 @@
+/*-*- css-indent-offset: 2-*-*/
 /***** Mini CSS reset *****/
 /* allthingssmitty.com/2017/01/09/css-reset-for-minimalists */
 *, *:before, *:after {
-    margin: 0;
-    padding: 0;
-    box-sizing: inherit;
-    text-indent: initial;
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  text-indent: initial;
 }
 html {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 /******************************************************************************/
 /* Font: Minion 3 [https://minion.typekit.com/]
@@ -18,235 +19,235 @@ html {
 */
 /* Text Regular (weight 400) */
 @font-face {
-    font-family: 'Minion 3';
-    src: url('fonts/minion3-regular.woff2');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: 'Minion 3';
+  src: url('fonts/minion3-regular.woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 @font-face {
-    font-family: 'Minion 3';
-    src: url('fonts/minion3-italic.woff2');
-    font-weight: normal;
-    font-style: italic;
-    font-display: swap;
+  font-family: 'Minion 3';
+  src: url('fonts/minion3-italic.woff2');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
 }
 /* Text Medium (weight 500) */
 @font-face {
-    font-family: 'Minion 3';
-    src: url('fonts/minion3-medium.woff2');
-    font-weight: 500;
-    font-style: normal;
+  font-family: 'Minion 3';
+  src: url('fonts/minion3-medium.woff2');
+  font-weight: 500;
+  font-style: normal;
 }
 @font-face {
-    font-family: 'Minion 3';
-    src: url('fonts/minion3-medium-italic.woff2');
-    font-weight: 500;
-    font-style: italic;
+  font-family: 'Minion 3';
+  src: url('fonts/minion3-medium-italic.woff2');
+  font-weight: 500;
+  font-style: italic;
 }
 /* Text Semibold (weight 600) */
 @font-face {
-    font-family: 'Minion 3';
-    src: url('fonts/minion3-semibold.woff2');
-    font-weight: 600;
-    font-style: normal;
+  font-family: 'Minion 3';
+  src: url('fonts/minion3-semibold.woff2');
+  font-weight: 600;
+  font-style: normal;
 }
 @font-face {
-    font-family: 'Minion 3';
-    src: url('fonts/minion3-semibold-italic.woff2');
-    font-weight: 600;
-    font-style: italic;
+  font-family: 'Minion 3';
+  src: url('fonts/minion3-semibold-italic.woff2');
+  font-weight: 600;
+  font-style: italic;
 }
 /* Text Bold (weight 700) */
 @font-face {
-    font-family: 'Minion 3';
-    src: url('fonts/minion3-bold.woff2');
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
+  font-family: 'Minion 3';
+  src: url('fonts/minion3-bold.woff2');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
 }
 @font-face {
-    font-family: 'Minion 3';
-    src: url('fonts/minion3-bold-italic.woff2');
-    font-weight: bold;
-    font-style: italic;
-    font-display: swap;
+  font-family: 'Minion 3';
+  src: url('fonts/minion3-bold-italic.woff2');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
 }
 /******************************************************************************/
 /* Caption Regular (weight 400) */
 @font-face {
-    font-family: 'Minion 3 Caption';
-    src: url('fonts/minion3-caption-regular.woff2');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'Minion 3 Caption';
+  src: url('fonts/minion3-caption-regular.woff2');
+  font-weight: normal;
+  font-style: normal;
 }
 @font-face {
-    font-family: 'Minion 3 Caption';
-    src: url('fonts/minion3-caption-italic.woff2');
-    font-weight: normal;
-    font-style: italic;
+  font-family: 'Minion 3 Caption';
+  src: url('fonts/minion3-caption-italic.woff2');
+  font-weight: normal;
+  font-style: italic;
 }
 /* Caption Medium (weight 500) */
 @font-face {
-    font-family: 'Minion 3 Caption';
-    src: url('fonts/minion3-caption-medium.woff2');
-    font-weight: 500;
-    font-style: normal;
+  font-family: 'Minion 3 Caption';
+  src: url('fonts/minion3-caption-medium.woff2');
+  font-weight: 500;
+  font-style: normal;
 }
 @font-face {
-    font-family: 'Minion 3 Caption';
-    src: url('fonts/minion3-caption-medium-italic.woff2');
-    font-weight: 500;
-    font-style: italic;
+  font-family: 'Minion 3 Caption';
+  src: url('fonts/minion3-caption-medium-italic.woff2');
+  font-weight: 500;
+  font-style: italic;
 }
 /* Caption Semibold (weight 600) */
 @font-face {
-    font-family: 'Minion 3 Caption';
-    src: url('fonts/minion3-caption-semibold.woff2');
-    font-weight: 600;
-    font-style: normal;
+  font-family: 'Minion 3 Caption';
+  src: url('fonts/minion3-caption-semibold.woff2');
+  font-weight: 600;
+  font-style: normal;
 }
 @font-face {
-    font-family: 'Minion 3 Caption';
-    src: url('fonts/minion3-caption-semibold-italic.woff2');
-    font-weight: 600;
-    font-style: italic;
+  font-family: 'Minion 3 Caption';
+  src: url('fonts/minion3-caption-semibold-italic.woff2');
+  font-weight: 600;
+  font-style: italic;
 }
 /* Caption Bold (weight 700) */
 @font-face {
-    font-family: 'Minion 3 Caption';
-    src: url('fonts/minion3-caption-bold-italic.woff2');
-    font-weight: bold;
-    font-style: italic;
+  font-family: 'Minion 3 Caption';
+  src: url('fonts/minion3-caption-bold-italic.woff2');
+  font-weight: bold;
+  font-style: italic;
 }
 @font-face {
-    font-family: 'Minion 3 Caption';
-    src: url('fonts/minion3-caption-bold.woff2');
-    font-weight: bold;
-    font-style: normal;
+  font-family: 'Minion 3 Caption';
+  src: url('fonts/minion3-caption-bold.woff2');
+  font-weight: bold;
+  font-style: normal;
 }
 /******************************************************************************/
 /* Subhead Regular (weight 400) */
 @font-face {
-    font-family: 'Minion 3 Subhead';
-    src: url('fonts/minion3-subhead-regular.woff2');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'Minion 3 Subhead';
+  src: url('fonts/minion3-subhead-regular.woff2');
+  font-weight: normal;
+  font-style: normal;
 }
 @font-face {
-    font-family: 'Minion 3 Subhead';
-    src: url('fonts/minion3-subhead-italic.woff2');
-    font-weight: normal;
-    font-style: italic;
+  font-family: 'Minion 3 Subhead';
+  src: url('fonts/minion3-subhead-italic.woff2');
+  font-weight: normal;
+  font-style: italic;
 }
 /* Subhead Medium (weight 500) */
 @font-face {
-    font-family: 'Minion 3 Subhead';
-    src: url('fonts/minion3-subhead-medium.woff2');
-    font-weight: 500;
-    font-style: normal;
+  font-family: 'Minion 3 Subhead';
+  src: url('fonts/minion3-subhead-medium.woff2');
+  font-weight: 500;
+  font-style: normal;
 }
 @font-face {
-    font-family: 'Minion 3 Subhead';
-    src: url('fonts/minion3-subhead-medium-italic.woff2');
-    font-weight: 500;
-    font-style: italic;
+  font-family: 'Minion 3 Subhead';
+  src: url('fonts/minion3-subhead-medium-italic.woff2');
+  font-weight: 500;
+  font-style: italic;
 }
 /* Subhead Bold (weight 700) */
 @font-face {
-    font-family: 'Minion 3 Subhead';
-    src: url('fonts/minion3-subhead-bold.woff2');
-    font-weight: bold;
-    font-style: normal;
+  font-family: 'Minion 3 Subhead';
+  src: url('fonts/minion3-subhead-bold.woff2');
+  font-weight: bold;
+  font-style: normal;
 }
 @font-face {
-    font-family: 'Minion 3 Subhead';
-    src: url('fonts/minion3-subhead-bold-italic.woff2');
-    font-weight: bold;
-    font-style: italic;
+  font-family: 'Minion 3 Subhead';
+  src: url('fonts/minion3-subhead-bold-italic.woff2');
+  font-weight: bold;
+  font-style: italic;
 }
 /******************************************************************************/
 /* Display Regular (weight 400) */
 @font-face {
-    font-family: 'Minion 3 Display';
-    src: url('fonts/minion3-display-regular.woff2');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'Minion 3 Display';
+  src: url('fonts/minion3-display-regular.woff2');
+  font-weight: normal;
+  font-style: normal;
 }
 @font-face {
-    font-family: 'Minion 3 Display';
-    src: url('fonts/minion3-display-italic.woff2');
-    font-weight: normal;
-    font-style: italic;
+  font-family: 'Minion 3 Display';
+  src: url('fonts/minion3-display-italic.woff2');
+  font-weight: normal;
+  font-style: italic;
 }
 /* Display Medium (weight 500) */
 @font-face {
-    font-family: 'Minion 3 Display';
-    src: url('fonts/minion3-display-medium.woff2');
-    font-weight: 500;
-    font-style: normal;
+  font-family: 'Minion 3 Display';
+  src: url('fonts/minion3-display-medium.woff2');
+  font-weight: 500;
+  font-style: normal;
 }
 @font-face {
-    font-family: 'Minion 3 Display';
-    src: url('fonts/minion3-display-medium-italic.woff2');
-    font-weight: 500;
-    font-style: italic;
+  font-family: 'Minion 3 Display';
+  src: url('fonts/minion3-display-medium-italic.woff2');
+  font-weight: 500;
+  font-style: italic;
 }
 /* Display Semibold (weight 600) */
 @font-face {
-    font-family: 'Minion 3 Display';
-    src: url('fonts/minion3-display-semibold.woff2');
-    font-weight: 600;
-    font-style: normal;
+  font-family: 'Minion 3 Display';
+  src: url('fonts/minion3-display-semibold.woff2');
+  font-weight: 600;
+  font-style: normal;
 }
 @font-face {
-    font-family: 'Minion 3 Display';
-    src: url('fonts/minion3-display-semibold-italic.woff2');
-    font-weight: 600;
-    font-style: italic;
+  font-family: 'Minion 3 Display';
+  src: url('fonts/minion3-display-semibold-italic.woff2');
+  font-weight: 600;
+  font-style: italic;
 }
 /* Display Bold (weight 700) */
 @font-face {
-    font-family: 'Minion 3 Display';
-    src: url('fonts/minion3-display-bold.woff2');
-    font-weight: bold;
-    font-style: normal;
+  font-family: 'Minion 3 Display';
+  src: url('fonts/minion3-display-bold.woff2');
+  font-weight: bold;
+  font-style: normal;
 }
 @font-face {
-    font-family: 'Minion 3 Display';
-    src: url('fonts/minion3-display-bold-italic.woff2');
-    font-weight: bold;
-    font-style: italic;
+  font-family: 'Minion 3 Display';
+  src: url('fonts/minion3-display-bold-italic.woff2');
+  font-weight: bold;
+  font-style: italic;
 }
 /******************************************************************************/
 html {
-    --rem: 20px;  /* root font size */
-    --rlead: 1.5; /* root line height (unitless) */
-    --hgrid: calc(var(--rem) * var(--rlead));
-    --vgrid: calc(var(--rem) * var(--rlead));
-    --cellpad: calc(var(--hgrid) * .25); /* table cell padding */
+  --rem: 20px;  /* root font size */
+  --rlead: 1.5; /* root line height (unitless) */
+  --hgrid: calc(var(--rem) * var(--rlead));
+  --vgrid: calc(var(--rem) * var(--rlead));
+  --cellpad: calc(var(--hgrid) * .25); /* table cell padding */
 
-    --serif: 'Minion 3', Minion3, 'Times New Roman', TimesNewRoman, Times;
-    --sans: sans-serif;
-    --hilite: #00f4;
+  --serif: 'Minion 3', Minion3, 'Times New Roman', TimesNewRoman, Times;
+  --sans: sans-serif;
+  --hilite: #00f4;
 
-    font-size: var(--rem);
-    line-height: var(--rlead);
-    font-family: var(--serif);
+  font-size: var(--rem);
+  line-height: var(--rlead);
+  font-family: var(--serif);
 
-    height: 100%; overflow-y: scroll;
+  height: 100%; overflow-y: scroll;
 }
 html.DEBUG {
-    /* Background grid. */
-    background-image: linear-gradient(       var(--hilite) 1px, transparent 1px),
-                      linear-gradient(90deg, var(--hilite) 1px, transparent 1px);
-    background-size:  var(--hgrid) var(--vgrid);
-    background-position: 0 -9px;
+  /* Background grid. */
+  background-image: linear-gradient(       var(--hilite) 1px, transparent 1px),
+                    linear-gradient(90deg, var(--hilite) 1px, transparent 1px);
+  background-size:  var(--hgrid) var(--vgrid);
+  background-position: 0 -9px;
 }
 
 body {
-    margin: 0 var(--hgrid) var(--vgrid);
-    min-height: 100%;
+  margin: 0 var(--hgrid) var(--vgrid);
+  min-height: 100%;
 }
 
 /***** Paragraphs *****/
@@ -255,87 +256,87 @@ p { text-align: justify; }
 /***** Headings *****/
 [title] { text-align: center; }
 h1 {
-    --push: calc(1em * .275); /* push down baseline to grid */
-    margin-top: calc(var(--vgrid) * 2 + var(--push));
-    margin-bottom: calc(var(--push) * -1);
-    font-size: calc(1rem * 3);
-    line-height: calc(var(--vgrid) * 3);
+  --push: calc(1em * .275); /* push down baseline to grid */
+  margin-top: calc(var(--vgrid) * 2 + var(--push));
+  margin-bottom: calc(var(--push) * -1);
+  font-size: calc(1rem * 3);
+  line-height: calc(var(--vgrid) * 3);
 }
 h2 {
-    --push: calc(1em * .2); /* push down baseline to grid */
-    margin-top: calc(var(--vgrid) * 2 + var(--push));
-    margin-bottom: calc(var(--push) * -1);
-    font-size: calc(1rem * 2);
-    line-height: calc(var(--vgrid) * 2);
+  --push: calc(1em * .2); /* push down baseline to grid */
+  margin-top: calc(var(--vgrid) * 2 + var(--push));
+  margin-bottom: calc(var(--push) * -1);
+  font-size: calc(1rem * 2);
+  line-height: calc(var(--vgrid) * 2);
 }
 h3 {
-    --push: calc(1em * .375); /* push down baseline to grid */
-    margin-top: calc(var(--vgrid) + var(--push));
-    margin-bottom: calc(var(--push) * -1);
-    font-size: calc(1rem * 1.5);
-    line-height: calc(var(--vgrid) * 2);
+  --push: calc(1em * .375); /* push down baseline to grid */
+  margin-top: calc(var(--vgrid) + var(--push));
+  margin-bottom: calc(var(--push) * -1);
+  font-size: calc(1rem * 1.5);
+  line-height: calc(var(--vgrid) * 2);
 }
 h1 b, h2 b, h3 b {
-    font-style: italic;
+  font-style: italic;
 }
 h4 {
-    margin-top: var(--vgrid);
-    font-size: 1rem;
-    font-weight: normal;
+  margin-top: var(--vgrid);
+  font-size: 1rem;
+  font-weight: normal;
 }
 h4 + h4 { margin-top: 0; }
 
 /***** Blockquotes *****/
 blockquote {
-    margin: var(--vgrid) var(--hgrid) 0;
-    text-align: justify;
+  margin: var(--vgrid) var(--hgrid) 0;
+  text-align: justify;
 }
 
 /***** Lists *****/
 ol, ul {
-    margin: var(--vgrid) 0 0 var(--hgrid);
+  margin: var(--vgrid) 0 0 var(--hgrid);
 }
 li > ol, li > ul {
-    margin-left: 0;
+  margin-left: 0;
 }
 
 /***** Tables *****/
 table {
-    font-size: inherit;
-    line-height: inherit;
+  font-size: inherit;
+  line-height: inherit;
 
-    border-collapse: collapse;
-    margin-top: var(--vgrid);
-    margin-left: calc(var(--hgrid) * .75); /* with cellpadding, a whole <hgrid> */
+  border-collapse: collapse;
+  margin-top: var(--vgrid);
+  margin-left: calc(var(--hgrid) * .75); /* with cellpadding, a whole <hgrid> */
 }
 table.example td:empty {
-    width: var(--vgrid); /* with cellpadding, a whole <vgrid> */
+  width: var(--vgrid); /* with cellpadding, a whole <vgrid> */
 }
 table td,
 table th {
-    padding: 0 var(--cellpad);
-    height: var(--vgrid);
-    vertical-align: top;
-    width: 1%;
+  padding: 0 var(--cellpad);
+  height: var(--vgrid);
+  vertical-align: top;
+  width: 1%;
 }
 table td:last-child,
 table th:last-child {
-    width: unset;
+  width: unset;
 }
 
 /***** Links ********/
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 a:hover, a.hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 a:hover, .hover {
-    cursor: pointer;
-    background: var(--hilite);
+  cursor: pointer;
+  background: var(--hilite);
 }
 .hover > a {
-    background: none;
+  background: none;
 }
 
 /***** Hashlink target *****/
@@ -343,52 +344,52 @@ a:hover, .hover {
 a[id].hover, a[id]:target { outline: 5px solid var(--hilite); }
 /* Margin links (added for element with 'id' attribute set). */
 .linky {
-    position: absolute;
-    left: calc(var(--cellpad) * .5);
-    user-select: none;
-    vertical-align: top;
-    display: inline-block;
+  position: absolute;
+  left: calc(var(--cellpad) * .5);
+  user-select: none;
+  vertical-align: top;
+  display: inline-block;
 }
 .linky > div {
-    vertical-align: middle;
-    display: inline-block;
+  vertical-align: middle;
+  display: inline-block;
 }
 .linky a {
-    display: block;
-    background: left no-repeat url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="20" width="20"><path d="M4.83 15h2.91a4.88 4.88 0 01-1.55-2H5a3 3 0 110-6h3a3 3 0 012.82 4h2.1a4.82 4.82 0 00.08-.83v-.34A4.83 4.83 0 008.17 5H4.83A4.83 4.83 0 000 9.83v.34A4.83 4.83 0 004.83 15z"/><path d="M15.17 5h-2.91a4.88 4.88 0 011.55 2H15a3 3 0 110 6h-3a3 3 0 01-2.82-4h-2.1a4.82 4.82 0 00-.08.83v.34A4.83 4.83 0 0011.83 15h3.34A4.83 4.83 0 0020 10.17v-.34A4.83 4.83 0 0015.17 5z"/></svg>');
-    width: 20px;
-    height: 20px;
-    opacity: .2;
+  display: block;
+  background: left no-repeat url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="20" width="20"><path d="M4.83 15h2.91a4.88 4.88 0 01-1.55-2H5a3 3 0 110-6h3a3 3 0 012.82 4h2.1a4.82 4.82 0 00.08-.83v-.34A4.83 4.83 0 008.17 5H4.83A4.83 4.83 0 000 9.83v.34A4.83 4.83 0 004.83 15z"/><path d="M15.17 5h-2.91a4.88 4.88 0 011.55 2H15a3 3 0 110 6h-3a3 3 0 01-2.82-4h-2.1a4.82 4.82 0 00-.08.83v.34A4.83 4.83 0 0011.83 15h3.34A4.83 4.83 0 0020 10.17v-.34A4.83 4.83 0 0015.17 5z"/></svg>');
+  width: 20px;
+  height: 20px;
+  opacity: .2;
 }
 .linky a:hover { opacity: .75; }
 
 /***** Subscript/superscript ********/
 sup, sub {
-    vertical-align: baseline;
-    position: relative;
-    line-height: 0;
-    top: -.4em;
+  vertical-align: baseline;
+  position: relative;
+  line-height: 0;
+  top: -.4em;
 }
 sub { top: .4em; }
 
 /***** Table-of-contents *****/
 .toc {
-    margin-left: 0;                       /* don't indent 1st <ul> level */
-    text-align: left;
-    columns: calc(var(--hgrid) * 10) auto;
-    column-gap: var(--hgrid);
-    /* column-rule: 1px solid black; */
+  margin-left: 0;                       /* don't indent 1st <ul> level */
+  text-align: left;
+  columns: calc(var(--hgrid) * 10) auto;
+  column-gap: var(--hgrid);
+  /* column-rule: 1px solid black; */
 }
 .toc, .toc ul { list-style: none; }       /* no bullets */
 .toc ul { margin-top: 0; }
 
 /***** Marking of source chunks *****/
 mark {
-    background: #0001;
-    border-radius: 4px;
+  background: #0001;
+  border-radius: 4px;
 }
 mark:hover {
-    background: #0003;
+  background: #0003;
 }
 
 /***** Background color for TODO notes and errata *****/
@@ -396,62 +397,62 @@ err, [TODO] { background: var(--hilite); }
 
 /***** Button *****/
 button {
-    background: #aaf;
-    padding: calc(var(--vgrid) * .5) var(--hgrid);
-    margin:  calc(var(--vgrid) * .75) 0;
-    border: 0;
-    border-radius: 3px;
-    font-size: inherit;
+  background: #aaf;
+  padding: calc(var(--vgrid) * .5) var(--hgrid);
+  margin:  calc(var(--vgrid) * .75) 0;
+  border: 0;
+  border-radius: 3px;
+  font-size: inherit;
 }
 
 /***** Button decoding spinner (CSS animation). *****/
 .loading {
-    display: inline-block;
-    position: relative;
-    width: 80px;
-    height: 20px;
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 20px;
 }
 .loading div {
-    position: absolute;
-    top: 3px;
-    width: 13px;
-    height: 13px;
-    border-radius: 50%;
-    background: #fff;
-    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+  position: absolute;
+  top: 3px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #fff;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
 .loading div:nth-child(1) {
-    left: 8px;
-    animation: loading1 0.6s infinite;
+  left: 8px;
+  animation: loading1 0.6s infinite;
 }
 .loading div:nth-child(2) {
-    left: 8px;
-    animation: loading2 0.6s infinite;
+  left: 8px;
+  animation: loading2 0.6s infinite;
 }
 .loading div:nth-child(3) {
-    left: 32px;
-    animation: loading2 0.6s infinite;
+  left: 32px;
+  animation: loading2 0.6s infinite;
 }
 .loading div:nth-child(4) {
-    left: 56px;
-    animation: loading3 0.6s infinite;
+  left: 56px;
+  animation: loading3 0.6s infinite;
 }
 @keyframes loading1 {
-    0% { transform: scale(0); }
-    100% { transform: scale(1); }
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
 }
 @keyframes loading3 {
-    0% { transform: scale(1); }
-    100% { transform: scale(0); }
+  0% { transform: scale(1); }
+  100% { transform: scale(0); }
 }
 @keyframes loading2 {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(24px, 0); }
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(24px, 0); }
 }
 
 /* For *...* inside «...». */
 i.transl em {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 /*******************************************************************************
