@@ -174,18 +174,18 @@ function include(url, callback) {
   'use strict'
   let tag
   if (url.match(/\.css$/i)) {               // CSS
-    tag = document.createElement("link")
-    tag.rel = "stylesheet"
+    tag = document.createElement('link')
+    tag.rel = 'stylesheet'
     tag.href = url
   } else if (url.match(/\.js$/i)) {         // Javascript
-    tag = document.createElement("script")
+    tag = document.createElement('script')
     tag.src = url
   } else {
-    throw TypeError(`include(): Unknown file type '${url.split(".").pop()}'`)
+    throw TypeError(`include(): Unknown file type '${url.split('.').pop()}'`)
   }
   tag.async = true
   tag.onload = callback
-  document.getElementsByTagName("head")[0].appendChild(tag)
+  document.getElementsByTagName('head')[0].appendChild(tag)
 }
 
 // Get Javascript path. (Path name relative to the page the script was included
@@ -194,8 +194,8 @@ function getRelativeScriptPath() {
   'use strict'
   // Lists with each path component for element (removing trailing filename).
   let [script, page] = [
-    document.currentScript.src.split("/").slice(0, -1),  // page url
-    document.location.href    .split("/").slice(0, -1),  // script url
+    document.currentScript.src.split('/').slice(0, -1),  // page url
+    document.location.href    .split('/').slice(0, -1),  // script url
   ]
   // Remove leading common parts.
   while (script.length > 0 && page.length > 0 && script[0] === page[0]) {
@@ -204,17 +204,17 @@ function getRelativeScriptPath() {
   }
   return [].concat(
     // Replace remaining page path elements with '..'.
-    page.length > 0 ? page.map(() => "..") : ["."],
+    page.length > 0 ? page.map(() => '..') : ['.'],
     script,
-  ).join("/") + "/"
+  ).join('/') + '/'
 }
 
 function asciify(txt) {
   'use strict'
   return txt
-    .normalize("NFD")                         // turn accents into own chars
-    .replace(/[^a-z0-9\n\r\u0020\-]/gui, "")  // strip off non A-Z, space or hyphen
-    .replace(/\s+/gu, "-")
+    .normalize('NFD')                         // turn accents into own chars
+    .replace(/[^a-z0-9\n\r\u0020\-]/gui, '')  // strip off non A-Z, space or hyphen
+    .replace(/\s+/gu, '-')
     .toLowerCase()
 }
 
@@ -232,15 +232,15 @@ function getMarkdownLinks(md) {
     // Remove paragraphs containing only link references, and store
     // these in 'refs' to be appended to the end of the document.
     if ((`${paragraph}\n`).match(onlyReferences)) {
-      let refName = ""
+      let refName = ''
       ;(`${paragraph}\n`).split(oneReference).forEach((str, i) => {
         switch (i % 4) {
         case 0:
-          if (str !== "") { throw "Bad string" }
+          if (str !== '') { throw 'Bad string' }
           break
         case 1:
           refName = str.replace(/&(amp|gt|lt);/, (_, a) => {
-            return { amp: "&", gt: ">", lt: "<" }[a]
+            return { amp: '&', gt: '>', lt: '<' }[a]
           })
           if (refs[refName] !== undefined) {
             throw `Source reference '${refName}' already exists!`
@@ -251,7 +251,7 @@ function getMarkdownLinks(md) {
           refs[refName].push(str)
         }
       })
-      return ""
+      return ''
     }
     return paragraph
   }).filter(a => a).concat(
@@ -265,8 +265,8 @@ function getMarkdownLinks(md) {
       return title !== ''
         ? `[${name}]: ${link} "${title}"`
         : `[${name}]: ${link}`
-    }).join("\n")
-  ).join("\n\n")
+    }).join('\n')
+  ).join('\n\n')
   return [newMd, refs]
 }
 
@@ -275,7 +275,7 @@ function getMarkdownLinks(md) {
 function main($) {
   'use strict'
   const $elem = $('[markdown]:first')  // 1st element with attr 'markdown'
-  const [text, refs] = getMarkdownLinks(($elem.text() || "")[
+  const [text, refs] = getMarkdownLinks(($elem.text() || '')[
     $elem.is('[rot13]') ? 'rot13' : 'toString'  // rot13 decode
   ]())
 
@@ -287,7 +287,7 @@ function main($) {
       // FIXME: Hyphenation of Klingon.
       return '<b lang=tlh>' +
         // Insert <nobr> around leading '-' & following word.
-        tlh.replace(/(-[^< ]+)/, "<nobr>$1</nobr>") +
+        tlh.replace(/(-[^< ]+)/, '<nobr>$1</nobr>') +
         '</b>'
     },
   })
@@ -379,7 +379,7 @@ function main($) {
   insertIdIntoParentElement()
 
   // Add ID attribute to <h#> tags.
-  $("h1,h2,h3,h4,h5,h6,h7").each((_, h) => {
+  $('h1,h2,h3,h4,h5,h6,h7').each((_, h) => {
     const $h = $(h)
     if (!$h.attr('id')) {              // if parent 'id' is unset
       $h.attr('id', asciify($h.text()))
@@ -387,11 +387,11 @@ function main($) {
   })
 
   // Replace remaining [TEXT] and [TEXT][…] with links.
-  const existingId = $("[id]").reduce((acc, elem) => {
-    acc[ $(elem).attr("id") ] = true
+  const existingId = $('[id]').reduce((acc, elem) => {
+    acc[ $(elem).attr('id') ] = true
     return acc
   }, {})
-  $("body *:not(script)").contents().each((_, node) => {
+  $('body *:not(script)').contents().each((_, node) => {
     if (node.nodeType !== 3) {         // only process text nodes
       return
     }
@@ -403,7 +403,7 @@ function main($) {
         if (!(i % 2)) { return full }  // plain text elements
 
         const [, desc, rawLink=desc] = full
-          .replace(/\n+/g, " ")        // newline = space
+          .replace(/\n+/g, ' ')        // newline = space
           .match(/\[(.*?)\](?:\[(.*?)\])?/s)
 
         // Find (and remove) pageref (format :NUM1[–NUM2]).
@@ -412,7 +412,7 @@ function main($) {
           /:([0-9]+)(?:–[0-9]+)?\b/,
           (_, n) => {
             startPage = parseInt(n, 10)
-            return ""
+            return ''
           })
 
         const anchor = asciify(linkref)
@@ -426,13 +426,13 @@ function main($) {
           return `<a href="#${anchor}">${desc}</a>`
         }
         return full
-      }).join("")
+      }).join('')
       $node.replaceWith(newHtml)
     }
   })
 
   // Add 'target="_blank"' to all external links.
-  $("a[href]:not([href^='#'],[href^='javascript:'])").attr("target", "_blank")
+  $('a[href]:not([href^="#"],[href^="javascript:"])').attr('target', '_blank')
 
   insertOptionalBreakAfterSlash($('html'))
   insertTableOfContent()
