@@ -76,7 +76,7 @@ function insertIdIntoParentElement() {
       const $parent = $(e.parentElement)
       const id = $e.attr('id') || ''
       if (!$parent.attr('id') &&                   // if parent 'id' is unset
-          !id.match(/^p\d+$/)) {                   //   and id isnt page number
+          !id.match(/^[a-z]+=\d+$/)) {             //   and isn't WORD=NUM
         $parent.attr('id', $e.remove().attr('id'))
       }
     })
@@ -332,15 +332,14 @@ function main($) {
     regex: /‹([^›]+)›/g,
     replace: '<mark>$1</mark>',
   })
-  // [#...] -> <a id="..."></a>. IDs must not contain space, nor any of
-  // '.:[]' (colon and period interferes with CSS styling). Note: Spaces and
-  // tabs following the tag are also stripped, as is a single newline -- but
-  // if is followed by another newline it is left as-is; so if you put a
-  // [#...] in a paragraph of its own you'll get an empty paragraph with a
-  // single <a> tag in it!)
+  // [#...] -> <a id="..."></a>. IDs must not contain space, nor any of '.:[]'
+  // (colon and period interferes with CSS styling). Note: Spaces and tabs
+  // following the tag are also stripped, but not newline (as this can cause a
+  // mess inside tables). If you put a [#...] in a paragraph of its own you'll
+  // get an empty paragraph with a single <a> tag in it!)
   showdown.extension('id', {
     type: 'lang',
-    regex: /\[#([^.:\[\]\s]+)\][\t ]*(\n(?!\n))?/g,
+    regex: /\[#([^.:\[\]\s]+)\][\t ]*/g,
     replace: '<a id="$1"></a>',
   })
   // Table in '| xxx | yyy' format. Cell separator ('|') may be surrounded by
