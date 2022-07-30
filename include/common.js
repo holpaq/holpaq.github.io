@@ -169,23 +169,24 @@ function afterShowdownLoad() {
 
 /******************************************************************************/
 
-// Load Javascript, then invoke callback function.
+// Load Javascript or CSS, invoke callback function when loaded.
 function include(url, callback) {
   'use strict'
+  const ext = url.split('.').pop()
   let tag
-  if (url.match(/\.css$/i)) {               // CSS
+  if (ext === 'css') {               // CSS
     tag = document.createElement('link')
     tag.rel = 'stylesheet'
     tag.href = url
-  } else if (url.match(/\.js$/i)) {         // Javascript
+  } else if (ext === 'js') {         // Javascript
     tag = document.createElement('script')
     tag.src = url
   } else {
-    throw TypeError(`include(): Unknown file type '${url.split('.').pop()}'`)
+    throw TypeError(`include(): Unknown file type '.${ext}'`)
   }
   tag.async = true
   tag.onload = callback
-  document.getElementsByTagName('head')[0].appendChild(tag)
+  document.head.appendChild(tag)
 }
 
 // Get Javascript path. (Path name relative to the page the script was included
