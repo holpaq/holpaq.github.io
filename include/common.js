@@ -15,7 +15,7 @@ if (!String.prototype.supplant) {
 
 // From: https://codereview.stackexchange.com/a/132140/197081
 {
-  String.prototype.rot13 = function() {
+  String.prototype.rot13 = function () {
     'use strict'
     return this.split('').map(x => lookup[x] || x).join('')
   }
@@ -26,9 +26,9 @@ if (!String.prototype.supplant) {
 
 function escapeHtml(text) {
   'use strict'
-  return text.replace(/["&<>]/g, function (a) {
-    return { '"': '&quot;', '&': '&amp;', '<': '&lt;', '>': '&gt;' }[a]
-  })
+  return text.replace(/["&<>]/g, a => (
+    { '"': '&quot;', '&': '&amp;', '<': '&lt;', '>': '&gt;' }[a]
+  ))
 }
 
 function walkTheDOM(e, func) {
@@ -49,7 +49,7 @@ function walkTheDOM(e, func) {
 function insertOptionalBreakAfterSlash($e) {
   'use strict'
   $e.each((_, e) => {
-    walkTheDOM(e, (e) => {
+    walkTheDOM(e, e => {
       if (e.nodeType === 3) {
         const text = e.data
         const html = text.replace(/\/(?=\w{5,})/g, '/<wbr>')
@@ -98,18 +98,18 @@ function insertTableOfContent() {
   }
   const tocAttrs = $.map(
     $toc.prop('attributes'),
-    (x) => ' ' + x.name +
+    x => ' ' + x.name +
       (x.value === undefined ? '' : '="' + escapeHtml(x.value) + '"')
   ).join('')
 
   // Create ToC item from '<h#>...</h#>' element.
   function tocItem($h) {
     const $i = $h.clone()
-    $i.find('a,err').replaceWith(function() {  // strip <err> and <a> tags,
+    $i.find('a,err').replaceWith(function () { // strip <err> and <a> tags,
       return $(this).contents()                //    but keep their content
     })
     $i.find('[id],[name]').replaceWith(        // strip 'id' and 'name'
-      function() {                             //   attributes
+      function () {                            //   attributes
         return $(this).removeAttr('id').removeAttr('name')
       }
     )
@@ -246,7 +246,7 @@ function getMarkdownLinks(md) {
   const singleRefReStr = '\\[([^\\[\\]]+)\\]:\\s*(\\S+)(?:\\s+"([^"]*)")?\\n'
   const onlyReferences = new RegExp("^(" + singleRefReStr + ")+$")
   const oneReference   = new RegExp(singleRefReStr)
-  const newMd = md.split(/\n{2,}/).map((paragraph) => {
+  const newMd = md.split(/\n{2,}/).map(paragraph => {
     // Remove paragraphs containing only link references, and store
     // these in 'refs' to be appended to the end of the document.
     if ((paragraph + "\n").match(onlyReferences)) {
@@ -272,9 +272,9 @@ function getMarkdownLinks(md) {
       return ""
     }
     return paragraph
-  }).filter((a) => a).concat(
+  }).filter(a => a).concat(
     // Add back removed link references at end of markdown.
-    Object.keys(refs).sort().map((name) => {
+    Object.keys(refs).sort().map(name => {
       const [fullLink, title] = refs[name]
       const [link, pageOffset] = fullLink
         .match(/^(.*?)([+\-][0-9]+)?$/).slice(1)
@@ -313,7 +313,7 @@ function main($) {
   // language.
   showdown.extension('en', {
     type: 'lang',
-    filter: (md) => md.replace(/«([^»]+)»/g, (_, md) => {
+    filter: md => md.replace(/«([^»]+)»/g, (_, md) => {
       let lang = 'en'
       md = md.replace(/^:([^:\s]+):/, (_, prefix) => {
         lang = prefix
@@ -366,13 +366,13 @@ function main($) {
       }
       // Split markdown into array-of-arrays (one element = one cell).
       const tbl = md.split(/\n/).map(
-        (row) => row
+        row => row
           .replace(/^\s*\|\s*/, '')  // strip leading cell separator
           .replace(/\s*$/, '')       // strip trailing space
           .split(/\s*\|\s*/)         // split into cells
       )
       // Number of cells in longest row.
-      const maxcols = Math.max(...tbl.map((x) => x.length))
+      const maxcols = Math.max(...tbl.map(x => x.length))
       return pre + '<table markdown class=example>\n' +
         tbl.map((row, i) => {
           return '<tr>' + row.map((text, i) => {
@@ -459,7 +459,7 @@ function main($) {
   insertTableOfContent()
 
   // Add left margin link icon for each hashlink in document.
-  ;(function (body) {
+  ;(body => {
     let prev = {}
     // Walk DOM, invoking cb for each element (ignoring text nodes). If cb
     // returns true, continue recursing through its child elements.
@@ -501,12 +501,12 @@ function main($) {
       const id = CSS.escape($(e.target).attr('href').slice(1))
       $(`#${id}`).toggleClass('hover')
     })
-  }(document.body))
+  })(document.body)
 
   /* If table cell contains single link: Allow click/click on whole cell. */
   $('td:has(>a:only-child),th:has(>a:only-child)').hover(function () {
     $(this).toggleClass('hover')
-  }).click((e) => {
+  }).click(e => {
     $(e.currentTarget).children()[0].click()  /* non-jquery click */
   })
 
