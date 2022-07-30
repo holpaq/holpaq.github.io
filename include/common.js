@@ -488,8 +488,8 @@ function main($) {
 
     // Set 'hover' class on hash target when hovering over a #-link.
     $(body).on('mouseover mouseout', 'a[href^="#"]', e => {
-      const id = CSS.escape($(e.target).attr('href').slice(1))
-      $(`#${id}`).toggleClass('hover')
+      const id = $(e.currentTarget).attr('href').slice(1)
+      $(`#${CSS.escape(id)}`).toggleClass('hover')
     })
   })(document.body)
 
