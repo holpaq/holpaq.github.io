@@ -3,16 +3,6 @@
   devel: false */
 /*global showdown */
 
-if (!String.prototype.supplant) {
-  String.prototype.supplant = function (o) {
-    'use strict'
-    return this.replace(/\{([^{}]*)\}/g, (a, b) => {
-      const r = o[b]
-      return typeof r === 'string' || typeof r === 'number' ? r : a
-    })
-  }
-}
-
 // From: https://codereview.stackexchange.com/a/132140/197081
 {
   String.prototype.rot13 = function () {
@@ -98,8 +88,8 @@ function insertTableOfContent() {
   }
   const tocAttrs = $.map(
     $toc.prop('attributes'),
-    x => ' ' + x.name +
-      (x.value === undefined ? '' : '="' + escapeHtml(x.value) + '"')
+    x => ` ${x.name}` +
+      (x.value === undefined ? '' : `="${escapeHtml(x.value)}"`)
   ).join('')
 
   // Create ToC item from '<h#>...</h#>' element.
@@ -132,22 +122,16 @@ function insertTableOfContent() {
       html += (new Array(level - num + 1)).join('</ul>\n')
     }
     level = num
-    html += '<li class="h{level}"><a href="#{link}">{text}</a>\n'.supplant({
-      level: num,
-      text: tocItem($h),
-      link: $h.attr('id'),
-    })
+    html += `<li class="h${num}"><a href="#${$h.attr('id')}">${tocItem($h)}</a>\n`
   })
-  $toc.replaceWith(
-    '<ul class=toc hanging' + tocAttrs + '>' + html + '</ul>',
-  )
+  $toc.replaceWith(`<ul class=toc hanging${tocAttrs}>${html}</ul>`)
 }
 
 /******************************************************************************/
 
 const scriptPath = getRelativeScriptPath()
 
-include(scriptPath + "jquery-3.6.0.slim.min.js", afterjQueryLoad)
+include(`${scriptPath}jquery-3.6.0.slim.min.js`, afterjQueryLoad)
 
 function afterjQueryLoad() {
   'use strict'
@@ -159,7 +143,7 @@ function afterjQueryLoad() {
     $('html').addClass('DEBUG')
   }
 
-  include(scriptPath + "showdown.min.js", afterShowdownLoad)
+  include(`${scriptPath}showdown.min.js`, afterShowdownLoad)
 }
 
 // Enable 'Show page' button when showdown has loaded.
@@ -197,9 +181,7 @@ function include(url, callback) {
     tag = document.createElement("script")
     tag.src = url
   } else {
-    throw TypeError(
-      "include(): Unknown file type '" + url.split(".").pop() + "'"
-    )
+    throw TypeError(`include(): Unknown file type '${url.split(".").pop()}'`)
   }
   tag.async = true
   tag.onload = callback
@@ -244,14 +226,14 @@ function getMarkdownLinks(md) {
   'use strict'
   let refs = {}
   const singleRefReStr = '\\[([^\\[\\]]+)\\]:\\s*(\\S+)(?:\\s+"([^"]*)")?\\n'
-  const onlyReferences = new RegExp("^(" + singleRefReStr + ")+$")
+  const onlyReferences = new RegExp(`^(${singleRefReStr})+$`)
   const oneReference   = new RegExp(singleRefReStr)
   const newMd = md.split(/\n{2,}/).map(paragraph => {
     // Remove paragraphs containing only link references, and store
     // these in 'refs' to be appended to the end of the document.
-    if ((paragraph + "\n").match(onlyReferences)) {
+    if ((`${paragraph}\n`).match(onlyReferences)) {
       let refName = ""
-      ;(paragraph + "\n").split(oneReference).forEach((str, i) => {
+      ;(`${paragraph}\n`).split(oneReference).forEach((str, i) => {
         switch (i % 4) {
         case 0:
           if (str !== "") { throw "Bad string" }
@@ -261,7 +243,7 @@ function getMarkdownLinks(md) {
             return { amp: "&", gt: ">", lt: "<" }[a]
           })
           if (refs[refName] !== undefined) {
-            throw "Source reference '" + refName + "' already exists!"
+            throw `Source reference '${refName}' already exists!`
           }
           refs[refName] = []
           break
@@ -280,9 +262,9 @@ function getMarkdownLinks(md) {
         .match(/^(.*?)([+\-][0-9]+)?$/).slice(1)
       refs[name].push(parseInt(pageOffset, 10) || 0)
       refs[name][0] = link
-      return (
-        title === "" ? '[{0}]: {1}' : '[{0}]: {1} "{2}"'
-      ).supplant([name, link, title])
+      return title !== ''
+        ? `[${name}]: ${link} "${title}"`
+        : `[${name}]: ${link}`
     }).join("\n")
   ).join("\n\n")
   return [newMd, refs]
@@ -319,7 +301,7 @@ function main($) {
         lang = prefix
         return ''
       })
-      return '<i lang="'+lang+'" class="transl">'+md+'</i>'
+      return `<i lang="${lang}" class="transl">${md}</i>`
     }),
   })
   showdown.extension('sup', {
@@ -360,9 +342,9 @@ function main($) {
         }
         // If last cell in row add attribute 'colspan' if needed.
         if (colNum === rowCols && colNum < maxCols) {
-          attr += ' colspan=' + (maxCols - rowCols + 1)
+          attr += ` colspan=${maxCols - rowCols + 1}`
         }
-        return '<td' + attr + '>' + newMd
+        return `<td${attr}>${newMd}`
       }
       // Split markdown into array-of-arrays (one element = one cell).
       const tbl = md.split(/\n/).map(
@@ -373,7 +355,7 @@ function main($) {
       )
       // Number of cells in longest row.
       const maxcols = Math.max(...tbl.map(x => x.length))
-      return pre + '<table markdown class=example>\n' +
+      return `${pre}<table markdown class=example>\n` +
         tbl.map((row, i) => {
           return '<tr>' + row.map((text, i) => {
             return processCell(text, i + 1, row.length, maxcols)
@@ -437,14 +419,11 @@ function main($) {
         if (refs[linkref]) {
           // External link.
           let [extlink, comment, pageOffset] = refs[linkref]
-          return "<a href='{0}{1}'>{2}</a>".supplant([
-            extlink,
-            startPage ? "#page=" + (startPage + pageOffset) : "",
-            desc,
-          ])
+          const hash = startPage ? `#page=${startPage + pageOffset}` : ''
+          return `<a href="${extlink}${hash}">${desc}</a>`
         } else if (existingId[anchor]) {
           // Links internal to the page.
-          return "<a href='#" + anchor + "'>" +  desc + "</a>"
+          return `<a href="#${anchor}">${desc}</a>`
         }
         return full
       }).join("")
