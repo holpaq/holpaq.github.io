@@ -225,36 +225,46 @@ function asciify(txt) {
 // all the links found.
 function getMarkdownLinks(md) {
   'use strict'
+  // Find all contiguous occurrences of <regex> in <str>, calling <func> for
+  // each found instance. <func> is called with the accumulator as first arg,
+  // and capture subgroups in <re> as remaining args, and must return a
+  // modified accumulator. Returns updated accumulator, or (if <str> does not
+  // contain contiguous matches of <regex>) the unmodified initial accumulator.
+  function matchReduce(str, regex, func, orgA) {
+    let a = {...orgA}
+    if (!regex.sticky) { regex = new RegExp(regex, 'y') }
+    do {
+      const m = regex.exec(str)
+      a = func(a, m && m.splice(1))
+      if (!m) { return orgA }
+    } while (regex.lastIndex < str.length)
+    return a
+  }
+  function unescapeHtml(text) {
+    return text.replace(/&(quot|amp|lt|gt);/g, (_, a) => (
+      { quot: '"', amp: '&', lt: '<', gt: '>' }[a]
+    ))
+  }
   let refs = {}
-  const singleRefReStr = '\\[([^\\[\\]]+)\\]:\\s*(\\S+)(?:\\s+"([^"]*)")?\\n'
-  const onlyReferences = new RegExp(`^(${singleRefReStr})+$`)
-  const oneReference   = new RegExp(singleRefReStr)
-  const newMd = md.split(/\n{2,}/).map(paragraph => {
+  const newMd = md.trim().split(/\n{2,}/).map(paragraph => {
     // Remove paragraphs containing only link references, and store
     // these in 'refs' to be appended to the end of the document.
-    if ((`${paragraph}\n`).match(onlyReferences)) {
-      let refName = ''
-      ;(`${paragraph}\n`).split(oneReference).forEach((str, i) => {
-        switch (i % 4) {
-        case 0:
-          if (str !== '') { throw 'Bad string' }
-          break
-        case 1:
-          refName = str.replace(/&(amp|gt|lt);/, (_, a) => {
-            return { amp: '&', gt: '>', lt: '<' }[a]
-          })
-          if (refs[refName] !== undefined) {
-            throw `Source reference '${refName}' already exists!`
-          }
-          refs[refName] = []
-          break
-        default:
-          refs[refName].push(str)
+    let fail = false
+    const re = /\[([^\[\]]+)\]:\s*(\S+)(?:\s+"([^"]*)")?(\n|$)/
+    refs = matchReduce(paragraph, re, (a, match) => {
+      if (!match) {
+        fail = true
+      } else {
+        const [text, link, title] = match
+        const name = unescapeHtml(text)
+        if (a[name]) {
+          console.error(`Source reference '${name}' already exists!`)
         }
-      })
-      return ''
-    }
-    return paragraph
+        a[name] = [link, title]
+      }
+      return a
+    }, refs)
+    return fail ? paragraph : ''
   }).filter(a => a).concat(
     // Add back removed link references at end of markdown.
     Object.keys(refs).sort().map(name => {
