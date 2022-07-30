@@ -484,7 +484,7 @@ function main($) {
   })(document.body)
 
   /* If table cell contains single link: Allow click/click on whole cell. */
-  $('td:has(>a:only-child),th:has(>a:only-child)').hover(function () {
+  $('td:has(>a[href]:only-child),th:has(>a[href]:only-child)').hover(function () {
     $(this).toggleClass('hover')
   }).click(e => {
     $(e.currentTarget).children()[0].click()  /* non-jquery click */
