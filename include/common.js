@@ -7,7 +7,7 @@ if (!String.prototype.supplant) {
   String.prototype.supplant = function (o) {
     'use strict'
     return this.replace(/\{([^{}]*)\}/g, (a, b) => {
-      let r = o[b]
+      const r = o[b]
       return typeof r === 'string' || typeof r === 'number' ? r : a
     })
   }
@@ -19,9 +19,9 @@ if (!String.prototype.supplant) {
     'use strict'
     return this.split('').map(x => lookup[x] || x).join('')
   }
-  let input  = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('')
-  let output = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'.split('')
-  let lookup = input.reduce((a, k, i) => Object.assign(a, {[k]: output[i]}), {})
+  const input  = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('')
+  const output = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'.split('')
+  const lookup = input.reduce((a, k, i) => Object.assign(a, {[k]: output[i]}), {})
 }
 
 function escapeHtml(text) {
@@ -92,11 +92,11 @@ function insertIdIntoParentElement() {
 // table-of-contents.
 function insertTableOfContent() {
   'use strict'
-  let $toc = $('toc')
+  const $toc = $('toc')
   if ($toc.length === 0) {                     // abort if <toc> not found
     return
   }
-  let tocAttrs = $.map(
+  const tocAttrs = $.map(
     $toc.prop('attributes'),
     (x) => ' ' + x.name +
       (x.value === undefined ? '' : '="' + escapeHtml(x.value) + '"')
@@ -104,7 +104,7 @@ function insertTableOfContent() {
 
   // Create ToC item from '<h#>...</h#>' element.
   function tocItem($h) {
-    let $i = $h.clone()
+    const $i = $h.clone()
     $i.find('a,err').replaceWith(function() {  // strip <err> and <a> tags,
       return $(this).contents()                //    but keep their content
     })
@@ -118,13 +118,13 @@ function insertTableOfContent() {
   let level = 0
   let html = ''
   $('h1,h2,h3,h4,h5,h6,h7').each((_, h) => {
-    let $h = $(h)
+    const $h = $(h)
     if ($h.attr('title') === '' ||   // skip if 'title' or 'notoc'
         $h.attr('notoc') === '' ||   //   attribute or 'id=toc'
         $h.attr('id') === 'toc') {   //   is used
       return
     }
-    let num = $h.prop('tagName').match(/\d$/)[0]
+    const num = $h.prop('tagName').match(/\d$/)[0]
     if (!level) { level = num }
     if (num > level) {
       html += (new Array(num - level + 1)).join('<ul>\n')
@@ -188,7 +188,7 @@ function afterShowdownLoad() {
 // Load Javascript, then invoke callback function.
 function include(url, callback) {
   'use strict'
-  var tag
+  let tag
   if (url.match(/\.css$/i)) {               // CSS
     tag = document.createElement("link")
     tag.rel = "stylesheet"
@@ -365,14 +365,14 @@ function main($) {
         return '<td' + attr + '>' + newMd
       }
       // Split markdown into array-of-arrays (one element = one cell).
-      let tbl = md.split(/\n/).map(
+      const tbl = md.split(/\n/).map(
         (row) => row
           .replace(/^\s*\|\s*/, '')  // strip leading cell separator
           .replace(/\s*$/, '')       // strip trailing space
           .split(/\s*\|\s*/)         // split into cells
       )
       // Number of cells in longest row.
-      let maxcols = Math.max(...tbl.map((x) => x.length))
+      const maxcols = Math.max(...tbl.map((x) => x.length))
       return pre + '<table markdown class=example>\n' +
         tbl.map((row, i) => {
           return '<tr>' + row.map((text, i) => {
