@@ -3,6 +3,9 @@
   devel: false */
 /*global showdown */
 
+// Remove 'Javascript missing.' warning.
+document.documentElement.id = 'js'
+
 // From: https://codereview.stackexchange.com/a/132140/197081
 {
   String.prototype.rot13 = function () {
