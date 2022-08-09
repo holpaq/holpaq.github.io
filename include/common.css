@@ -324,7 +324,7 @@ table th:last-child {
 a {
   text-decoration: none;
 }
-a:hover, a.hover {
+a:hover, a.hover, .hover > a {
   text-decoration: underline;
 }
 a:hover, .hover {
