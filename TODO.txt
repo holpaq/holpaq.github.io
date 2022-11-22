@@ -91,33 +91,105 @@
 
    * "The Elements of Typographic Style" has some info on modular scales as
      well.
-* Sources to add
-** TODO Proofread "The Klingon Hamlet: Appendix II"
+* Sources to add/fix
+** TODO Add qepHom’a’ sources
+** TODO 2008: {qepHom}
+   http://klingon.wiki/En/QepHomSaarbr%FCcken
+   http://klingon.wiki/En/QepHom2008
+** TODO 2009: {qepHom}
+   http://klingon.wiki/En/QepHomSaarbr%FCcken
+   http://klingon.wiki/En/QepHom2009
+** TODO 2010: {qepHom}
+   http://klingon.wiki/En/QepHomSaarbr%FCcken
+   http://klingon.wiki/En/NewWordsQepHom2010
+** TODO 2011: {qepHom}
+   http://kingon.wiki/En/QepHomSaarbr%FCcken
+   http://klingon.wiki/En/NewWordsQepHom2011
+** TODO 2012: “Marc Okrand on Klingon” (video)
+   https://youtu.be/e5Did-eVQDc “Marc Okrand on Klingon” (3 May 2012) -- A
+   brief overview of Klingon, including some history and anecdotes of Marc
+   Okrand’s experiences in working on the movies.
+** TODO 2012: {qepHom}
+   http://kingon.wiki/En/QepHomSaarbr%FCcken
+   http://klingon.wiki/En/NewWordsQepHom2012
+** TODO 2013: {qepHom}
+   http://kingon.wiki/En/QepHomSaarbr%FCcken
+   http://klingon.wiki/En/NewWordsQepHom2013
+** TODO 2014: {qepHom}
+   http://kingon.wiki/En/QepHomSaarbr%FCcken
+   http://klingon.wiki/En/NewWordsQepHom2014
+** TODO 2014: “What is Klingon?” (video)
+   https://youtu.be/HOPG7dZcd0o “Marc Okrand: What is Klingon?” (21 November
+   2014)
+** TODO 2015: {qepHom}
+   http://kingon.wiki/En/QepHomSaarbr%FCcken
+   http://klingon.wiki/En/NewWordsQepHom2015
+** TODO 2016: {qep’a’ cha’maH wejDIch}
+   https://www.kli.org/about-klingon/new-language-information/
+   https://www.kli.org/activities/qepmey/past-qepamey/qepa-chamah-wejdich/new-words/
+** TODO 2016: {qepHom}
+   http://kingon.wiki/En/QepHomSaarbr%FCcken
+   http://klingon.wiki/En/NewWordsQepHom2016
+** TODO 2016: “Klingon 101: The Sounds of Klingon” (video)
+   https://youtu.be/F5rxEPGN69c “Klingon 101 - The Sounds of Klingon - Marc
+   Okrand” (29 November 2016) -- A lecture on Klingon given by Marc Okrand at
+   Starbase Indy 2016 in Indianapolis, Indiana, USA covering Klingon
+   pronunciation.
+   + 3:24–4:07: https://youtu.be/F5rxEPGN69c?start=204&end=247 On capital “I”
+   + 3:40–3:50: https://youtu.be/F5rxEPGN69c?start=220&end=228 Created for actors
+** TODO 2017: {qep’a’ cha’maH loSDIch}
+   https://www.kli.org/about-klingon/new-language-information/
+   <missing link reported to KLI webmaster (qurgh)>
+** TODO 2017: {qepHom}
+   http://kingon.wiki/En/QepHomSaarbr%FCcken
+   http://klingon.wiki/En/NewWordsQepHom2017
+
+** TODO 2017: “Star Trek: Discovery” (video)
+   https://youtu.be/nBgW0YNHSfw “Star Trek: Discovery – Special with Marc
+   Okrand” (25 September 2017) -- Discussion between Lieven L. Litaer and Marc
+   Okrand about the new words from *Star Trek: Discovery*.
+** TODO 2018: {qep’a’ cha’maH vaghDIch}
+   https://www.kli.org/about-klingon/new-language-information/
+   https://www.kli.org/activities/qepmey/past-qepamey/qepa-chamah-vaghdich/new-words/
+** TODO 2018: {qepHom}
+   http://kingon.wiki/En/QepHomSaarbr%FCcken
+   http://klingon.wiki/En/NewWordsQepHom2018
+** TODO 2019: {qep’a’ cha’maH javDIch}
+   https://www.kli.org/about-klingon/new-language-information/
+   https://www.kli.org/activities/qepmey/past-qepamey/qepa-chamah-javdich/qepa-chamah-javdich-canon/
+** TODO 2019: {qepHom}
+   http://klingon.wiki/En/QepHomSaarbr%FCcken
+   http://klingon.wiki/En/NewWordsQepHom2019
+** TODO 2020: {qep’a’ cha’maH SochDIch}
+   https://www.kli.org/about-klingon/new-language-information/
+   https://www.kli.org/activities/qepmey/past-qepamey/qepa-chamah-sochdich/new-words/
+** TODO 2020: {qepHom} (cancelled)
+   http://klingon.wiki/En/QepHomSaarbr%FCcken
+   http://klingon.wiki/En/NewWordsQepHom2020
+** TODO 2021: {qep’a’ cha’maH chorghDIch} (online)
+   https://www.kli.org/about-klingon/new-language-information/
+   https://www.kli.org/activities/qepmey/past-qepamey/qepa-chamah-chorghdich/new-words/
+** TODO 2021: {qepHom} (online)
+   http://klingon.wiki/En/QepHomSaarbr%FCcken
+   http://klingon.wiki/En/NewWordsQepHom2021
+** TODO 2022: {paq’batlh} 2nd Edition - Canon and New Words
+   https://www.kli.org/about-klingon/new-language-information/
+   https://www.kli.org/about-klingon/new-language-information/paqbatlh-2nd-edition/
+** TODO 2022: {qep’a’ cha’maH HutDIch}
+   https://www.kli.org/about-klingon/new-language-information/
+   https://www.kli.org/activities/qepmey/qepa-chamah-hutdich/new-words/
+** TODO 2022: {qepHom}
+   http://klingon.wiki/En/QepHomSaarbr%FCcken
+   http://klingon.wiki/En/NewWordsQepHom2022
+** TODO Proofread “The Klingon Hamlet: Appendix II”
    English and Klingon text should get a more thorough read-through and
    comparison to the original text.
 
    (The scansion annotation has been fully proofread, and a spellchecker have
    been run over the English text to check the most basic of errors.)
-** TODO Check all occurrences of "noun-noun" in TKD
+** TODO Check all occurrences of “noun-noun” in TKD
    Should the occurrences of "noun-noun" (written with a hyphen) be corrected
    to use en-dash?
-** TODO [Klingon 101: The Sounds of Klingon][Klingon 101] (video, November 2016)
-   A lecture on Klingon given by Marc Okrand at Starbase Indy 2016 in
-   Indianapolis, Indiana, USA covering Klingon pronunciation.
-** TODO [Marc Okrand on Klingon] (video, 3 May 2012) 
-   A brief overview of Klingon, including some history and anecdotes of Marc
-   Okrand’s experiences in working on the movies.
-** TODO [What is Klingon?] (video, 21 November 2014)
-** TODO [Star Trek: Discovery] (video, 25 September 2017)
-   Discussion between Lieven L. Litaer and Marc Okrand about the new words from
-   *Star Trek: Discovery*.
-
-   [Star Trek: Discovery]: https://youtu.be/nBgW0YNHSfw "Star Trek: Discovery – Special with Marc Okrand"
-   [What is Klingon?]: https://youtu.be/HOPG7dZcd0o "Marc Okrand: “What is Klingon?” (21 November 2014)"
-   [Marc Okrand on Klingon]: https://youtu.be/e5Did-eVQDc "Marc Okrand on Klingon (3 May 2012)"
-   [Klingon 101, 3:40–3:50]: https://www.youtube.com/embed/F5rxEPGN69c?start=220&end=228&autoplay=1 "Klingon 101 - The Sounds of Klingon - Marc Okrand"
-   [Klingon 101, 3:24–4:07]: https://www.youtube.com/embed/F5rxEPGN69c?start=204&end=247&autoplay=1 "Klingon 101 - The Sounds of Klingon - Marc Okrand"
-   [Klingon 101]: https://youtu.be/F5rxEPGN69c "Klingon 101 - The Sounds of Klingon - Marc Okrand"
 * Guide
 ** TODO Go through 'briefklingram' make sure everything is included
 ** TODO Titles & general designations come after proper names
