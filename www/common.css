@@ -389,7 +389,7 @@ mark:hover {
 }
 
 /***** Background color for TODO notes and errata *****/
-err, [TODO] { background: var(--hilite); }
+err, [TODO] { background: var(--hilite); padding: 5px; margin: -5px }
 
 /***** Button *****/
 button {
