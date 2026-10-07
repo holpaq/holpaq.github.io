@@ -173,8 +173,10 @@
    http://klingon.wiki/En/QepHomSaarbr%FCcken
    http://klingon.wiki/En/NewWordsQepHom2021
 ** TODO 2022: {paq’batlh} 2nd Edition - Canon and New Words
-   https://www.kli.org/about-klingon/new-language-information/
-   https://www.kli.org/about-klingon/new-language-information/paqbatlh-2nd-edition/
+   + https://klingon.wiki/En/PaqbatlhNews (a MO and Yonge-Mallo interview on new
+     stuff)
+   + https://www.kli.org/about-klingon/new-language-information/
+   + https://www.kli.org/about-klingon/new-language-information/paqbatlh-2nd-edition/
 ** TODO 2022: {qep’a’ cha’maH HutDIch}
    https://www.kli.org/about-klingon/new-language-information/
    https://www.kli.org/activities/qepmey/qepa-chamah-hutdich/new-words/
@@ -191,6 +193,8 @@
    Should the occurrences of "noun-noun" (written with a hyphen) be corrected
    to use en-dash?
 * Guide
+** TODO Compare grammar to
+   https://klingon.wiki/En/PortalGrammar
 ** TODO Go through 'briefklingram' make sure everything is included
 ** TODO Titles & general designations come after proper names
    Titles (eg. HoD "Captain") and general designations (eg. Duj "ship") come
